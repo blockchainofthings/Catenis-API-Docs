@@ -1,189 +1,435 @@
----
-title: API Reference
+--- 
+
+title: Catenis Enterprise RESTful API Specification
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
+  - shell: cURL
+  - javascript: JavaScript
+  - cpp: C++
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+toc_footers: 
+- <a href='#'>Sign Up for a Developer Key</a> 
+- <a href='https://github.com/lavkumarv'>Documentation Powered by lav</a> 
 
-includes:
-  - errors
+includes: 
+- errors 
 
-search: true
----
+search: true 
+--- 
 
-# Introduction
+# Introduction 
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+The Catenis Enterprise API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use built-in HTTP features, like HTTP authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. We support cross-origin resource sharing, allowing you to interact securely with our API from a client-side web application (though you should never expose your API access secret in any public website's client-side code). JSON is returned by all API responses, including errors. 
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+**API Version:** 0.3 
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+**Base API Endpoint:** https://beta.catenis.io/api/0.3/
+
+**Available Libraries:** JavaScript, C++
 
 # Authentication
 
-> To authorize, use this code:
+TODO
 
-```ruby
-require 'kittn'
+<!-- LOG MESSAGE -->
+<!-- LOG MESSAGE -->
+<!-- LOG MESSAGE -->
+<!-- LOG MESSAGE -->
+<!-- LOG MESSAGE -->
+# Log Message
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+## ***POST*** 
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+> Sample Request
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+curl -X "POST" "https://beta.catenis.io/api/<api_version>/messages/log" \
+     -H "X-BCoT-Timestamp: <UTC_date_ISO8601>" \
+     -H "Authorization: CTN1-HMAC-SHA256 Credential=<your_virtual_device_id>/<date_YYYYMMDD>/ctn1_request, Signature=<generated_signature>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "message": "Only a test",
+  "options": {
+    "encoding": "utf8",
+    "encrypt": true,
+    "storage": "auto"
   }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+}'
 ```
 
 ```javascript
-const kittn = require('kittn');
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'beta'
+});
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+ctnApiClient.logMessage('My message', {
+        encoding: 'utf8',
+        encrypt: true,
+        storage: 'auto'
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+        }
+});
 ```
 
-> The above command returns JSON structured like this:
+```cpp
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+std::string response_data; // this is where the http response will be stored
+ctn::MethodOption options("utf8", true, "auto");
 
-```json
+ctnApiClient.logMessage("My message", response_data, options);
+```
+
+> Sample Response
+
+```json-doc
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "status": [string], // ["success", "error"]
+  "data": {
+    "messageId": [string] // ID of the logged Catenis message
+  }
 }
 ```
 
-This endpoint retrieves a specific kitten.
+**Description:** Stores a message to the blockchain
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+### HTTP Request 
+`POST /messages/log`
 
-### HTTP Request
+### Parameters
 
-`GET http://example.com/kittens/<ID>`
+| Name | Description | Required | Type |
+| ---- | ----------- | -------- | ---- |
+| message |  The message to record | Yes | string |
+| encoding | Value identifying the encoding of the message | No, default: "utf8" | ["utf8", "base64", "hex"] |
+| encrypt | Indicates whether message should be encrypted before storing it | No, default: true | boolean |
+| storage | Value identifying where the message should be stored | No, default: "auto" | [“auto", "embedded", "external"] |
 
-### URL Parameters
+### Responses
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+| Code | Description | Type |
+| ---- | ----------- | ---- |
+| 200 | Success: message_Id returned | JSON |
 
+<!-- SEND MESSAGE -->
+<!-- SEND MESSAGE -->
+<!-- SEND MESSAGE -->
+<!-- SEND MESSAGE -->
+<!-- SEND MESSAGE -->
+# Send Message
+## ***POST*** 
+
+> Sample Request
+
+```shell
+curl -X "POST" "https://beta.catenis.io/api/<api_version>/messages/send" \
+     -H "X-BCoT-Timestamp: <UTC_date_ISO8601>" \
+     -H "Authorization: CTN1-HMAC-SHA256 Credential=<your_virtual_device_id>/<date_YYYYMMDD>/ctn1_request, Signature=<generated_signature>" \
+     -H "Content-Type: application/json; charset=utf-8" \
+     -d $'{
+  "message": "Only a test to device 2",
+  "options": {
+    "encoding": "utf8",
+    "encrypt": true,
+    "storage": "external"
+  },
+  "targetDevice": {
+    "id": "<target_virtual_device_id>",
+    "isProdUniqueId": false
+  }
+}'
+
+```
+
+```javascript
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'beta'
+});
+
+ctnApiClient.sendMessage({
+        id: targetDeviceId,
+        isProdUniqueId: false
+    },
+    'My message to send', {
+        encoding: 'utf8',
+        encrypt: true,
+        storage: 'auto'
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+        }
+});
+```
+
+```cpp
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+std::string response_data; // this is where the http response will be stored
+ctn::MethodOption options("utf8", true, "auto");
+ctn::Device device(device_id, false);
+
+ctnApiClient.sendMessage(device, "My message to send", response_data, options);
+```
+
+> Sample Response
+
+```json-doc
+{
+  "status": "success",
+  "data": {
+    "messageId": [String]    // ID of the sent message 
+  }
+}
+```
+
+**Description:** Sends a message to a target device
+
+### HTTP Request 
+`POST /messages/send`
+
+### Parameters
+
+| Name | Description | Required | Type |
+| ---- | ----------- | -------- | ---- |
+| targetDevice.id |  ID of target device. Should be a Catenis virtual device ID unless isProdUniqueId is true | Yes | string |
+| targetDevice.isProdUniqueId | Indicates whether supplied ID is a product unique ID (otherwise, it should be a Catenis virtual device ID) | No, default: false | boolean |
+| message |  The message to record | Yes | string |
+| encoding | Value identifying the encoding of the message | No, default: "utf8" | ["utf8", "base64", "hex"] |
+| encrypt | Indicates whether message should be encrypted before storing it | No, default: true | boolean |
+| storage | Value identifying where the message should be stored | No, default: "auto" | [“auto", "embedded", "external"] |
+
+### Responses
+
+| Code | Description | Type |
+| ---- | ----------- | ---- |
+| 200 | Success: message_Id returned | JSON |
+
+<!-- READ MESSAGE -->
+<!-- READ MESSAGE -->
+<!-- READ MESSAGE -->
+<!-- READ MESSAGE -->
+<!-- READ MESSAGE -->
+# Read Message
+## ***GET*** 
+
+> Sample Request
+
+```shell
+curl "https://beta.catenis.io/api/<api_version>/messages/<messsageId>?encoding=utf8" \
+     -H "X-BCoT-Timestamp: <UTC_date_ISO8601>" \
+     -H "Authorization: CTN1-HMAC-SHA256 Credential=<your_virtual_device_id>/<date_YYYYMMDD>/ctn1_request, Signature=<generated_signature>"
+```
+
+```javascript
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'beta'
+});
+
+ctnApiClient.readMessage(messageId, 'utf8',
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+        }
+});
+```
+
+```cpp
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+std::string response_data; // this is where the http response will be stored
+
+ctnApiClient.readMessage(message_id, response_data, "utf8")
+```
+
+> Sample Response
+
+```json-doc
+{
+  "status": "success",
+   "action": [String],         // Action originally performed on   
+                               //  the message; either 'log' or 
+                               //  'send'
+   "from": {                   // Note: only returned if origin 
+                               //  device is different than device 
+                               //  that issued the request,
+                               //  unless it is the (rare) case
+                               //  where device sent a message to
+                               //  itself
+     "deviceId": [String],     // Catenis ID of the origin device 
+                               //  (device that had sent/logged 
+                               //  the message)
+     "name": [String],         // (only returned if device is 
+                               //  public and has this data) - 
+                               //  Assigned name of the device
+     "prodUniqueId": [String]  // (only returned if device is 
+                               //  public and has this data) -  
+                               //  Product unique ID of the
+                               //  device
+   },
+   "to": {                     //  Note: only returned if target 
+                               //  device different than device 
+                               //  that issued the request
+     "deviceId": [String]      // Catenis ID of target device 
+                               //  (device to which the message 
+                               //  had been sent)
+     "name": [String],         // (only returned if device is 
+                               //  public and has this data) - 
+                               //  Assigned name of the device
+     "prodUniqueId": [String]  // (only returned if device is 
+                               //  public and has this data) - 
+                               //  Product unique ID of the
+                               //  device
+    },
+    "message": [String]        // The read message formatted 
+                               // using the specified encoding
+}
+
+// Logged message example
+{
+  "status": "success",
+  "data": {
+    "Action": "log",
+    "message": "Only a test"
+  }
+}
+
+// Sent message example
+{
+  "status": "success",
+  "data": {
+    "Action": "send",
+    "from": {
+      "deviceId": "<origin_virtual_device_id>",
+      "name": "Catenis device #1"
+    },
+    "message": "Only a test to device 2"
+  }
+}
+```
+
+**Description:** Reads a message that had been previously logged or sent 
+
+### HTTP Request 
+`GET /messages/{messageId}` 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| messageId | path | ID of the Catenis message to be read | Yes | string |
+| encoding | query | Value identifying the encoding | No, default: "utf8" | ["utf8", "base64", "hex"] |
+
+**Responses**
+
+| Code | Description | Type |
+| ---- | ----------- | ---- |
+| 200 | Success: message returned | JSON |
+
+<!-- RETRIEVE MESSAGE CONTAINER -->
+<!-- RETRIEVE MESSAGE CONTAINER -->
+<!-- RETRIEVE MESSAGE CONTAINER -->
+<!-- RETRIEVE MESSAGE CONTAINER -->
+<!-- RETRIEVE MESSAGE CONTAINER -->
+# Retrieve Message Container
+
+## ***GET*** 
+
+> Sample Request
+
+```shell
+curl "https://beta.catenis.io/api/<api_version>/messages/<messageId>/container" \
+     -H "X-BCoT-Timestamp: <UTC_date_ISO8601>" \
+     -H "Authorization: CTN1-HMAC-SHA256 Credential=<your_virtual_device_id>/<date_YYYYMMDD>/ctn1_request, Signature=<generated_signature>"
+```
+
+```javascript
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'beta'
+});
+
+ctnApiClient.retrieveMessageContainer(messageId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+        }
+});
+```
+
+```cpp
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+std::string response_data; // this is where the http response will be stored
+
+ctnApiClient.retrieveMessageContainer(message_id, response_data);
+```
+
+> Sample Response
+
+```json-doc
+{
+ "status": "success",
+   "blockchain" : {
+     "txid": [String],         // ID of blockchain transaction 
+                               //  where message is recorded
+                               //  NOTE: due to malleability, 
+                               //  the ID of the transaction may 
+                               //  change until it is finally 
+                               //  confirmed
+     "isConfirmed": [Boolean]  // Indicates whether the 
+                               //  blockchain transaction ID is
+                               //  confirmed
+   },
+   "externalStorage" : {       // Note: only returned if
+                               //  message is stored on IPFS
+                               //  external storage
+    "ipfs": [String]           // Reference to message on IPFS    
+  }
+}
+```
+
+**Description:** Retrieves information about where a message was previously sent of logged which includes the blockchain transaction ID and the location of where the content was stored.  
+
+### HTTP Request 
+`GET /messages/{messageId}/container` 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| messageId | path | ID of the Catenis message to be read | Yes | string |
+
+**Responses**
+
+| Code | Description | Type |
+| ---- | ----------- | ---- |
+| 200 | Success: message container returned | JSON |
+
+# List Messages
+## ***GET*** 
+
+**Summary:** List Messages
+
+**Description:** Optional extended description in Markdown.
+
+### HTTP Request 
+`***GET*** /messages` 
+
+**Responses**
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
+
+<!-- Converted with the swagger-to-slate https://github.com/lavkumarv/swagger-to-slate -->
