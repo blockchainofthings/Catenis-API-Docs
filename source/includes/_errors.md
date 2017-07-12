@@ -1,20 +1,27 @@
 # Errors
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files...just save them to the `includes` folder and add them to the top of your `index.md`'s frontmatter. Files are included in the order listed.</aside>
+Catenis Enterprise uses conventional HTTP response codes to indicate the success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, an invalid transaction ID was supplied, etc.), and codes in the 5xx range indicate an error with Blockchain of Things servers. Not all errors map cleanly onto HTTP response codes.
 
-The Kittn API uses the following error codes:
-
-
-Error Code | Meaning
+Status code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request sucks
-401 | Unauthorized -- Your API key is wrong
-403 | Forbidden -- The kitten requested is hidden for administrators only
-404 | Not Found -- The specified kitten could not be found
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method
-406 | Not Acceptable -- You requested a format that isn't json
-410 | Gone -- The kitten requested has been removed from our servers
-418 | I'm a teapot
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+200 | OK -- Everything worked as expected.
+400 | Bad Request -- The request could not be processed the way it was, and should be changed before it is resubmitted
+401 | Unauthorized -- No valid API authentication request.
+403 | Forbidden Access -- No Authority to access resource
+404 | Not Found -- The requested resource doesn't exist.d
+500, 502, 503, 504 | Server Errors -- Something went wrong on Catenis Enterprise’s end.
+
+Error types | Meaning
+----------- | -------
+Invalid parameters | Parameter was improperly formed or required parameter is missing
+Device is deleted | Catenis virtual device no longer exists as it has been deleted from the Catenis network
+Device is not active | Catenis virtual device is not yet ready to be used
+No credit to log message | Catenis logging credits have run out and need to be replenished
+Invalid transaction ID | The requested transaction ID doesn't exist
+Message too long to be embedded | Request specified that message should be stored embedded with the blockchain transaction (storage = 'embedded') but message is too large (over 75 bytes unencrypted or 64 bytes encrypted) to fit in the transaction
+No permission to read | Device has no permission to read message 
+Not a valid Catenis transaction | The blockchain transaction that was requested is not a Catenis transaction
+No credit to send message | Catenis message credits have run out and and need to be replenished
+No permission to retrieve message container | Device attempting to retrieve the container information is not the device who sent the message
+Invalid target device | The specified device ID to send the message to is not valid.
+Internal server error | Something went wrong on Catenis Enterprise’s end.
