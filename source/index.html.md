@@ -102,7 +102,7 @@ Example:
 | Scope | The string "\<Date>" + “/ctn1_request”, where \<Date> is a date in the YYYYMMDD format. NOTE: the signature will be valid for seven days from this date. |
 | Hash of conformed request | HEX(SHA256(\<Conformed request>)) - the SHA256 hash of the conformed request (as described in item 1. above) in hex format (a 64-character string containing only hexadecimal characters) |
 
-<br/><br/><br/><br/><br/>
+<br/><br/><br/>
 
 ### Signature
 
