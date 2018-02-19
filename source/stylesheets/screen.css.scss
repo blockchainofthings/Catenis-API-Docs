@@ -76,6 +76,9 @@ html, body {
     display: block;
     max-width: 100%;
     margin-bottom: $logo-margin;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
   }
 
   &>.search {
@@ -452,7 +455,7 @@ html, body {
     background-color: rgba(0,0,0,0.05);
     padding: 3px;
     border-radius: 3px;
-    @extend %break-words;
+    //@extend %break-words;
     @extend %code-font;
   }
 
@@ -612,4 +615,15 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+// Custom styles
+
+.parameterList li {
+  margin-top: 0.5em
+}
+
+.url {
+  background-color: rgba(0,0,0,0.05);
+  @extend %code-font;
 }
