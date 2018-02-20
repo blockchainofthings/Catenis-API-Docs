@@ -10,6 +10,7 @@ language_tabs:
   - cpp: C++
 
 toc_footers: 
+- <a href="mailto:docs@catenis.com">Send us your comments</a>
 
 includes:
 - introduction
