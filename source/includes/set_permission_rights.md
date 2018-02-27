@@ -164,7 +164,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`isProdUniqueId` | Boolean | *(optional, default: __`false`__)* Indicates whether the supplied ID is a product unique ID. |
 
 <aside class="success">
-Removes of permission rights are always processed first. Thus, one can completely reset the permission rights 
+Removals of permission rights are always processed first. Thus, one can completely reset the permission rights 
 at a given level by passing the wildcard character <code>*</code> for the <code>none</code> entry, and at the same time the IDs
 of the entities for which either <code>allow</code> or <code>deny</code> right is to be set.  
 </aside>

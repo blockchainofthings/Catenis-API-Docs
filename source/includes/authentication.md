@@ -25,7 +25,7 @@ To properly call a Catenis Enterprise API method, the client application must au
 The <a href="#detailed-specification">Catenis HMAC-SHA256 authentication specification</a> should be used as a reference when performing the tasks listed above.
 </aside>
 
-Alternatively, one of the supplied [Catenis API client libraries](#client-libraries) can used, which makes issuing and authenticating Catenis Enterprise API requests much simpler.
+Alternatively, one of the supplied [Catenis API client libraries](#client-libraries) can be used, which makes issuing and authenticating Catenis Enterprise API requests much simpler.
 
 <aside class="notice">
 When accessing the Catenis Enterprise API using one of the Catenis API client libraries, the authentication process is handled by the library itself.

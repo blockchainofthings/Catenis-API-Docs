@@ -137,7 +137,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`storage` | String | *(optional, default: __`auto`__)* Value identifying where the message should be stored. Valid options: `auto`, `embedded`, `external`. The value `embedded` specifies that the message should be stored on the blockchain transaction itself; the value `external` specifies that the message should be stored in an external repository; and the value `auto` is used to specify that the message be embedded whenever possible otherwise it should be stored in the external storage. |
 
 <aside class="warning">
-The <code>readConfirmation</code> option by itself does not guarantee that the origin device will be notified; the current permission rights setting plays a major whole in that outcome.
+The <code>readConfirmation</code> option by itself does not guarantee that the origin device will be notified; the current permission rights setting plays a major role in that outcome.
 </aside>
 
 <aside class="notice">
