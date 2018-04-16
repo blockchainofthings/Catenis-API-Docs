@@ -31,7 +31,7 @@ curl "https://beta.catenis.io/api/0.5/permission/events/receive-msg/rights/dv3ht
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -45,7 +45,7 @@ ctnApiClient.checkEffectivePermissionRight('receive_msg', checkDeviceId, false, 
     else {
         // Process returned data
         var deviceId = Object.keys(data)[0];
-        
+
         console.log('Effective right for device', deviceId, ':', data[deviceId]);
     }
 });
@@ -56,7 +56,7 @@ ctnApiClient.checkEffectivePermissionRight('receive_msg', checkDeviceId, false, 
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -70,10 +70,30 @@ ctnApiClient.checkEffectivePermissionRight('receive_msg', checkDeviceId, false, 
     else {
         // Process returned data
         var deviceId = Object.keys(data)[0];
-        
+
         console.log('Effective right for device', deviceId, ':', data[deviceId]);
     }
 });
+```
+
+```cpp
+#include "CatenisApiClient.h"
+
+std::string device_id("dnN3Ea43bhMTHtTvpytS");
+
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+
+ctn::CheckEffectivePermissionRightResult data;
+ctn::Device checkDevice("dv3htgvK7hjnKx3617Re");
+
+try {
+    ctnApiClient.checkEffectivePermissionRight(data, "receive-msg", checkDevice);
+
+    std::cout << "Effective right for device " << data.effectivePermissionRight.begin()->first << ": " << data.effectivePermissionRight.begin()->second << std::endl;
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
+}
 ```
 
 ### Request

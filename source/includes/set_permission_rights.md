@@ -59,7 +59,7 @@ curl -X "POST" "https://beta.catenis.io/api/0.5/permission/events/receive-msg/ri
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -94,7 +94,7 @@ ctnApiClient.setPermissionRights('receive-msg', {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -122,6 +122,31 @@ ctnApiClient.setPermissionRights('receive-msg', {
             console.log('Permission rights successfully set');
         }
 });
+```
+
+```cpp
+#include "CatenisApiClient.h"
+
+std::string device_id("dnN3Ea43bhMTHtTvpytS");
+
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+
+ctn::SetRightsClient clientRights;
+clientRights.allowed.push_back(std::string("self"));
+clientRights.denied.push_back(std::string("cjNhuvGMUYoepFcRZadP"));
+
+ctn::SetRightsDevice deviceRights;
+deviceRights.allowed.push_back(ctn::Device("dv3htgvK7hjnKx3617Re"));
+deviceRights.allowed.push_back(ctn::Device("XYZ0001", true));
+
+try {
+    ctnApiClient.setPermissionRights(data, "receive-msg", "", nullptr, &clientRights, &deviceRights);
+
+    std::cout << "Permission rights successfully set" << std::endl;
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
+}
 ```
 
 ### Request
@@ -164,9 +189,9 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`isProdUniqueId` | Boolean | *(optional, default: __`false`__)* Indicates whether the supplied ID is a product unique ID. |
 
 <aside class="success">
-Removals of permission rights are always processed first. Thus, one can completely reset the permission rights 
+Removals of permission rights are always processed first. Thus, one can completely reset the permission rights
 at a given level by passing the wildcard character <code>*</code> for the <code>none</code> entry, and at the same time the IDs
-of the entities for which either <code>allow</code> or <code>deny</code> right is to be set.  
+of the entities for which either <code>allow</code> or <code>deny</code> right is to be set.
 </aside>
 
 <aside class="warning">

@@ -31,7 +31,7 @@ curl "https://beta.catenis.io/api/0.5/permission/events/receive-msg/rights" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -43,32 +43,32 @@ ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
     else {
         // Process returned data
         console.log('Default (system) permission right:', data.system);
-        
+
         if (data.catenisNode) {
             if (data.catenisNode.allow) {
                 console.log('Index of Catenis nodes with \'allow\' permission right:', data.catenisNode.allow);
             }
-            
+
             if (data.catenisNode.deny) {
                 console.log('Index of Catenis nodes with \'deny\' permission right:', data.catenisNode.deny);
             }
         }
-        
+
         if (data.client) {
             if (data.client.allow) {
                 console.log('ID of clients with \'allow\' permission right:', data.client.allow);
             }
-            
+
             if (data.client.deny) {
                 console.log('ID of clients with \'deny\' permission right:', data.client.deny);
             }
         }
-        
+
         if (data.device) {
             if (data.device.allow) {
                 console.log('Devices with \'allow\' permission right:', data.device.allow);
             }
-            
+
             if (data.device.deny) {
                 console.log('Devices with \'deny\' permission right:', data.device.deny);
             }
@@ -82,7 +82,7 @@ ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -94,38 +94,87 @@ ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
     else {
         // Process returned data
         console.log('Default (system) permission right:', data.system);
-        
+
         if (data.catenisNode) {
             if (data.catenisNode.allow) {
                 console.log('Index of Catenis nodes with \'allow\' permission right:', data.catenisNode.allow);
             }
-            
+
             if (data.catenisNode.deny) {
                 console.log('Index of Catenis nodes with \'deny\' permission right:', data.catenisNode.deny);
             }
         }
-        
+
         if (data.client) {
             if (data.client.allow) {
                 console.log('ID of clients with \'allow\' permission right:', data.client.allow);
             }
-            
+
             if (data.client.deny) {
                 console.log('ID of clients with \'deny\' permission right:', data.client.deny);
             }
         }
-        
+
         if (data.device) {
             if (data.device.allow) {
                 console.log('Devices with \'allow\' permission right:', data.device.allow);
             }
-            
+
             if (data.device.deny) {
                 console.log('Devices with \'deny\' permission right:', data.device.deny);
             }
         }
     }
 });
+```
+
+```cpp
+#include "CatenisApiClient.h"
+
+std::string device_id("dnN3Ea43bhMTHtTvpytS");
+
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+
+ctn::RetrievePermissionRightsResult data;
+
+try {
+    ctnApiClient.retrievePermissionRights(data, "receive-msg");
+
+    std::cout << "Default (system) permission right: " << data.system << std::endl;
+
+    if (data.catenisNode != nullptr) {
+        if (data.catenisNode->allowed.size() > 0) {
+            // Process Catenis nodes with 'allow' permission right
+        }
+
+        if (data.catenisNode->denied.size() > 0) {
+            // Process Catenis nodes with 'deny' permission right
+        }
+    }
+
+    if (data.client != nullptr) {
+        if (data.client->allowed.size() > 0) {
+            // Process clients with 'allow' permission right
+        }
+
+        if (data.client->denied.size() > 0) {
+            // Process clients with 'deny' permission right
+        }
+    }
+
+    if (data.device != nullptr) {
+        if (data.device->allowed.size() > 0) {
+            // Process devices with 'allow' permission right
+        }
+
+        if (data.device->denied.size() > 0) {
+            // Process devices with 'deny' permission right
+        }
+    }
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
+}
 ```
 
 ### Request

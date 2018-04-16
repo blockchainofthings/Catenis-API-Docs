@@ -32,7 +32,7 @@ curl "https://beta.catenis.io/api/0.5/messages/mDWPuD5kjCsEiNEEWwrW?encoding=utf
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -46,9 +46,9 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
     else {
         // Process returned data
         console.log('Message read:', data.message);
-        
+
         if (data.action === 'send') {
-            console.log('Message originally sent from:', data.from);
+            console.log('Message originally from:', data.from);
         }
     }
 });
@@ -59,7 +59,7 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -73,9 +73,9 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
     else {
         // Process returned data
         console.log('Message read:', data.message);
-        
+
         if (data.action === 'send') {
-            console.log('Message originally sent from:', data.from);
+            console.log('Message originally from:', data.from);
         }
     }
 });
@@ -83,17 +83,25 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
 
 ```cpp
 #include "CatenisApiClient.h"
-#include <string>
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
 ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
 
-std::string response_data;
+ctn::ReadMessageResult data;
 std::string message_id("mDWPuD5kjCsEiNEEWwrW");
 
-if (ctnApiClient.readMessage(message_id, response_data, "utf8")) {
-  cout << "Message read: " << response_data << endl;
+try {
+    client.readMessage(data, message_id, "utf8");
+
+    std::cout << "Message read: " << data.message << endl;
+
+    if (data.action == "send"} {
+        std::cout << "Message originally from (device ID): " << data.from->deviceId;
+    }
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
 }
 ```
 

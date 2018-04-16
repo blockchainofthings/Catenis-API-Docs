@@ -2,7 +2,7 @@
 
 Retrieves a list of message entries that satisfy a given search criteria.
 
-A virtual device can use it to identify newly received messages, for instance. 
+A virtual device can use it to identify newly received messages, for instance.
 
 
 > Sample request:
@@ -27,7 +27,7 @@ curl "https://beta.catenis.io/api/0.5/messages?action=send&direction=inbound&fro
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -48,7 +48,7 @@ ctnApiClient.listMessages({
             // Process returned data
             if (data.msgCount > 0) {
                 console.log('Returned messages:', data.messages);
-                
+
                 if (data.countExceeded) {
                     console.log('Warning: not all messages fulfilling search criteria have been returned!';
                 }
@@ -62,7 +62,7 @@ ctnApiClient.listMessages({
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -83,7 +83,7 @@ ctnApiClient.listMessages({
             // Process returned data
             if (data.msgCount > 0) {
                 console.log('Returned messages:', data.messages);
-                
+
                 if (data.countExceeded) {
                     console.log('Warning: not all messages fulfilling search criteria have been returned!';
                 }
@@ -94,16 +94,35 @@ ctnApiClient.listMessages({
 
 ```cpp
 #include "CatenisApiClient.h"
-#include <string>
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
 ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
 
-std::string response_data;
+ctn::ListMessagesResult data;
 
-if (ctnApiClient.listMessages(response_data, "send", "inbound", "dv3htgvK7hjnKx3617Re", null, null, null, "unread", "20180101T000000Z", "20180228T235959Z")) {
-  cout << "Returned messages: " << response_data << endl;
+try {
+    client.listMessages(data, "send", "inbound", "dv3htgvK7hjnKx3617Re", "", "", "", "unread", "20180101T000000Z", "20180228T235959Z");
+
+    int msgCounter = 0;
+
+    for (auto it = data.messageList.begin(); it != data.messageList.end(); it++) {
+        std::cout << "Message #" << ++msgCounter << ":" << std::endl;
+
+        std::shared_ptr<ctn::MessageDescription> msgDesc = *it;
+
+        std::cout << "  message ID: " << msgDesc->messageId << std::endl;
+        std::cout << "  action: " << msgDesc->action << std::endl;
+
+        // Process further message info appropriately
+    }
+
+    if (data.countExceeded) {
+        std::cout << "Warning: not all messages fulfilling search criteria have been returned!" << std::endl;
+    }
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
 }
 ```
 

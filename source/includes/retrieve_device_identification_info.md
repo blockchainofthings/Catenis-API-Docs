@@ -32,7 +32,7 @@ curl "https://beta.catenis.io/api/0.5/devices/dv3htgvK7hjnKx3617Re" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -57,7 +57,7 @@ ctnApiClient.retrieveDeviceIdentificationInfo(checkDeviceId, false, function (er
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -75,6 +75,38 @@ ctnApiClient.retrieveDeviceIdentificationInfo(checkDeviceId, false, function (er
         console.log('Device\'s own ID info:', data.device);
     }
 });
+```
+
+```cpp
+#include "CatenisApiClient.h"
+
+std::string device_id("dnN3Ea43bhMTHtTvpytS");
+
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+
+ctn::DeviceIdInfoResult data;
+
+try {
+    ctnApiClient.retrieveDeviceIdInfo(data, ctn::Device(deviceId));
+
+    std::cout << "Device\'s Catenis node info:" << std::endl;
+    std::cout << "  index: " << data.catenisNode->index << std::endl;
+
+    // Process further returned Catenis node info
+
+    std::cout << "Device\'s client info:" << std::endl;
+    std::cout << "  clientId: " << data.client->clientId << std::endl;
+
+    // Process further returned client info
+
+    std::cout << "Device\'s own info:" << std::endl;
+    std::cout << "  deviceId: " << data.device->deviceId << std::endl;
+
+    // Process further returned device info
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
+}
 ```
 
 ### Request

@@ -24,7 +24,7 @@ curl "https://beta.catenis.io/api/0.5/permission/events" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -47,7 +47,7 @@ ctnApiClient.listPermissionEvents(function (err, data) {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -63,6 +63,27 @@ ctnApiClient.listPermissionEvents(function (err, data) {
         });
     }
 });
+```
+
+```cpp
+#include "CatenisApiClient.h"
+
+std::string device_id("dnN3Ea43bhMTHtTvpytS");
+
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+
+ctn::ListPermissionEventsResult data;
+
+try {
+    ctnApiClient.listPermissionEvents(data);
+
+    for (auto it = data.permissionEvents.begin(); it != data.permissionEvents.end(); it++) {
+        std::cout << "Event name: " << it->first << "; event description: " << it->second << std::endl;
+    }
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
+}
 ```
 
 ### Request

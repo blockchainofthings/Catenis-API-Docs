@@ -29,7 +29,7 @@ curl "https://beta.catenis.io/api/0.5/messages/mDWPuD5kjCsEiNEEWwrW/container" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -42,10 +42,9 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     }
     else {
         // Process returned data
-        if (data.blockchain) {
-            console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
-        }
-        else if (data.externalStorage.ipfs) {
+        console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+
+        if (data.externalStorage.ipfs) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
         }
     }
@@ -57,7 +56,7 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -70,10 +69,9 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     }
     else {
         // Process returned data
-        if (data.blockchain) {
-            console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
-        }
-        else if (data.externalStorage.ipfs) {
+        console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+
+        if (data.externalStorage.ipfs) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
         }
     }
@@ -82,17 +80,25 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
 
 ```cpp
 #include "CatenisApiClient.h"
-#include <string>
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
 ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
 
-std::string response_data;
+ctn::RetrieveMessageContainerResult data;
 std::string message_id("mDWPuD5kjCsEiNEEWwrW");
 
-if (ctnApiClient.retrieveMessageContainer(message_id, response_data)) {
-  cout << "Message container: " << response_data << endl;
+try {
+    client.retrieveMessageContainer(data, message_id);
+
+    std::cout << "ID of blockchain transaction containing the message: " << data.blockchain.txid << endl;
+
+    if (data.externalStorage != nullptr) {
+       std::cout << "IPFS reference to message: " << (*data.externalStorage)["ipfs"] << endl;
+    }
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
 }
 ```
 

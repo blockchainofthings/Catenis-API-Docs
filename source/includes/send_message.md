@@ -49,12 +49,16 @@ curl -X "POST" "https://beta.catenis.io/api/0.5/messages/send" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
 
-ctnApiClient.sendMessage('This is only a test', 'dv3htgvK7hjnKx3617Re', {
+var targetDevice = {
+    id: 'dv3htgvK7hjnKx3617Re'
+}
+
+ctnApiClient.sendMessage(targetDevice, 'This is only a test', {
         readConfirmation: true,
         encoding: 'utf8',
         encrypt: true,
@@ -76,12 +80,16 @@ ctnApiClient.sendMessage('This is only a test', 'dv3htgvK7hjnKx3617Re', {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
 
-ctnApiClient.sendMessage('This is only a test', 'dv3htgvK7hjnKx3617Re', {
+var targetDevice = {
+    id: 'dv3htgvK7hjnKx3617Re'
+}
+
+ctnApiClient.sendMessage(targetDevice, 'This is only a test', {
         readConfirmation: true,
         encoding: 'utf8',
         encrypt: true,
@@ -100,17 +108,22 @@ ctnApiClient.sendMessage('This is only a test', 'dv3htgvK7hjnKx3617Re', {
 
 ```cpp
 #include "CatenisApiClient.h"
-#include <string>
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
 ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
 
-std::string response_data;
-ctn::MethodOption options("utf8", true, "auto");
+ctn::SendMessageResult data;
+ctn::Device targetDevice("dv3htgvK7hjnKx3617Re");
+ctn::MessageOptions msgOpts("utf8", true, "auto", true);
 
-if (ctnApiClient.sendMessage("This is only a test", response_data, options)) {
-    cout << "ID of sent message: " << response_data << endl;
+try {
+    client.sendMessage(data, targetDevice, "My message to send", msgOpts);
+
+    std::cout << "ID of sent message: " << data.messageId << std::endl;
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
 }
 ```
 
@@ -131,7 +144,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`isProdUniqueId` | Boolean | *(optional, default: __`false`__)* Indicates whether the supplied ID is a product unique ID. |
 | `message` | String | The message to send. |
 | `options` | Object | |
-| &nbsp;&nbsp;`readConfirmation` | Boolean | *(optional, default: __`false`__)* Indicates whether message should be sent with read confirmation enabled. This should be used when the origin device intends to be notified when the target device first reads the message. | 
+| &nbsp;&nbsp;`readConfirmation` | Boolean | *(optional, default: __`false`__)* Indicates whether message should be sent with read confirmation enabled. This should be used when the origin device intends to be notified when the target device first reads the message. |
 | &nbsp;&nbsp;`encoding` | String | *(optional, default: __`utf8`__)* Value identifying the encoding of the message. Valid options: `utf8`, `base64`, `hex`. |
 | &nbsp;&nbsp;`encrypt` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be encrypted before storing it. |
 | &nbsp;&nbsp;`storage` | String | *(optional, default: __`auto`__)* Value identifying where the message should be stored. Valid options: `auto`, `embedded`, `external`. The value `embedded` specifies that the message should be stored on the blockchain transaction itself; the value `external` specifies that the message should be stored in an external repository; and the value `auto` is used to specify that the message be embedded whenever possible otherwise it should be stored in the external storage. |

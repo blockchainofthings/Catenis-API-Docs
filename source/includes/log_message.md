@@ -37,7 +37,7 @@ curl -X "POST" "https://beta.catenis.io/api/0.5/messages/log" \
 
 <script language="JavaScript">
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -63,7 +63,7 @@ ctnApiClient.logMessage('This is only a test', {
 var CtnApiClient = require('catenis-api-client');
 
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
-    
+
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'beta'
 });
@@ -86,17 +86,21 @@ ctnApiClient.logMessage('This is only a test', {
 
 ```cpp
 #include "CatenisApiClient.h"
-#include <string>
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
 ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
 
-std::string response_data;
-ctn::MethodOption options("utf8", true, "auto");
+ctn::LogMessageResult data;
+ctn::MessageOptions msgOpts("utf8", true, "auto");
 
-if (ctnApiClient.logMessage("My message", response_data, options)) {
-  cout << "ID of logged message: " << response_data << endl;
+try {
+    ctnApiClient.logMessage(data, "My message", msgOpts);
+
+    std::cout << "ID of logged message: " << data.messageId << std::endl;
+}
+catch (ctn::CatenisAPIException &errObject) {
+    std::cerr << errObject.getErrorDescription() << std::endl;
 }
 ```
 
