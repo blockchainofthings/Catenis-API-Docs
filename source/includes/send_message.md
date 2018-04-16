@@ -186,6 +186,6 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_80">Device is deleted<br><a href="#error_msg_90">Device is not active<br><a href="#error_msg_130">Invalid parameters<br><a href="#error_msg_140">Invalid target device<br><a href="#error_msg_150">Message too long to be embedded<br><a href="#error_msg_170">No credit to send message |
+| 400 | <a href="#error_msg_80">Device is deleted<br><a href="#error_msg_90">Device is not active<br><a href="#error_msg_130">Invalid parameters<br><a href="#error_msg_140">Invalid target device<br><a href="#error_msg_150">Message too long to be embedded<br><a href="#error_msg_170">Not enough credits to pay for send message service |
 | 500 | <a href="#error_msg_100">Internal server error |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time |
