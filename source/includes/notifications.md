@@ -44,7 +44,7 @@ A JSON containing the following properties:
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | `messageId` | String | The ID of the received message. |
-| `from` | Object | Identifies the virtual device that sent the received message &mdash; the *origin device*. |
+| `from` | Object | Identifies the virtual device that sent the received message — the *origin device*. |
 | &nbsp;&nbsp;`deviceId` | String | The device ID of the origin device. |
 | &nbsp;&nbsp;`name` | String | *(only returned if origin device has this data, and the device receiving the notification has the necessary permission right)* The name of the origin device. |
 | &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if origin device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the origin device. |
@@ -70,7 +70,7 @@ A JSON containing the following properties:
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | `messageId` | String | The ID of the read message. |
-| `to` | Object | Identifies the device to which the read message had been sent &mdash; the *target device*. |
+| `to` | Object | Identifies the device to which the read message had been sent — the *target device*. |
 | &nbsp;&nbsp;`deviceId` | String | The device ID of the target device. |
 | &nbsp;&nbsp;`name` | String | *(only returned if target device has this data, and the device receiving the notification has the necessary permission right)* The name of the target device. |
 | &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if target device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the target device. |
@@ -140,7 +140,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 1. Assemble a dummy GET request using the WebSocket notification channel URL, and then authenticate it as if it was
-a regular Catenis API request &mdash; for more information about API request authentication, please refer to the [Authentication](#authentication) section above.
+a regular Catenis API request — for more information about API request authentication, please refer to the [Authentication](#authentication) section above.
 
 2. Do not send the authenticated request, but rather just take the HTTP headers `X-BCoT-Timestamp` and `Authorization`
 contained in it and save them.

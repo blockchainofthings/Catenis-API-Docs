@@ -7,7 +7,7 @@ Logged messages can only be read by the virtual device that logged it.
 </aside>
 
 <aside class="notice">
-Sent messages can only be read by the virtual device that sent it &mdash; the <i>target device</i>.
+Sent messages can only be read by the virtual device that sent it — the <i>target device</i>.
 </aside>
 
 > Sample request:
@@ -148,7 +148,7 @@ A JSON containing the following properties:
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`action` | String | Action originally performed on the message. Possible values: `log`, `send`. The value `log` indicates that this is a logged message, and the value `send` indicates that this is a sent message. |
-| &nbsp;&nbsp;`from` | Object | *(only returned for sent messages)* Identifies the virtual device that sent the message &mdash; the *origin device*. |
+| &nbsp;&nbsp;`from` | Object | *(only returned for sent messages)* Identifies the virtual device that sent the message — the *origin device*. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the origin device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if origin device has this data, and the virtual device issuing the request has the necessary permission right)* The name of the origin device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if origin device has this data, and the virtual device issuing the request has the necessary permission right)* The product unique ID of the origin device. |

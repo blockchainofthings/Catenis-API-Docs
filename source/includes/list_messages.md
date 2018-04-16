@@ -192,11 +192,11 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`messageId` | String | The ID of the message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`action` | String | Action originally performed on the message. Possible values: `log`, `send`. The value `log` indicates that this is a logged message, and the value `send` indicates that this is a sent message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`direction` | String | *(only returned for sent messages)* The direction of the sent message. Possible values: `inbound`, `outbound`. The value `inbound` indicates that this is a message received by the virtual device issuing the request, and the value `outbound` indicates that this is a message sent by the device issuing the request. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`from` | Object | *(only returned for sent messages)* Identifies the virtual device that sent the message &mdash; the *origin device*. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`from` | Object | *(only returned for sent messages)* Identifies the virtual device that sent the message — the *origin device*. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the origin device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if origin device has this data, and the device issuing the request has the necessary permission right)* The name of the origin device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if origin device has this data, and the device issuing the request has the necessary permission right)* The product unique ID of the origin device. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`to` | Object | *(only returned for sent messages)* Identifies the device to which the message had been sent &mdash; the *target device*. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`to` | Object | *(only returned for sent messages)* Identifies the device to which the message had been sent — the *target device*. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the target device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if target device has this data, and the device issuing the request has the necessary permission right)* The name of the target device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if target device has this data, and the device issuing the request has the necessary permission right)* The product unique ID of the target device. |
@@ -216,7 +216,7 @@ message, and another where the message appears as an inbound message.
 
 <aside class="warning">
 The practice of a virtual device sending a message to itself, although possible, is fully discouraged. Instead, a virtual device should
-choose to log &mdash; as opposed to send &mdash; the message in such cases. This not only avoids the idiosyncrasy
+choose to log — as opposed to send — the message in such cases. This not only avoids the idiosyncrasy
 mentioned in the notice above, but also and more importantly leads to a more efficient and less expensive solution.
 </aside>
 

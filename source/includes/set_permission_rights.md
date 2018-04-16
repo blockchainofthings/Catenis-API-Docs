@@ -196,7 +196,7 @@ of the entities for which either <code>allow</code> or <code>deny</code> right i
 
 <aside class="warning">
 An <b><i>Invalid entity ID</i></b> error does not mean that the whole request has failed, but rather only that the permission rights
-could not be set for those specific invalid IDs &mdash; which are specified in the error message. Any other valid
+could not be set for those specific invalid IDs — which are specified in the error message. Any other valid
 IDs that might have been passed in the same request should have the corresponding permission rights correctly set.
 </aside>
 

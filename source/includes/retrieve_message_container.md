@@ -1,6 +1,6 @@
 ## Retrieve Message Container
 
-Gets information about the place where a previously recorded message &mdash; either logged or sent &mdash; is actually
+Gets information about the place where a previously recorded message — either logged or sent — is actually
 stored.
 
 <aside class="notice">

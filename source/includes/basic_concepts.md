@@ -4,7 +4,7 @@
 
 ### Virtual device
 
-The virtual device &mdash; or some times simply referred to as *device* &mdash; is the fundamental entity that is used
+The virtual device — or some times simply referred to as *device* — is the fundamental entity that is used
 to interact with the Catenis Enterprise system.
 
 Each virtual device has a unique `device ID`, which is assigned by the system when a new virtual
@@ -36,15 +36,15 @@ access the system and do administrative tasks, like creating new virtual devices
 
 The Catenis node is the entity used to aggregate the Catenis Enterprise services for a specific region or user premises.
 
-Catenis nodes are identified by their index. Currently, only one public, central Catenis node &mdash; referred to as the
-*Catenis Hub node* &mdash; is available. The Catenis Hub node has index 0.
+Catenis nodes are identified by their index. Currently, only one public, central Catenis node — referred to as the
+*Catenis Hub node* — is available. The Catenis Hub node has index 0.
 
 Clients are defined within a given Catenis node. So, a Catenis node will typically have one or more clients.
 
 ## Permission rights
 
-Catenis Enterprise provides a permission mechanism where a virtual device &mdash; the *controlling device* &mdash; can allow or
-deny other virtual devices &mdash; the *controlled devices* &mdash; to interact with it in a given predefined way. Such
+Catenis Enterprise provides a permission mechanism where a virtual device — the *controlling device* — can allow or
+deny other virtual devices — the *controlled devices* — to interact with it in a given predefined way. Such
 predefined controlled interactions are referred to as *permission events*.
 
 ### Permission events
@@ -69,7 +69,7 @@ the object of such action.
 
 Thus, taking the `receive-msg` permission event as an example, if a device is given allow right in regards to that
 permission event, it means that the controlling device will be able to receive messages sent from that device. Otherwise
-&mdash; if a device is given deny right instead &mdash;, the controlling device shall not receive any messages sent from
+— if a device is given deny right instead —, the controlling device shall not receive any messages sent from
 that device.
 
 ### Permission levels
