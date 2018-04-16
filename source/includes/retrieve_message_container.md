@@ -10,7 +10,7 @@ A message container can only be retrieved by the virtual device that originally 
 > Sample request:
 
 ```http--raw
-GET /api/0.5/messages/mDWPuD5kjCsEiNEEWwrW/container HTTP/1.1
+GET /api/0.6/messages/mDWPuD5kjCsEiNEEWwrW/container HTTP/1.1
 X-BCoT-Timestamp: 20180215T200325Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180215/ctn1_request, Signature=f06dc359270c2a3a91326ef2e7fd5506fd75dc9740b2609ed796ce01b3f92afb
 Host: beta.catenis.io
@@ -19,7 +19,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.5/messages/mDWPuD5kjCsEiNEEWwrW/container" \
+curl "https://beta.catenis.io/api/0.6/messages/mDWPuD5kjCsEiNEEWwrW/container" \
      -H 'X-BCoT-Timestamp: 20180215T200350Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180215/ctn1_request, Signature=7e50993e18975294f7f22aae7ee7ef4e4d68425502e38961c40743b1f72194eb'
 ```

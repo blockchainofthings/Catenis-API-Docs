@@ -5,7 +5,7 @@ Retrieves a list of all system defined notification events.
 > Sample request:
 
 ```http--raw
-GET /api/0.5/notification/events HTTP/1.1
+GET /api/0.6/notification/events HTTP/1.1
 X-BCoT-Timestamp: 20180219T160411Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=02e8f56a46e2ea8001f94fac04115749606deacd5eee6f553b6d69c5d45ce553
 Host: beta.catenis.io
@@ -14,7 +14,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.5/notification/events" \
+curl "https://beta.catenis.io/api/0.6/notification/events" \
      -H 'X-BCoT-Timestamp: 20180219T160346Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=7b717edae1c2c60721e2f74d02feb286a2275f615c930d86f5ea9954214bdfaf'
 ```

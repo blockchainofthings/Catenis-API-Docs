@@ -5,7 +5,7 @@ Records a message on the blockchain.
 > Sample request:
 
 ```http--raw
-POST /api/0.5/messages/log HTTP/1.1
+POST /api/0.6/messages/log HTTP/1.1
 X-BCoT-Timestamp: 20180127T173944Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180127/ctn1_request, Signature=35e284726b17533d087f75ebea2bda5792011e503c391132d4e14fdb67fdaf30
 Content-Type: application/json; charset=utf-8
@@ -18,7 +18,7 @@ Content-Length: 95
 ```
 
 ```shell
-curl -X "POST" "https://beta.catenis.io/api/0.5/messages/log" \
+curl -X "POST" "https://beta.catenis.io/api/0.6/messages/log" \
      -H 'X-BCoT-Timestamp: 20180127T174023Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180127/ctn1_request, Signature=72d51cd708e5a81ee1a50b33c72f98c906084b183a60904cd0ce3f4119659581' \
      -H 'Content-Type: application/json; charset=utf-8' \

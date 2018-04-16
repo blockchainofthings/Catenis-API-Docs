@@ -12,7 +12,7 @@ Depending on the current permission rights setting, it is possible that the sent
 > Sample request:
 
 ```http--raw
-POST /api/0.5/messages/send HTTP/1.1
+POST /api/0.6/messages/send HTTP/1.1
 X-BCoT-Timestamp: 20180207T201833Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180207/ctn1_request, Signature=fc1c92fbdb248e2d0aa363babd2d4b32342e29a93a2782fb76bd4e3a45ce3488
 Content-Type: application/json; charset=utf-8
@@ -25,7 +25,7 @@ Content-Length: 187
 ```
 
 ```shell
-curl -X "POST" "https://beta.catenis.io/api/0.5/messages/send" \
+curl -X "POST" "https://beta.catenis.io/api/0.6/messages/send" \
      -H 'X-BCoT-Timestamp: 20180207T201727Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180207/ctn1_request, Signature=3a8a28c50ce40cac7586df4231a7bee4ad6d08de3b289f96984c4458bf86c370' \
      -H 'Content-Type: application/json; charset=utf-8' \

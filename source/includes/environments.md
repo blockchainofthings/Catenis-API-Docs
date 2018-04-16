@@ -1,6 +1,6 @@
 # Environments
 
-The **Catenis Enterprise API ver. 0.5** is available in the following environments.
+The **Catenis Enterprise API ver. 0.6** is available in the following environments.
 
 ## Beta
 
@@ -12,4 +12,4 @@ The beta environment is ideal for prototyping and testing since it does not cons
 
 ### Base API URL
 
-`https://beta.catenis.io/api/0.5/`
+`https://beta.catenis.io/api/0.6/`

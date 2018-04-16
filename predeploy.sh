@@ -1,5 +1,5 @@
 #!/bin/bash
-API_DIR="0.5"
+API_DIR="0.6"
 
 # Check if static site should be built
 if [[ $1 = "build" || $2 = "build" ]]
@@ -15,7 +15,7 @@ if [[ $1 = "build" || $2 = "build" ]]
         rm -r deploy/$API_DIR
     fi
 
-    cp -R build/ deploy/0.5/
+    cp -R build/ deploy/$API_DIR/
 fi
 
 # Check if bundle (tar) file should be generated
