@@ -17,24 +17,24 @@ You can now see the docs at http://localhost:4567.
 
 ## How to edit the docs.
 
-The entire documentation is generated with two markdown files.
+The documentation is comprised of one main markdown file (```/sorce/index.html.md```) e several include markdown files found
+in the ```/source/includes/``` directory.
 
-/source/index.html.md       --> main markdown  
-/source/includes/_errors.md --> markdown for the error section
-
-The styles can be edited within the /source/stylesheets/ directory. screen.css.scss is the main css file.
+The styles can be edited within the ```/source/stylesheets/``` directory. ```screen.css.scss``` is the main css file.
 
 Edit these documents and refresh the browser to see changes (http://localhost:4567).
 
 ## How to Deploy Documentation
 
-To deploy the documentation, run the commands.
+Execute the shell script ```predeploy.sh``` to prepare the Catenis API documentation to be deployed.
 
-```shell
-bundle exec middleman build --clean
-```
+To build the static site for the target API version, pass the argument ```build``` to the pre-deploy script. The static
+contents of the site is built to the ```build/``` directory and copied to the appropriate directory under the
+```deploy/``` directory according to the target API version.
 
-Middleman will build your website to the build directory of your project, and you can copy those static HTML files to the server.
+To bundle up the documentation for deployment, including the static site for all target API versions already built, pass
+the argument ```bundle``` to the pre-deploy script. The bundled up documentation — a compressed tar file
+named CatenisAPIDoc.tar.gz — is placed in the ```deploy``` directory.
 
 ## How to Update Slate
 

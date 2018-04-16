@@ -1,7 +1,9 @@
 # Notifications
 
-Catenis Enterprise provides a notification mechanism where a virtual device can receive a real-time message notifying
+Catenis Enterprise provides a notification service where a virtual device can receive a real-time message notifying
 that a given predefined event that concerns it has taken place. Such predefined events are referred to as *notification events*.
+
+The Catenis notification service is currently at **version 0.1**.
 
 ## Notification events
 
@@ -80,21 +82,24 @@ To be able to receive notifications, a virtual device must open a notification c
 event. Then, as long as the notification channel is open, the virtual device shall receive notification messages when
 the corresponding event takes place.
 
-The way that a notification channel is open depends on the notification transport that the notification channel uses.
+The way that a notification channel is open depends on the notification message dispatcher used.
 
-The following notification transports are currently provided:
+The following notification message dispatchers are currently available:
 
-- WebSocket
+- WebSocket notification message dispatcher
 
-## WebSocket notification channel
+## WebSocket notification message dispatcher
 
-### URL (beta environment)
+This notification message dispatcher uses a WebSocket connection as the communication transport for the notification channel.
 
-<span class="url">wss://beta.catenis.io/api/notify/ws/<i>:eventName</i></span>
+The WebSocket notification message dispatcher is currently at **version 0.1**.
 
-### WebSocket subprotocol
+To open a notification channel, one needs to establish a WebSocket connection
+using the information provided below.
 
-`notify.catenis.io`
+### Connection endpoint URL
+
+**Beta environment**: <span class="url">wss://beta.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -104,11 +109,15 @@ The following notification transports are currently provided:
 <ul class="parameterList">
   <li>`eventName`: The name of the notification event for which a notification channel should be open.</li>
 </ul>
- 
+
+### WebSocket subprotocol
+
+`notify.catenis.io`
+
 ### Authentication
 
-The following steps should be taken in order to successfully authenticate the virtual device when opening a WebSocket
-notification channel:
+The following steps should be taken in order to successfully authenticate the virtual device when establishing a WebSocket
+connection to open the notification channel:
 
 > Sample authenticated dummy WebSocket notification request:
 

@@ -1,16 +1,14 @@
 # Environments
 
+The **Catenis Enterprise API ver. 0.5** is available in the following environments.
+
 ## Beta
 
-The Catenis Enterprise API is currently only available in beta, which connects with the testnet Bitcoin network.
+This is a pre-production environment that connects with the testnet Bitcoin network.
 
 <aside class="notice">
 The beta environment is ideal for prototyping and testing since it does not consume real bitcoins.
 </aside>
-
-### Version
-
-The beta environment is currently at ***version 0.5*** of the Catenis Enterprise API, which is the latest available version.
 
 ### Base API URL
 
