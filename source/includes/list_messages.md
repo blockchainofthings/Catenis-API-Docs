@@ -166,8 +166,7 @@ GET /messages
         "direction": "outbound",
         "to": {
           "deviceId": "dv3htgvK7hjnKx3617Re",
-          "name": "deviceB",
-          "prodUniqueId": "XYZABC001"
+          "name": "Catenis device #1"
         },
         "readConfirmationEnabled": true,
         "read": true,

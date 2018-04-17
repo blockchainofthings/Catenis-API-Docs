@@ -1,4 +1,4 @@
---- 
+---
 
 title: Catenis Enterprise REST API
 
@@ -9,7 +9,7 @@ language_tabs:
   - javascript--node: Node.js
   - cpp: C++
 
-toc_footers: 
+toc_footers:
 - <a href="mailto:catenis.docs@blockchainofthings.com">Send us your comments</a>
 
 includes:
@@ -24,6 +24,15 @@ includes:
 - read_message
 - retrieve_message_container
 - list_messages
+- issue_asset
+- reissue_asset
+- transfer_asset
+- retrieve_asset_info
+- get_asset_balance
+- list_owned_assets
+- list_issued_assets
+- retrieve_asset_issuance_history
+- list_asset_holders
 - list_permission_events
 - retrieve_permission_rights
 - set_permission_rights
@@ -33,5 +42,5 @@ includes:
 - notifications
 - errors
 
-search: true 
---- 
+search: true
+---

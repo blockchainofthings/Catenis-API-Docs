@@ -55,10 +55,16 @@ The following permission events are currently defined:
 | ---------- | ----------- |
 | `receive-notify-new-msg` | Receive notification of new message from a device |
 | `receive-notify-msg-read` | Receive notification of message read by a device |
+| `receive-notify-asset-of` | Receive notification of income asset issued by a device |
+| `receive-notify-asset-from` | Receive notification of income asset from a device |
+| `receive-notify-confirm-asset-of` | Receive notification of confirmation of pending asset issued by a device |
+| `receive-notify-confirm-asset-from` | Receive notification of confirmation of pending asset transferred by a device |
 | `send-read-msg-confirm` | Send read message confirmation to a device |
 | `receive-msg` | Receive message from a device |
 | `disclose-main-props` | Disclose device's main properties (name, product unique ID) to a device |
 | `disclose-identity-info` | Disclose device's basic identification information to a device |
+| `receive-asset-of` | Receive an amount of an asset issued by a device |
+| `receive-asset-from` | Receive an amount of an asset from a device |
 
 <aside class="notice">
 The list of all system defined permission events can be programmatically retrieved by means of the <a href="#list-permission-events">List Permission Events</a> API method.

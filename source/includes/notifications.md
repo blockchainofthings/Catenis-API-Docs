@@ -13,6 +13,8 @@ The following notification events are currently defined:
 | ---------- | ----------- |
 | `new-msg-received` | A new message has been received |
 | `sent-msg-read` | Previously sent message has been read by intended receiver (target device) |
+| `income-asset` | An amount of an asset has been received |
+| `confirmed-asset` | An amount of an asset that was pending due to an asset transfer has been confirmed |
 
 <aside class="notice">
 The list of all system defined notification events can be programmatically retrieved by means of the <a href="#list-notification-events">List Notification Events</a> API method.
@@ -70,11 +72,98 @@ A JSON containing the following properties:
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | `messageId` | String | The ID of the read message. |
-| `to` | Object | Identifies the device to which the read message had been sent — the *target device*. |
+| `to` | Object | Identifies the virtual device to which the read message had been sent — the *target device*. |
 | &nbsp;&nbsp;`deviceId` | String | The device ID of the target device. |
 | &nbsp;&nbsp;`name` | String | *(only returned if target device has this data, and the device receiving the notification has the necessary permission right)* The name of the target device. |
 | &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if target device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the target device. |
 | `readDate` | String | ISO 8601 formatted date and time when the message has been read. |
+
+### Asset amount received (income-asset)
+
+> Sample notification message:
+
+```json
+{
+  "assetId": "aQjlzShmrnEZeeYBZihc",
+  "issuer": {
+    "deviceId": "dnN3Ea43bhMTHtTvpytS",
+    "name": "deviceB",
+    "prodUniqueId": "XYZABC001"
+  },
+  "from": {
+    "deviceId": "dv3htgvK7hjnKx3617Re",
+    "name": "Catenis device #1"
+  },
+  "receivedDate": "2018-04-01T17:15:36.134Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `assetId` | String | The ID of the received asset. |
+| `amount` | Amount | The amount of the asset that has been received. |
+| `issuer` | Object | Identifies the virtual device that issued the asset — the *issuing device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the issuing device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The name of the issuing device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the issuing device. |
+| `from` | Object | Identifies the virtual device that sent or assigned the asset amount — the *sending device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the sending device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The name of the sending device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the sending device. |
+| `receivedDate` | String | ISO 8601 formatted date and time when the asset amount has been received. |
+
+<aside class="notice">
+The event of a virtual device issuing an amount of an asset and assigning it to a different virtual device can also trigger this notification.
+</aside>
+
+### Asset amount confirmed (confirmed-asset)
+
+> Sample notification message:
+
+```json
+{
+  "assetId": "aQjlzShmrnEZeeYBZihc",
+  "amount": 54.25,
+  "issuer": {
+    "deviceId": "dnN3Ea43bhMTHtTvpytS",
+    "name": "deviceB",
+    "prodUniqueId": "XYZABC001"
+  },
+  "from": {
+    "deviceId": "dv3htgvK7hjnKx3617Re",
+    "name": "Catenis device #1"
+  },
+  "confirmedDate": "2018-04-01T17:32:03.012Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `assetId` | String | The ID of the confirmed asset. |
+| `amount` | Amount | The amount of the asset that has been confirmed. |
+| `issuer` | Object | Identifies the virtual device that issued the asset — the *issuing device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the issuing device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The name of the issuing device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the issuing device. |
+| `from` | Object | Identifies the virtual device that originally sent or assigned the asset amount — the *sending device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the sending device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The name of the sending device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the sending device. |
+| `confirmedDate` | String | ISO 8601 formatted date and time when the asset amount has been confirmed. |
+
+<aside class="notice">
+An asset issuance can also cause the issued amount to be pending. Thus the confirmation of such pending amount can
+also trigger this notification.
+</aside>
+
+<aside class="notice">
+This notification can also be sent to the virtual device that initiated an asset transfer — the sending device — in case
+that a change asset amount had to be sent back to that device.
+</aside>
 
 ## Notification channel
 
