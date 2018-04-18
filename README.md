@@ -17,24 +17,24 @@ You can now see the docs at http://localhost:4567.
 
 ## How to edit the docs.
 
-The documentation is comprised of one main markdown file (```/sorce/index.html.md```) e several include markdown files found
-in the ```/source/includes/``` directory.
+The documentation is comprised of one main markdown file (`/sorce/index.html.md`) e several include markdown files found
+in the `/source/includes/` directory.
 
-The styles can be edited within the ```/source/stylesheets/``` directory. ```screen.css.scss``` is the main css file.
+The styles can be edited within the `/source/stylesheets/` directory. `screen.css.scss` is the main css file.
 
 Edit these documents and refresh the browser to see changes (http://localhost:4567).
 
 ## How to Deploy Documentation
 
-Execute the shell script ```predeploy.sh``` to prepare the Catenis API documentation to be deployed.
+Execute the shell script `predeploy.sh` to prepare the Catenis API documentation to be deployed.
 
-To build the static site for the target API version, pass the argument ```build``` to the pre-deploy script. The static
-contents of the site is built to the ```build/``` directory and copied to the appropriate directory under the
-```deploy/``` directory according to the target API version.
+To build the static site for the target API version, pass the argument `build` to the pre-deploy script. The static
+contents of the site is built to the `build/` directory and copied to the appropriate directory under the
+`deploy/` directory according to the target API version.
 
 To bundle up the documentation for deployment, including the static site for all target API versions already built, pass
-the argument ```bundle``` to the pre-deploy script. The bundled up documentation — a compressed tar file
-named CatenisAPIDoc.tar.gz — is placed in the ```deploy``` directory.
+the argument `bundle` to the pre-deploy script. The bundled up documentation — a compressed tar file
+named CatenisAPIDoc.tar.gz — is placed in the `deploy` directory.
 
 ## How to Update Slate
 
