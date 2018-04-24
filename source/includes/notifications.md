@@ -13,8 +13,8 @@ The following notification events are currently defined:
 | ---------- | ----------- |
 | `new-msg-received` | A new message has been received |
 | `sent-msg-read` | Previously sent message has been read by intended receiver (target device) |
-| `income-asset` | An amount of an asset has been received |
-| `confirmed-asset` | An amount of an asset that was pending due to an asset transfer has been confirmed |
+| `asset-received` | An amount of an asset has been received |
+| `asset-confirmed` | An amount of an asset that was pending due to an asset transfer has been confirmed |
 
 <aside class="notice">
 The list of all system defined notification events can be programmatically retrieved by means of the <a href="#list-notification-events">List Notification Events</a> API method.
@@ -78,7 +78,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if target device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the target device. |
 | `readDate` | String | ISO 8601 formatted date and time when the message has been read. |
 
-### Asset amount received (income-asset)
+### Asset amount received (asset-received)
 
 > Sample notification message:
 
@@ -118,7 +118,7 @@ A JSON containing the following properties:
 The event of a virtual device issuing an amount of an asset and assigning it to a different virtual device can also trigger this notification.
 </aside>
 
-### Asset amount confirmed (confirmed-asset)
+### Asset amount confirmed (asset-confirmed)
 
 > Sample notification message:
 

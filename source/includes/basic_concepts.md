@@ -55,8 +55,8 @@ The following permission events are currently defined:
 | ---------- | ----------- |
 | `receive-notify-new-msg` | Receive notification of new message from a device |
 | `receive-notify-msg-read` | Receive notification of message read by a device |
-| `receive-notify-asset-of` | Receive notification of income asset issued by a device |
-| `receive-notify-asset-from` | Receive notification of income asset from a device |
+| `receive-notify-asset-of` | Receive notification of asset received for assets issued by a device |
+| `receive-notify-asset-from` | Receive notification of asset received from a device |
 | `receive-notify-confirm-asset-of` | Receive notification of confirmation of pending asset issued by a device |
 | `receive-notify-confirm-asset-from` | Receive notification of confirmation of pending asset transferred by a device |
 | `send-read-msg-confirm` | Send read message confirmation to a device |
