@@ -16,13 +16,13 @@ Sent messages can only be read by the virtual device that sent it — the <i>tar
 GET /api/0.6/messages/mDWPuD5kjCsEiNEEWwrW?encoding=utf8 HTTP/1.1
 X-BCoT-Timestamp: 20180215T112048Z
 Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180215/ctn1_request, Signature=10b1299fdf935544b44e3e1e8de7d3f3df03df9ddc35db0127d5ab0cafa36cbb
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/messages/mDWPuD5kjCsEiNEEWwrW?encoding=utf8" \
+curl "https://sandbox.catenis.io/api/0.6/messages/mDWPuD5kjCsEiNEEWwrW?encoding=utf8" \
      -H 'X-BCoT-Timestamp: 20180215T112120Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180215/ctn1_request, Signature=84ddc0f0e3a3cadab6011b18962912bdf62bfcd2234e0984513a1856fd88c1c1'
 ```
@@ -34,7 +34,7 @@ curl "https://beta.catenis.io/api/0.6/messages/mDWPuD5kjCsEiNEEWwrW?encoding=utf
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var messageId = 'mDWPuD5kjCsEiNEEWwrW';
@@ -61,7 +61,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var messageId = 'mDWPuD5kjCsEiNEEWwrW';
@@ -86,7 +86,7 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::ReadMessageResult data;
 std::string message_id("mDWPuD5kjCsEiNEEWwrW");

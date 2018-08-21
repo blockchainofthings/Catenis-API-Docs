@@ -13,13 +13,13 @@ can retrieve information about that asset.
 GET /api/0.6/assets/aQjlzShmrnEZeeYBZihc HTTP/1.1
 X-BCoT-Timestamp: 20180417T143840Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=d73532614d4e46fb4e9be59255a660b540a122322aa7800fcb8a0ea4c3a0e40a
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc" \
+curl "https://sandbox.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc" \
      -H 'X-BCoT-Timestamp: 20180417T143900Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=b6501dab96c6838807817c63d9e75f5020806c5a4a0075558a7ff3477b468a1a'
 ```
@@ -31,7 +31,7 @@ curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -55,7 +55,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -77,7 +77,7 @@ ctnApiClient.retrieveAssetInfo(assetId,
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 // TODO: complete source code
 

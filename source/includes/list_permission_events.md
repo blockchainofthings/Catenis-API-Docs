@@ -8,13 +8,13 @@ Retrieves a list of all system defined permission events.
 GET /api/0.6/permission/events HTTP/1.1
 X-BCoT-Timestamp: 20180217T165054Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=138e50e836dec8c78d48a46bd04c03434ff994b2cf59d929dff324e958f2c096
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/permission/events" \
+curl "https://sandbox.catenis.io/api/0.6/permission/events" \
      -H 'X-BCoT-Timestamp: 20180217T170003Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=d1f7556572b5f038563e997644a9682690c87fab6388ccbb16221ab4b72b3a56'
 ```
@@ -26,7 +26,7 @@ curl "https://beta.catenis.io/api/0.6/permission/events" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listPermissionEvents(function (err, data) {
@@ -49,7 +49,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listPermissionEvents(function (err, data) {
@@ -70,7 +70,7 @@ ctnApiClient.listPermissionEvents(function (err, data) {
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::ListPermissionEventsResult data;
 

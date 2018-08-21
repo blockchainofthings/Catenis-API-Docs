@@ -8,13 +8,13 @@ Retrieves a list of all system defined notification events.
 GET /api/0.6/notification/events HTTP/1.1
 X-BCoT-Timestamp: 20180219T160411Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=02e8f56a46e2ea8001f94fac04115749606deacd5eee6f553b6d69c5d45ce553
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/notification/events" \
+curl "https://sandbox.catenis.io/api/0.6/notification/events" \
      -H 'X-BCoT-Timestamp: 20180219T160346Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=7b717edae1c2c60721e2f74d02feb286a2275f615c930d86f5ea9954214bdfaf'
 ```
@@ -26,7 +26,7 @@ curl "https://beta.catenis.io/api/0.6/notification/events" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listNotificationEvents(function (err, data) {
@@ -49,7 +49,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listNotificationEvents(function (err, data) {
@@ -70,7 +70,7 @@ ctnApiClient.listNotificationEvents(function (err, data) {
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::ListNotificationEventsResult data;
 

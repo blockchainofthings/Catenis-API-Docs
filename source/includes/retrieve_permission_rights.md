@@ -15,13 +15,13 @@ For more information about Catenis Enterprise permission rights, please refer to
 GET /api/0.6/permission/events/receive-msg/rights HTTP/1.1
 X-BCoT-Timestamp: 20180217T193337Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=b6bf27017c8ee92da349f80e27e127f3c2cb3adeeeee28e19c18d9b9c3b752a8
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/permission/events/receive-msg/rights" \
+curl "https://sandbox.catenis.io/api/0.6/permission/events/receive-msg/rights" \
      -H 'X-BCoT-Timestamp: 20180217T193358Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=6d2748f961de6714c16a0ff9096a9a9c2607778c2dc107d2f7492bc0878d2a81'
 ```
@@ -33,7 +33,7 @@ curl "https://beta.catenis.io/api/0.6/permission/events/receive-msg/rights" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
@@ -84,7 +84,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
@@ -133,7 +133,7 @@ ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::RetrievePermissionRightsResult data;
 

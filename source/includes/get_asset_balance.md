@@ -8,13 +8,13 @@ Gets the current balance of a given asset held by the device.
 GET /api/0.6/assets/aQjlzShmrnEZeeYBZihc/balance HTTP/1.1
 X-BCoT-Timestamp: 20180417T165555Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=0531b1ce00b03de1ca707db48fd2474328e21fdb6930b8661a4608e8fe735b84
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/balance" \
+curl "https://sandbox.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/balance" \
      -H 'X-BCoT-Timestamp: 20180417T165613Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=2f85718595bc2633e13b21315babeb00b60327b317e3c56dab3865f2aa29115c'
 ```
@@ -26,7 +26,7 @@ curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/balance" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -51,7 +51,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -74,7 +74,7 @@ ctnApiClient.getAssetBalance(assetId,
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 // TODO: complete source code
 

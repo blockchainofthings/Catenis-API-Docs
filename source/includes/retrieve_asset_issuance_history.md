@@ -12,13 +12,13 @@ Only the virtual device that issued the asset can retrieve the issuance history 
 GET /api/0.6/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z HTTP/1.1
 X-BCoT-Timestamp: 20180417T182853Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=57d779fbb24593ba4eff574e0c87961a3c39561cb90d99546d5041cdd7e964a9
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z" \
+curl "https://sandbox.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z" \
      -H 'X-BCoT-Timestamp: 20180417T182836Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=4990e4df2d0d73d01cd251dab65b6f4d2f702b43eb517d88c5ff3038d0bbd1f6'
 ```
@@ -30,7 +30,7 @@ curl "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/issuance?start
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -63,7 +63,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -94,7 +94,7 @@ ctnApiClient.retrieveAssetIssuanceHistory(assetId, '20170101T000000Z', null,
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 // TODO: complete source code
 

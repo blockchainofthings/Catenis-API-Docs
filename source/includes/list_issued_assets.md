@@ -8,13 +8,13 @@ Retrieves a list of assets that have been issued by the device.
 GET /api/0.6/assets/issued?limit=200 HTTP/1.1
 X-BCoT-Timestamp: 20180417T193403Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=ba41de81d939995b7cf76c03a4bc5861bf2176b7622348648c64fbb6f38dbc3a
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.6/assets/issued?limit=200" \
+curl "https://sandbox.catenis.io/api/0.6/assets/issued?limit=200" \
      -H 'X-BCoT-Timestamp: 20180417T193421Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=eb1e37742272ef732dae3d85cd0d75b32731b6d85d20d501d7969d55ca998849'
 ```
@@ -26,7 +26,7 @@ curl "https://beta.catenis.io/api/0.6/assets/issued?limit=200" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listIssuedAssets(200, 0,
@@ -56,7 +56,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.listIssuedAssets(200, 0,
@@ -84,7 +84,7 @@ ctnApiClient.listIssuedAssets(200, 0,
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 // TODO: complete source code
 

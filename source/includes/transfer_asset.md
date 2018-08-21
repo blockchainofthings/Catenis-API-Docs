@@ -9,7 +9,7 @@ POST /api/0.6/assets/aQjlzShmrnEZeeYBZihc/transfer/ HTTP/1.1
 X-BCoT-Timestamp: 20180417T132059Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=44e21bb5c895eceafce0910a27d0879e3be7dcff278c07a01597f09e6c0bb317
 Content-Type: application/json; charset=utf-8
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 Content-Length: 64
@@ -18,7 +18,7 @@ Content-Length: 64
 ```
 
 ```shell
-curl -X "POST" "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/transfer/" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/transfer/" \
      -H 'X-BCoT-Timestamp: 20180417T132027Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=17bb4e914bd10aa517d15df1c985f0e9604a660a3a146219e16a1c94a8f7bf93' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -37,7 +37,7 @@ curl -X "POST" "https://beta.catenis.io/api/0.6/assets/aQjlzShmrnEZeeYBZihc/tran
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -64,7 +64,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
@@ -89,7 +89,7 @@ ctnApiClient.transferAsset(assetId, 54.25, receivingDevice,
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 // TODO: complete source code
 
