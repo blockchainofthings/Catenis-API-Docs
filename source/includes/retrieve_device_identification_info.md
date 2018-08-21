@@ -16,13 +16,13 @@ The virtual device issuing the request must have permission right to retrieve id
 GET /api/0.5/devices/dv3htgvK7hjnKx3617Re HTTP/1.1
 X-BCoT-Timestamp: 20180219T133757Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=ff2a8f3d8dc232d60208dc28f668351234ed25ead274e820ac081a480a275012
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.5/devices/dv3htgvK7hjnKx3617Re" \
+curl "https://sandbox.catenis.io/api/0.5/devices/dv3htgvK7hjnKx3617Re" \
      -H 'X-BCoT-Timestamp: 20180219T133846Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=74b0618fe8fe40278b3325cccdac350bed538a5faac86689c3d07e3f1df085f0'
 ```
@@ -34,7 +34,7 @@ curl "https://beta.catenis.io/api/0.5/devices/dv3htgvK7hjnKx3617Re" \
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var checkDeviceId = 'dv3htgvK7hjnKx3617Re';
@@ -59,7 +59,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var checkDeviceId = 'dv3htgvK7hjnKx3617Re';
@@ -82,7 +82,7 @@ ctnApiClient.retrieveDeviceIdentificationInfo(checkDeviceId, false, function (er
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::DeviceIdInfoResult data;
 

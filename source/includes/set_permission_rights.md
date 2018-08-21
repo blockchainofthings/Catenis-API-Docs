@@ -22,7 +22,7 @@ POST /api/0.5/permission/events/receive-msg/rights HTTP/1.1
 X-BCoT-Timestamp: 20180217T201833Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=df048c4f799dbc0b15b7b105313b9c134d499eb330ecf1ee2b27b5319c89bb86
 Content-Type: application/json; charset=utf-8
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 Content-Length: 147
@@ -31,7 +31,7 @@ Content-Length: 147
 ```
 
 ```shell
-curl -X "POST" "https://beta.catenis.io/api/0.5/permission/events/receive-msg/rights" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.5/permission/events/receive-msg/rights" \
      -H 'X-BCoT-Timestamp: 20180217T201855Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180217/ctn1_request, Signature=d52d99ab524ee9f6ed7ca4d96c0041ff9ba7ca1540497dc527c51596da98a27a' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -61,7 +61,7 @@ curl -X "POST" "https://beta.catenis.io/api/0.5/permission/events/receive-msg/ri
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.setPermissionRights('receive-msg', {
@@ -96,7 +96,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 ctnApiClient.setPermissionRights('receive-msg', {
@@ -129,7 +129,7 @@ ctnApiClient.setPermissionRights('receive-msg', {
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::SetRightsClient clientRights;
 clientRights.allowed.push_back(std::string("self"));

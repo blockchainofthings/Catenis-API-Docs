@@ -41,7 +41,7 @@ This section describes how to issue and authenticate an HTTP request that confor
 
 ```http
 POST /api/0.5/messages/log HTTP/1.1
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 X-BCoT-Timestamp: 20180127T121358Z
 Content-Type: application/json; charset=utf-8
@@ -55,7 +55,7 @@ Content-Length: 95
 
 | Header | Contents |
 | ------ | ----------- |
-| `Host` | The host name. Example: *beta.catenis.io* |
+| `Host` | The host name. Example: *sandbox.catenis.io* |
 | `X-BCoT-Timestamp` | The current UTC time in ISO 8601 format. Example: *20170125T000000Z* |
 
 Aside from the essential headers, after the request is authenticated, it will include an HTTP ***Authorization*** header, since the authentication itself consists of adding that header to the request.
@@ -103,7 +103,7 @@ Where:
 | ---- | ----------- |
 | `<http_verb>` | The HTTP method of the request. One of: `GET`, `POST`, `PUT`, `HEAD`, or `DELETE`. |
 | `<api_endpoint_path>` | The complete path of the URL of the API method endpoint. Example: */api/0.5/message/send* |
-| `<essential_headers>` | A list showing the <a href="#essential-headers">essential headers<a> with their respective contents. Each item is defined as: <code style="white-space:normal">&lt;header_name&gt; + ":" + &lt;header_contents&gt; + "\n"</code>; where `<header_name>` is the lowercase name of the header, and `<header_contents>` is the contents of the header. Example: *host:beta.catenis.io\nx-bcot-timestamp:20170125T103246Z\n* |
+| `<essential_headers>` | A list showing the <a href="#essential-headers">essential headers<a> with their respective contents. Each item is defined as: <code style="white-space:normal">&lt;header_name&gt; + ":" + &lt;header_contents&gt; + "\n"</code>; where `<header_name>` is the lowercase name of the header, and `<header_contents>` is the contents of the header. Example: *host:sandbox.catenis.io\nx-bcot-timestamp:20170125T103246Z\n* |
 | `<payload_hash>` | Defined as: <code style="white-space:normal">HEX(SHA256(&lt;payload&gt;))</code>; where `<payload>` is the payload (or body) of the HTTP request. If the request has no payload, an empty string should be used in its place. |
 
 <aside class="notice">
@@ -193,7 +193,7 @@ The signature is defined as:
 
 ```http
 POST /api/0.5/messages/log HTTP/1.1
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 X-BCoT-Timestamp: 20180127T121358Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180127/ctn1_request,Signature=70db4ecb53a69dfdc8dcef5934a4d12df93c14f3178fe7797261c4f66144a44b

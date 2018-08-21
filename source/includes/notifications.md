@@ -99,7 +99,7 @@ using the information provided below.
 
 ### Connection endpoint URL
 
-**Beta environment**: <span class="url">wss://beta.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -125,7 +125,7 @@ connection to open the notification channel:
 GET /api/notify/ws/new-msg-received HTTP/1.1
 X-BCoT-Timestamp: 20180219T223932Z
 Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180219/ctn1_request, Signature=59b44f3d504b272e92c1f96694b7f6abb39b8cb7726ffe8b57d2cb46aedf568b
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```

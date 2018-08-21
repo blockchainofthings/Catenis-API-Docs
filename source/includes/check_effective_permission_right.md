@@ -15,13 +15,13 @@ For more information about Catenis Enterprise permission rights, please refer to
 GET /api/0.5/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re HTTP/1.1
 X-BCoT-Timestamp: 20180219T104640Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=0753e60d70a02448386d6485ab6d7ca34b1faa851bf71b6219256ae5059dfa09
-Host: beta.catenis.io
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://beta.catenis.io/api/0.5/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re" \
+curl "https://sandbox.catenis.io/api/0.5/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re" \
      -H 'X-BCoT-Timestamp: 20180219T104602Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=521537ae60e0cc6099c459220702aad51d68c7c6d82328d6df3d3dc122de8683'
 ```
@@ -33,7 +33,7 @@ curl "https://beta.catenis.io/api/0.5/permission/events/receive-msg/rights/dv3ht
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var checkDeviceId = 'dv3htgvK7hjnKx3617Re';
@@ -58,7 +58,7 @@ var CtnApiClient = require('catenis-api-client');
 var deviceId = 'dnN3Ea43bhMTHtTvpytS';
 
 var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
-    environment: 'beta'
+    environment: 'sandbox'
 });
 
 var checkDeviceId = 'dv3htgvK7hjnKx3617Re';
@@ -81,7 +81,7 @@ ctnApiClient.checkEffectivePermissionRight('receive_msg', checkDeviceId, false, 
 
 std::string device_id("dnN3Ea43bhMTHtTvpytS");
 
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "beta");
+ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
 
 ctn::CheckEffectivePermissionRightResult data;
 ctn::Device checkDevice("dv3htgvK7hjnKx3617Re");
