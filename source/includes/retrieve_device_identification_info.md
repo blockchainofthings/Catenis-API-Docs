@@ -77,6 +77,34 @@ ctnApiClient.retrieveDeviceIdentificationInfo(checkDeviceId, false, function (er
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$checkDeviceId = 'dv3htgvK7hjnKx3617Re';
+
+try {
+    $data = $ctnApiClient->retrieveDeviceIdentificationInfo($checkDeviceId);
+    
+    // Process returned data
+    echo 'Device\'s Catenis node ID info:' . print_r($data->catenisNode, true);
+    echo 'Device\'s client ID info:' . print_r($data->client, true);
+    echo 'Device\'s own ID info:' . print_r($data->device, true);
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

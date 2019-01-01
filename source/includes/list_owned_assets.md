@@ -81,6 +81,39 @@ ctnApiClient.listOwnedAssets(200, 0,
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->listOwnedAssets(200, 0);
+    
+    // Process returned data
+    forEach($data->ownedAssets as $idx => $ownedAsset) {
+        echo 'Owned asset #' . ($idx + 1) . ':' . PHP_EOL;
+        echo '  - asset ID: ' . $ownedAsset->assetId . PHP_EOL;
+        echo '  - current asset balance: ' . $ownedAsset->balance->total . PHP_EOL;
+        echo '  - amount not yet confirmed: ' . $ownedAsset->balance->unconfirmed . PHP_EOL;
+    }
+
+    if ($data->hasMore) {
+        echo 'Not all owned assets have been returned' . PHP_EOL;
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

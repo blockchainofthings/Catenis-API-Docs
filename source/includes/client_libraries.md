@@ -6,6 +6,7 @@ The following libraries are currently available:
 
 * [JavaScript (for Web browsers)](https://github.com/blockchainofthings/CatenisAPIClientJS)
 * [Node.js](https://github.com/blockchainofthings/CatenisAPIClientNodeJS)
+* [PHP](https://github.com/blockchainofthings/CatenisAPIClientPHP)
 * [C++](https://github.com/blockchainofthings/CatenisAPIClientCpp)
 * [Node-RED](https://github.com/blockchainofthings/CatenisAPINodeRed)
 

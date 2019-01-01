@@ -45,10 +45,10 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
     }
     else {
         // Process returned data
-        console.log('Message read:', data.message);
+        console.log('Read message:', data.message);
 
         if (data.action === 'send') {
-            console.log('Message originally from:', data.from);
+            console.log('Message set from:', data.from);
         }
     }
 });
@@ -72,13 +72,43 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
     }
     else {
         // Process returned data
-        console.log('Message read:', data.message);
+        console.log('Read message:', data.message);
 
         if (data.action === 'send') {
-            console.log('Message originally from:', data.from);
+            console.log('Message sent from:', data.from);
         }
     }
 });
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$messageId = 'mDWPuD5kjCsEiNEEWwrW';
+
+try {
+    $data = $ctnApiClient->readMessage($messageId, 'utf8');
+
+    // Process returned data
+    echo 'Read message: ' . $data->message . PHP_EOL;
+
+    if ($data->action === 'send') {
+        echo 'Message sent from: ' . print_r($data->from, true);
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```cpp
@@ -97,7 +127,7 @@ try {
     std::cout << "Message read: " << data.message << endl;
 
     if (data.action == "send"} {
-        std::cout << "Message originally from (device ID): " << data.from->deviceId;
+        std::cout << "Message sent from (device ID): " << data.from->deviceId;
     }
 }
 catch (ctn::CatenisAPIException &errObject) {

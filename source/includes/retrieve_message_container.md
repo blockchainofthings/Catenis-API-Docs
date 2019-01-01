@@ -44,7 +44,7 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
         // Process returned data
         console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
 
-        if (data.externalStorage.ipfs) {
+        if (data.externalStorage) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
         }
     }
@@ -71,11 +71,41 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
         // Process returned data
         console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
 
-        if (data.externalStorage.ipfs) {
+        if (data.externalStorage) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
         }
     }
 });
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$messageId = 'mDWPuD5kjCsEiNEEWwrW';
+
+try {
+    $data = $ctnApiClient->retrieveMessageContainer($messageId);
+
+    // Process returned data
+    echo 'ID of blockchain transaction containing the message: ' . $data->blockchain->txid . PHP_EOL;
+
+    if (isset($data->externalStorage)) {
+        echo 'IPFS reference to message: ' . $data->externalStorage->ipfs;
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```cpp

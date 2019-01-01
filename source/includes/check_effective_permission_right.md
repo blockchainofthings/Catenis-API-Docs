@@ -76,6 +76,33 @@ ctnApiClient.checkEffectivePermissionRight('receive_msg', checkDeviceId, false, 
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$checkDeviceId = 'dv3htgvK7hjnKx3617Re';
+
+try {
+    $data = $ctnApiClient->checkEffectivePermissionRight('receive-msg', $checkDeviceId);
+
+    // Process returned data
+    $deviceId = array_keys(get_object_vars($data))[0];
+    echo 'Effective right for device ' . $deviceId . ': ' . $data->$deviceId . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

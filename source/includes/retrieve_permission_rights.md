@@ -128,6 +128,60 @@ ctnApiClient.retrievePermissionRights('receive-msg', function (err, data) {
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->retrievePermissionRights('receive-msg');
+    
+    // Process returned data
+    echo 'Default (system) permission right: ' . $data->system . PHP_EOL;
+    
+    if (isset($data->catenisNode)) {
+        if (isset($data->catenisNode->allow)) {
+            echo 'Index of Catenis nodes with \'allow\' permission right: ' . implode($data->catenisNode->allow, ', ') . PHP_EOL;
+        }
+        
+        if (isset($data->catenisNode->deny)) {
+            echo 'Index of Catenis nodes with \'deny\' permission right: ' . implode($data->catenisNode->deny, ', ') . PHP_EOL;
+        }
+    }
+    
+    if (isset($data->client)) {
+        if (isset($data->client->allow)) {
+            echo 'ID of clients with \'allow\' permission right: ' . implode($data->client->allow, ', ') . PHP_EOL;
+        }
+        
+        if (isset($data->client->deny)) {
+            echo 'ID of clients with \'deny\' permission right: ' . implode($data->client->deny, ', ') . PHP_EOL;
+        }
+    }
+    
+    if (isset($data->device)) {
+        if (isset($data->device->allow)) {
+            echo 'Devices with \'allow\' permission right: ' . print_r($data->device->allow, true);
+        }
+        
+        if (isset($data->device->deny)) {
+            echo 'Devices with \'deny\' permission right: ' . print_r($data->device->deny, true);
+        }
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

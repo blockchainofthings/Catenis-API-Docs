@@ -89,6 +89,41 @@ ctnApiClient.listAssetHolders(assetId, 200, 0,
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aQjlzShmrnEZeeYBZihc';
+
+try {
+    $data = $ctnApiClient->listAssetHolders($assetId, 200, 0);
+    
+    // Process returned data
+    forEach($data->assetHolders as $idx => $assetHolder) {
+        echo 'Asset holder #' . ($idx + 1) . ':' . PHP_EOL;
+        echo '  - device holding an amount of the asset: ' . print_r($assetHolder->holder, true);
+        echo '  - amount of asset currently held by device: ' . $assetHolder->balance->total . PHP_EOL;
+        echo '  - amount not yet confirmed: ' . $assetHolder->balance->unconfirmed . PHP_EOL;
+    }
+
+    if ($data->hasMore) {
+        echo 'Not all asset holders have been returned' . PHP_EOL;
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

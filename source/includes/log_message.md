@@ -84,6 +84,34 @@ ctnApiClient.logMessage('This is only a test', {
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->logMessage('This is only a test', [
+        'encoding' => 'utf8',
+        'encrypt' => true,
+        'storage' => 'auto'
+    ]);
+
+    // Process returned data
+    echo 'ID of logged message: ' . $data->messageId . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

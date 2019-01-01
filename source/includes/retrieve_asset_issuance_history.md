@@ -89,6 +89,41 @@ ctnApiClient.retrieveAssetIssuanceHistory(assetId, '20170101T000000Z', null,
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aQjlzShmrnEZeeYBZihc';
+
+try {
+    $data = $ctnApiClient->retrieveAssetIssuanceHistory($assetId, '20170101T000000Z');
+    
+    // Process returned data
+    forEach($data->issuanceEvents as $idx => $issuanceEvent) {
+        echo 'Issuance event #', ($idx + 1) . ':' . PHP_EOL;
+        echo '  - issued amount: ' . $issuanceEvent->amount . PHP_EOL;
+        echo '  - device to which issued amount had been assigned: ' . print_r($issuanceEvent->holdingDevice, true);
+        echo '  - date of issuance: ' . $issuanceEvent->date . PHP_EOL;
+    }
+
+    if ($data->countExceeded) {
+        echo 'Warning: not all asset issuance events that took place within the specified time frame have been returned!' . PHP_EOL;
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

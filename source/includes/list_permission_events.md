@@ -65,6 +65,32 @@ ctnApiClient.listPermissionEvents(function (err, data) {
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->listPermissionEvents();
+
+    // Process returned data
+    forEach($data as $eventName => $description) {
+        echo 'Event name: ' . $eventName . '; event description: ' . $description . PHP_EOL;
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

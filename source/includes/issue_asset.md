@@ -87,6 +87,35 @@ ctnApiClient.issueAsset({
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->issueAsset([
+        'name' => 'XYZ001',
+        'description' => 'Testing asset #1',
+        'canReissue' => true,
+        'decimalPlaces' => 2
+    ], 1200.00, null);
+
+    // Process returned data
+    echo 'ID of newly issued asset: ' . $data->assetId . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

@@ -47,8 +47,8 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
 var holdingDevice = {
-    id = 'dv3htgvK7hjnKx3617Re'
-}
+    id: 'dv3htgvK7hjnKx3617Re'
+};
 
 ctnApiClient.reissueAsset(assetId, 450.00, holdingDevice,
     function (err, data) {
@@ -74,8 +74,8 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 
 var assetId = 'aQjlzShmrnEZeeYBZihc';
 var holdingDevice = {
-    id = 'dv3htgvK7hjnKx3617Re'
-}
+    id: 'dv3htgvK7hjnKx3617Re'
+};
 
 ctnApiClient.reissueAsset(assetId, 450.00, holdingDevice,
     function (err, data) {
@@ -87,6 +87,35 @@ ctnApiClient.reissueAsset(assetId, 450.00, holdingDevice,
             console.log('Total existent asset balance (after issuance):', data.totalExistentBalance);
         }
 });
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aQjlzShmrnEZeeYBZihc';
+$holdingDevice = [
+   'id' => 'dv3htgvK7hjnKx3617Re'
+];
+
+try {
+    $data = $ctnApiClient->reissueAsset($assetId, 450.00, $holdingDevice);
+
+    // Process returned data
+    echo 'Total existent asset balance (after issuance): ' . $data->totalExistentBalance . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```cpp

@@ -72,6 +72,32 @@ ctnApiClient.retrieveAssetInfo(assetId,
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aQjlzShmrnEZeeYBZihc';
+
+try {
+    $data = $ctnApiClient->retrieveAssetInfo($assetId);
+
+    // Process returned data
+    echo 'Asset info:' . print_r($data, true);
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

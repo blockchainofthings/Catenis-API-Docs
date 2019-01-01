@@ -124,6 +124,43 @@ ctnApiClient.setPermissionRights('receive-msg', {
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->setPermissionRights('receive-msg', [
+        'client' => [
+            'allow' => 'self',
+            'deny' => 'cjNhuvGMUYoepFcRZadP'
+        ],
+        'device' => [
+            'allow' => [[
+                'id' => 'dv3htgvK7hjnKx3617Re'
+            ], [
+                'id' => 'XYZ0001',
+                'isProdUniqueId' => true
+            ]]
+        ]
+    ]);
+
+    // Process returned data
+    echo 'Permission rights successfully set' . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

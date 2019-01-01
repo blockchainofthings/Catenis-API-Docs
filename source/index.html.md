@@ -7,6 +7,7 @@ language_tabs:
   - shell: Shell
   - html--javascript: JavaScript
   - javascript--node: Node.js
+  - php: PHP
   - cpp: C++
 
 toc_footers:

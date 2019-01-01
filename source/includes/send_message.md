@@ -106,6 +106,39 @@ ctnApiClient.sendMessage(targetDevice, 'This is only a test', {
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$targetDevice = [
+  'id' => 'dv3htgvK7hjnKx3617Re'
+];
+
+try {
+    $data = $ctnApiClient->sendMessage($targetDevice, 'My message to send', [
+        'readConfirmation' => true,
+        'encoding' => 'utf8',
+        'encrypt' => true,
+        'storage' => 'auto'
+    ]);
+
+    // Process returned data
+    echo 'ID of sent message: ' . $data->messageId . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 

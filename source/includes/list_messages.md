@@ -35,7 +35,9 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 ctnApiClient.listMessages({
         action: 'send',
         direction: 'inbound',
-        fromDeviceIds: 'dv3htgvK7hjnKx3617Re',
+        fromDevices: [{
+            id: 'dv3htgvK7hjnKx3617Re'
+        }],
         readState: 'unread',
         startDate: '20180101T000000Z',
         endDate: '20180228T235959Z'
@@ -70,7 +72,9 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 ctnApiClient.listMessages({
         action: 'send',
         direction: 'inbound',
-        fromDeviceIds: 'dv3htgvK7hjnKx3617Re',
+        fromDevices: [{
+            id: 'dv3htgvK7hjnKx3617Re'
+        }],
         readState: 'unread',
         startDate: '20180101T000000Z',
         endDate: '20180228T235959Z'
@@ -90,6 +94,45 @@ ctnApiClient.listMessages({
             }
         }
 });
+```
+
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->listMessages([
+        'action' => 'send',
+        'direction' => 'inbound',
+        'fromDevices' => [[
+            'id' => 'dv3htgvK7hjnKx3617Re'
+        ]],
+        'readState' => 'unread',
+        'startDate' => '20180101T000000Z',
+        'endDate' => '20180228T235959Z'
+    ]);
+
+    // Process returned data
+    if ($data->msgCount > 0) {
+        echo 'Returned messages: ' . print_r($data->messages, true);
+        
+        if ($data->countExceeded) {
+            echo 'Warning: not all messages fulfilling search criteria have been returned!' . PHP_EOL;
+        }
+    }
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```cpp

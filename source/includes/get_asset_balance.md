@@ -69,6 +69,33 @@ ctnApiClient.getAssetBalance(assetId,
 });
 ```
 
+```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aQjlzShmrnEZeeYBZihc';
+
+try {
+    $data = $ctnApiClient->getAssetBalance($assetId);
+
+    // Process returned data
+    echo 'Current asset balance: ' . $data->balance->total . PHP_EOL;
+    echo 'Amount not yet confirmed: ' . $data->balance->unconfirmed . PHP_EOL;
+}
+catch (CatenisException $ex) {
+    // Process exception
+}
+```
+
 ```cpp
 #include "CatenisApiClient.h"
 
