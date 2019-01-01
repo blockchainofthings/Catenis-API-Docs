@@ -17,7 +17,7 @@ You can now see the docs at http://localhost:4567.
 
 ## How to edit the docs.
 
-The documentation is comprised of one main markdown file (`/sorce/index.html.md`) e several include markdown files found
+The documentation is comprised of one main markdown file (`/sorce/index.html.md`) and several include markdown files found
 in the `/source/includes/` directory.
 
 The styles can be edited within the `/source/stylesheets/` directory. `screen.css.scss` is the main css file.
@@ -55,6 +55,6 @@ git checkout --ours .
 
 This will let us only keep our local files. Then commit and push!
 
-## Contributers
+## Contributors
 
 Sungwoo Bae - swbae31@gmail.com || sungwoo@blockchainofthings.com
