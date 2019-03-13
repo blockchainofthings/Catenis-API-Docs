@@ -3,7 +3,7 @@
 Catenis Enterprise provides a notification service where a virtual device can receive a real-time message notifying
 that a given predefined event that concerns it has taken place. Such predefined events are referred to as *notification events*.
 
-The Catenis notification service is currently at **version 0.1**.
+The Catenis notification service is currently at **version 0.2**.
 
 ## Notification events
 
@@ -188,7 +188,7 @@ using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.2/ws/0.1/<i>:eventName</i></span>
 
 ### Parameters
 
