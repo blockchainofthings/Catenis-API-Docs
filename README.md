@@ -36,6 +36,9 @@ To bundle up the documentation for deployment, including the static site for all
 the argument `bundle` to the pre-deploy script. The bundled up documentation — a compressed tar file
 named CatenisAPIDoc.tar.gz — is placed in the `deploy` directory.
 
+> **UPDATE**: the bundle (tar) file should **NOT** be generated in this project anymore. To deploy the documentation, after
+>building the static site(s), go to the CatenisAPIDocFrontPage project and follow the steps described in its README file.
+
 ## How to Update Slate
 
 Some times Slate has to be updated for compatibility with new browser versions. To do this run the following commands.
