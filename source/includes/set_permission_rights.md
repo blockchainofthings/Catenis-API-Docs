@@ -262,6 +262,6 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_80">Device is deleted<br><a href="#error_msg_90">Device is not active<br><a href="#error_msg_130">Invalid parameters<br><a href="#error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i> |
-| 500 | <a href="#error_msg_100">Internal server error |
-| 503 | <a href="#error_msg_220">System currently not available; please try again at a later time |
+| 400 | <a href="#error_msg_80">Device is deleted</a><br><a href="#error_msg_90">Device is not active</a><br><a href="#error_msg_130">Invalid parameters</a><br><a href="#error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i></a> |
+| 500 | <a href="#error_msg_100">Internal server error</a> |
+| 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

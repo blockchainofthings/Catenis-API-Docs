@@ -154,5 +154,5 @@ The <code>&lt;event_name></code> term above represents one or more property of t
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 500 | <a href="#error_msg_100">Internal server error |
-| 503 | <a href="#error_msg_220">System currently not available; please try again at a later time |
+| 500 | <a href="#error_msg_100">Internal server error</a> |
+| 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |
