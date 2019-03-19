@@ -3,7 +3,7 @@
 Catenis Enterprise provides a notification service where a virtual device can receive a real-time message notifying
 that a given predefined event that concerns it has taken place. Such predefined events are referred to as *notification events*.
 
-The Catenis notification service is currently at **version 0.2**.
+The Catenis notification service is currently at **version 0.3**.
 
 ## Notification events
 
@@ -15,6 +15,7 @@ The following notification events are currently defined:
 | `sent-msg-read` | Previously sent message has been read by intended receiver (target device) |
 | `asset-received` | An amount of an asset has been received |
 | `asset-confirmed` | An amount of an asset that was pending due to an asset transfer has been confirmed |
+| `final-msg-progress` | Progress of asynchronous message processing has come to an end |
 
 <aside class="notice">
 The list of all system defined notification events can be programmatically retrieved by means of the <a href="#list-notification-events">List Notification Events</a> API method.
@@ -165,6 +166,52 @@ This notification can also be sent to the virtual device that initiated an asset
 that a change asset amount had to be sent back to that device.
 </aside>
 
+### Final progress of message processing (final-msg-progress)
+
+> Sample notification message:
+
+```json
+{
+  "ephemeralMessageId": "hEXMdtTMzkhyJ4WssQmp",
+  "action": "read",
+  "progress": {
+    "bytesProcessed": 28,
+    "done": true,
+    "succeeded": true,
+    "finishDate": "2019-03-13T14:09:10.121Z"
+  },
+  "result": {
+    "messageId": "mt7ZYbBYpM3zcgAf3H8X",
+    "continuationToken": "kjXP2CZaSdkTKCi2jDi2"
+  }
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `ephemeralMessageId` | String | The ID of the ephemeral message — either a provisional or a cached message — to which this notification refers. |
+| `action` | String | The action that was to be performed on the message. One of: `log`, `send`, or `read`. |
+| `progress` | Object | Current processing status. |
+| &nbsp;&nbsp;`bytesProcessed` | Number | Total number of bytes of message that had already been processed. |
+| &nbsp;&nbsp;`done` | Boolean | *(should always be __`true`__)* Indicates that processing has finished. |
+| &nbsp;&nbsp;`succeeded` | Boolean | Indicates whether message has been successfully processed. |
+| &nbsp;&nbsp;`error` | Object | *(only returned if processing finished with error)* Error information. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error that took place while processing the message. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error that took place while processing the message. |
+| &nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when processing was finalized. |
+| `result` | Object | *(only returned if processing finished successfully)* Result of processing. |
+| &nbsp;&nbsp;`messageId` | String | ID of the Catenis message. When logging or sending — `action` equals to __`log`__ or __`send`__—, it is the ID of the resulting message. When reading — `action` equals to __`read`__—, it references the message being read. |
+| &nbsp;&nbsp;`continuationToken` | String | *(only returned if reading message — `action` equals to __`read`__)* The token that should be used to complete the read of the message. |
+
+<aside class="notice">
+This notification signals the end of the asynchronous processing of a message. Use the ID returned in the <code>ephemeralMessageId</code>
+ field to identify the message. When <b>sending</b> or <b>logging</b> a message asynchronously, it should match the ID in the <b><code>provisionalMessageId</code></b>
+ field returned by either the <a href="#log-message">Log Message</a> or <a href="#send-message">Send Message</a> API method. When <b>reading</b> a message asynchronously, it should
+ match the ID in the <b><code>cachedMessageId</code></b> field returned by the <a href="#read-message">Read Message</a> API method instead.
+</aside>
+
 ## Notification channel
 
 To be able to receive notifications, a virtual device must open a notification channel for a specific notification
@@ -188,7 +235,7 @@ using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.2/ws/0.1/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.3/ws/0.1/<i>:eventName</i></span>
 
 ### Parameters
 

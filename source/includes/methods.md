@@ -1,6 +1,6 @@
 # API methods
 
-The following is a comprehensive list of the methods that comprise the Catenis Enterprise API ver. 0.6.
+The following is a comprehensive list of the methods that comprise the Catenis Enterprise API ver. 0.7.
 
 <aside class="notice">
 All API method requests return an HTTP response with status code <b>200</b> when successful.

@@ -12,6 +12,7 @@ The following HTTP status codes are returned by the Catenis Enterprise API.
 | 400 | Bad Request - The request could not be processed the way it was, and should be changed before it is resubmitted. |
 | 401 | Unauthorized - The request requires user authentication, or authorization has been refused for the supplied credentials. |
 | 403 | Forbidden - The request cannot be fulfilled. |
+| 413 | Request Entity Too Large - The data sent with the request is too large and cannot be processed. |
 | 500 | Internal Server Error - The server encountered an unexpected condition which prevented it from fulfilling the request. |
 | 503 | Service Unavailable - The server is currently unable to handle the request. |
 
@@ -61,9 +62,16 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_110">Invalid device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued assets is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_115">Invalid holding device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued asset amount is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
+| <span id="error_msg_125">Invalid or unexpected continuation token</span> | The supplied ID is not a valid continuation token, or that is not the ID that Catenis Enterprise expects to continue processing the message. |
+| <span id="error_msg_127">Invalid or expired ephemeral message</span> | The supplied ID is not a valid ephemeral message, or the asynchronous processing status cannot be retrieved for the given ephemeral message. |
 | <span id="error_msg_130">Invalid parameters</span> | One or more of the parameters are not well formed or required parameter is missing. |
 | <span id="error_msg_135">Invalid receiving device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the transferred assets is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the message is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_142">Message already read</span> | The message, which has been requested to be read asynchronously or in chunks, has already been fully read. |
+| <span id="error_msg_144">Message already complete</span> | Catenis Enterprise has already received the full message's contents, and an additional message chunk cannot be accepted. |
+| <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis Enterprise cannot fulfill the request. |
+| <span id="error_msg_148">Message not available</span> | The message, which has been requested to be read asynchronously, is not yet ready to be read. |
+| <span id="error_msg_149">Message too large for reading at once</span> | The contents of the message being read is too large for Catenis Enterprise to returned it in a single call. |
 | <span id="error_msg_150">Message too long to be embedded</span> | Request specified that message should be stored embedded in the blockchain transaction but it is too large (over 75 bytes unencrypted or 64 bytes encrypted) to fit in. |
 | <span id="error_msg_155">Not enough credits to pay for issue asset service</span> | The client service account balance is too low to cover the issue asset service's expense. |
 | <span id="error_msg_160">Not enough credits to pay for log message service</span> | The client service account balance is too low to cover the log message service's expense. |
@@ -78,7 +86,9 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_190">No permission to retrieve info</span> | Virtual device has no permission to retrieve information about the requested device. |
 | <span id="error_msg_200">No permission to retrieve message container</span> | Virtual device attempting to retrieve the message container information is not the device that sent/logged the message. |
 | <span id="error_msg_205">No permission to transfer asset to receiving device</span> | Virtual device has no permission to transfer an amount of the asset to the specified receiving device. |
+| <span id="error_msg_207">Progress not available</span> | Asynchronous processing status not yet available for the given ephemeral message. |
 | <span id="error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i></span> | One or more of the supplied entity IDs (Catenis Node index, client ID, device ID, or product unique ID) are not valid or there are no entities (Catenis Node, client, or virtual device) with those IDs. |
+| <span id="error_msg_215">Request data too large to be processed</span> | Catenis Enterprise refuses to process the request because the data sent with the request (typically a message's contents) is too large. |
 | <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis Enterprise is not currently ready to process requests. |
 
 <aside class="notice">

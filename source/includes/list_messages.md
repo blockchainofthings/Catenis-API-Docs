@@ -8,7 +8,7 @@ A virtual device can use it to identify newly received messages, for instance.
 > Sample request:
 
 ```http--raw
-GET /api/0.6/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z HTTP/1.1
+GET /api/0.7/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z HTTP/1.1
 X-BCoT-Timestamp: 20180216T135036Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180216/ctn1_request, Signature=bb8a7853798df41e6f9af1a900da4c3cecc161265ec85649f8b883678e8993ed
 Host: sandbox.catenis.io
@@ -17,7 +17,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.6/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z" \
+curl "https://sandbox.catenis.io/api/0.7/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z" \
      -H 'X-BCoT-Timestamp: 20180216T135101Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180216/ctn1_request, Signature=c0bb81382db103e30859056646bfa17759e9e8f73778abc0245fdbdb54be4656'
 ```

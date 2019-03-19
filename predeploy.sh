@@ -1,5 +1,5 @@
 #!/bin/bash
-API_DIR="0.6"
+API_DIR="0.7"
 
 # Check if static site should be built
 if [[ $1 = "build" || $2 = "build" ]]
