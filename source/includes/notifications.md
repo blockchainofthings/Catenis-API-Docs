@@ -177,7 +177,7 @@ that a change asset amount had to be sent back to that device.
   "progress": {
     "bytesProcessed": 28,
     "done": true,
-    "succeeded": true,
+    "success": true,
     "finishDate": "2019-03-13T14:09:10.121Z"
   },
   "result": {
@@ -196,7 +196,7 @@ A JSON containing the following properties:
 | `progress` | Object | Current processing status. |
 | &nbsp;&nbsp;`bytesProcessed` | Number | Total number of bytes of message that had already been processed. |
 | &nbsp;&nbsp;`done` | Boolean | *(should always be __`true`__)* Indicates that processing has finished. |
-| &nbsp;&nbsp;`succeeded` | Boolean | Indicates whether message has been successfully processed. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether message has been successfully processed. |
 | &nbsp;&nbsp;`error` | Object | *(only returned if processing finished with error)* Error information. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error that took place while processing the message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error that took place while processing the message. |

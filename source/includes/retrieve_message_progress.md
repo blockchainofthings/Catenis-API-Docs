@@ -99,7 +99,7 @@ GET /messages/`:messageId`/progress
     "progress": {
       "bytesProcessed": 28,
       "done": true,
-      "succeeded": true,
+      "success": true,
       "finishDate": "2019-03-13T14:09:10.121Z"
     },
     "result": {
@@ -122,7 +122,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`progress` | Object | Current processing status. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`bytesProcessed` | Number | Total number of bytes of message that had already been processed. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`done` | Boolean | Indicates whether processing has been finished. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`succeeded` | Boolean | *(only returned if processing has already been finished)* Indicates whether message has been successfully processed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned if processing has already been finished)* Indicates whether message has been successfully processed. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | Object | *(only returned if processing finished with error)* Error information. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error that took place while processing the message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error that took place while processing the message. |
