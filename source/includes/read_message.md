@@ -157,6 +157,14 @@ GET /messages/`:messageId`
 </ul>
 
 <aside class="notice">
+The size of the message data chunk set via the <code>dataChunkSize</code> parameter refers to the <b>plain, unencoded</b> message's
+ contents; the actual number of bytes returned depends on the selected encoding — value of the <code>encoding</code> parameter.
+ In particular, if <code><b>hex</b></code> encoding is used, the number of bytes returned is <b>twice</b> the number of bytes of
+ the plain message's contents. If <code><b>base64</b></code> is used instead, the increase in size is around <b>33%</b> — every
+ 3 bytes become 4.
+</aside>
+
+<aside class="notice">
 Parameters <code>dataChunkSize</code> and <code>async</code> are only taken into consideration, and thus only need to be passed, for the initial call to this API method to read a given message — <code>continuationToken</code> parameter not passed.
 </aside>
 
