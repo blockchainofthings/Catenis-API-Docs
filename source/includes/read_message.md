@@ -152,7 +152,7 @@ GET /messages/`:messageId`
 <ul class="parameterList">
   <li>`encoding`: *(optional, default: __`utf8`__)* The encoding to be used for the contents of the message. Valid values: `utf8`, `base64`, `hex`.</li>
   <li>`continuationToken`: *(optional)* Indicates that this is a continuation call and that the following message data chunk should be returned. It should be filled with the value returned in the `continuationToken` field of the response to the request used to retrieve the previous message data chunk, or the request to the <a href="#retrieve-message-progress">Retrieve Message Progress</a> API method.</li>
-  <li>`dataChunkSize`: *(optional)* Size, in bytes, of the largest message data chunk that should be returned. This is effectively used to signal that the message should be read in chunks. It must be an integer value between 1,024 (1 KB) and 5,242,880 (5 MB).</li>
+  <li>`dataChunkSize`: *(optional)* Size, in bytes, of the largest message data chunk that should be returned. This is effectively used to signal that the message should be read in chunks. It must be an integer value between 1,024 (1 KB) and 104,857,600 (100 MB).</li>
   <li>`async`: *(optional, default: __`false`__)* A boolean value indicating whether processing — retrieval of message from the blockchain — should be done asynchronously.</li>
 </ul>
 
@@ -176,7 +176,7 @@ To avoid a possible timeout while waiting for Catenis Enterprise to process the 
 </aside>
 
 <aside class="warning">
-Catenis Enterprise restricts the size of a message that can be read at once (not in chunks) to no more than 5 MB. When
+Catenis Enterprise restricts the size of a message that can be read at once (not in chunks) to no more than 100 MB. When
  that limit is exceeded, a <a href="#error_msg_149">[400] - Message too large for reading at once</a> error is returned. To work around that
  restriction when reading a large message, one must choose to read the message in chunks instead.
 </aside>
