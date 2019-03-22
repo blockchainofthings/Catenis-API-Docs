@@ -215,7 +215,7 @@ Embedded messages are limited to the following size restriction: 75 bytes for un
 </aside>
 
 <aside class="warning">
-Catenis Enterprise restricts the size of the data that can be sent in a request to no more than 10 MB. When that limit
+Catenis Enterprise restricts the size of the data that can be sent in a request to no more than 15 MB. When that limit
  is exceeded, a <a href="#error_msg_215">[413] - Request data too large to be processed</a> error is returned. To work around that restriction
  when sending a large message, one must choose to pass the message in chunks instead.
 </aside>
