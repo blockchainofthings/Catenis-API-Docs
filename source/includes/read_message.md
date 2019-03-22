@@ -159,8 +159,8 @@ GET /messages/`:messageId`
 <aside class="notice">
 The size of the message data chunk set via the <code>dataChunkSize</code> parameter refers to the <b>plain, unencoded</b> message's
  contents; the actual number of bytes returned depends on the selected encoding — value of the <code>encoding</code> parameter.
- In particular, if <code><b>hex</b></code> encoding is used, the number of bytes returned is <b>twice</b> the number of bytes of
- the plain message's contents. If <code><b>base64</b></code> is used instead, the increase in size is around <b>33%</b> — every
+ In particular, if <code><b>hex</b></code> encoding is used, the number of bytes returned is twice the number of bytes of
+ the plain message's contents. If <code><b>base64</b></code> is used instead, the increase in size is around 33% — every
  3 bytes become 4.
 </aside>
 
@@ -176,9 +176,9 @@ To avoid a possible timeout while waiting for Catenis Enterprise to process the 
 </aside>
 
 <aside class="warning">
-Catenis Enterprise restricts the size of a message that can be read at once (not in chunks) to no more than 100 MB. When
- that limit is exceeded, a <a href="#error_msg_149">[400] - Message too large for reading at once</a> error is returned. To work around that
- restriction when reading a large message, one must choose to read the message in chunks instead.
+Catenis Enterprise restricts the size of the largest message that can be read in a single call to 15 MB. When
+ that limit is exceeded, a <a href="#error_msg_149">[400] - Message too large for reading at once</a> error is returned.
+ To work around that restriction when reading a large message, one must choose to read the message in chunks instead.
 </aside>
 
 > Sample response:
