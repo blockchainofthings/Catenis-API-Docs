@@ -220,6 +220,14 @@ Catenis Enterprise restricts the size of the data that can be sent in a request 
  when sending a large message, one must choose to pass the message in chunks instead.
 </aside>
 
+<aside class="notice">
+The 15 MB limitation referred above applies to the whole data that is sent with the request — the payload — <b>not</b> the size of the message.
+ To estimate the size of the largest message that can the passed in a single call, one needs first to discount 256 bytes for the overhead data
+ that are sent along with the message, then account for the encoding used to pass the message. In particular, if
+ <code><b>base64</b></code> encoding is used — the recommended encoding for messages that may contain any arbitrary binary data —, the actual
+ size of the message would be limited to around 11.2 MB.
+</aside>
+
 > Sample respose:
 
 ```json
