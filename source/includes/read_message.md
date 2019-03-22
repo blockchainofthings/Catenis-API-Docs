@@ -152,7 +152,7 @@ GET /messages/`:messageId`
 <ul class="parameterList">
   <li>`encoding`: *(optional, default: __`utf8`__)* The encoding to be used for the contents of the message. Valid values: `utf8`, `base64`, `hex`.</li>
   <li>`continuationToken`: *(optional)* Indicates that this is a continuation call and that the following message data chunk should be returned. It should be filled with the value returned in the `continuationToken` field of the response to the request used to retrieve the previous message data chunk, or the request to the <a href="#retrieve-message-progress">Retrieve Message Progress</a> API method.</li>
-  <li>`dataChunkSize`: *(optional)* Size, in bytes, of the largest message data chunk that should be returned. This is effectively used to signal that the message should be read in chunks. It must be an integer value between 1,024 (1 KB) and 104,857,600 (100 MB).</li>
+  <li>`dataChunkSize`: *(optional)* Size, in bytes, of the largest message data chunk that should be returned. This is effectively used to signal that the message should be read in chunks. It must be an integer value between 1,024 (1 KB) and 15,728,640 (15 MB).</li>
   <li>`async`: *(optional, default: __`false`__)* A boolean value indicating whether processing — retrieval of message from the blockchain — should be done asynchronously.</li>
 </ul>
 
