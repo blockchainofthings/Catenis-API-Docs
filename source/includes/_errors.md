@@ -12,7 +12,7 @@ The following HTTP status codes are returned by the Catenis Enterprise API.
 | 400 | Bad Request - The request could not be processed the way it was, and should be changed before it is resubmitted. |
 | 401 | Unauthorized - The request requires user authentication, or authorization has been refused for the supplied credentials. |
 | 403 | Forbidden - The request cannot be fulfilled. |
-| 413 | Request Entity Too Large - The data sent with the request is too large and cannot be processed. |
+| 413 | Payload Too Large - The data sent with the request is too large and cannot be processed. |
 | 500 | Internal Server Error - The server encountered an unexpected condition which prevented it from fulfilling the request. |
 | 503 | Service Unavailable - The server is currently unable to handle the request. |
 
