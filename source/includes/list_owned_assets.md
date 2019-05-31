@@ -98,7 +98,7 @@ try {
     $data = $ctnApiClient->listOwnedAssets(200, 0);
     
     // Process returned data
-    forEach($data->ownedAssets as $idx => $ownedAsset) {
+    foreach ($data->ownedAssets as $idx => $ownedAsset) {
         echo 'Owned asset #' . ($idx + 1) . ':' . PHP_EOL;
         echo '  - asset ID: ' . $ownedAsset->assetId . PHP_EOL;
         echo '  - current asset balance: ' . $ownedAsset->balance->total . PHP_EOL;
