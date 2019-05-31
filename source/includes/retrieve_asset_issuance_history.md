@@ -168,7 +168,7 @@ GET /assets/`:assetId`/issuance
 {
   "status": "success",
   "data": {
-    "issuances": [
+    "issuanceEvents": [
       {
         "amount": 1200,
         "holdingDevice": {
@@ -200,7 +200,7 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`issuances` | Array(Object) | The list of asset issuance events returned. The events are sorted in ascending order in regard to the returned `date` field.  |
+| &nbsp;&nbsp;`issuanceEvents` | Array(Object) | The list of asset issuance events returned. The events are sorted in ascending order in regard to the returned `date` field.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;`amount` | Number | The amount of the asset issued. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`holdingDevice` | Object | The virtual device to which the issued amount was assigned. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the holding device. |
