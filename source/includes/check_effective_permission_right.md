@@ -103,26 +103,6 @@ catch (CatenisException $ex) {
 }
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::CheckEffectivePermissionRightResult data;
-ctn::Device checkDevice("dv3htgvK7hjnKx3617Re");
-
-try {
-    ctnApiClient.checkEffectivePermissionRight(data, "receive-msg", checkDevice);
-
-    std::cout << "Effective right for device " << data.effectivePermissionRight.begin()->first << ": " << data.effectivePermissionRight.begin()->second << std::endl;
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 GET /permission/events/`:eventName`/rights/`:deviceId`
