@@ -67,9 +67,6 @@ ctnApiClient.retrieveMessageProgress(cachedMessageId,
 ```php
 ```
 
-```cpp
-```
-
 ### Request
 
 GET /messages/`:messageId`/progress

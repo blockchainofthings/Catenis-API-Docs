@@ -135,40 +135,6 @@ catch (CatenisException $ex) {
 }
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::ListMessagesResult data;
-
-try {
-    client.listMessages(data, "send", "inbound", "dv3htgvK7hjnKx3617Re", "", "", "", "unread", "20180101T000000Z", "20180228T235959Z");
-
-    int msgCounter = 0;
-
-    for (auto it = data.messageList.begin(); it != data.messageList.end(); it++) {
-        std::cout << "Message #" << ++msgCounter << ":" << std::endl;
-
-        std::shared_ptr<ctn::MessageDescription> msgDesc = *it;
-
-        std::cout << "  message ID: " << msgDesc->messageId << std::endl;
-        std::cout << "  action: " << msgDesc->action << std::endl;
-
-        // Process further message info appropriately
-    }
-
-    if (data.countExceeded) {
-        std::cout << "Warning: not all messages fulfilling search criteria have been returned!" << std::endl;
-    }
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 GET /messages

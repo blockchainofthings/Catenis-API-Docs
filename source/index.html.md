@@ -8,7 +8,6 @@ language_tabs:
   - html--javascript: JavaScript
   - javascript--node: Node.js
   - php: PHP
-  - cpp: C++
 
 toc_footers:
 - <a href="mailto:catenis.docs@blockchainofthings.com">Send us your comments</a>
