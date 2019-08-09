@@ -84,26 +84,6 @@ ctnApiClient.logMessage('This is only a test', {
 });
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::LogMessageResult data;
-ctn::MessageOptions msgOpts("utf8", true, "auto");
-
-try {
-    ctnApiClient.logMessage(data, "My message", msgOpts);
-
-    std::cout << "ID of logged message: " << data.messageId << std::endl;
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 POST /messages/log

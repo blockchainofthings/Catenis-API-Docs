@@ -81,30 +81,6 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
 });
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::ReadMessageResult data;
-std::string message_id("mDWPuD5kjCsEiNEEWwrW");
-
-try {
-    client.readMessage(data, message_id, "utf8");
-
-    std::cout << "Message read: " << data.message << endl;
-
-    if (data.action == "send"} {
-        std::cout << "Message originally from (device ID): " << data.from->deviceId;
-    }
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 GET /messages/`:messageId`

@@ -7,7 +7,6 @@ language_tabs:
   - shell: Shell
   - html--javascript: JavaScript
   - javascript--node: Node.js
-  - cpp: C++
 
 toc_footers: 
 - <a href="mailto:catenis.docs@blockchainofthings.com">Send us your comments</a>

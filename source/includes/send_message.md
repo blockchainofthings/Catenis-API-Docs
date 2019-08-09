@@ -106,27 +106,6 @@ ctnApiClient.sendMessage(targetDevice, 'This is only a test', {
 });
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::SendMessageResult data;
-ctn::Device targetDevice("dv3htgvK7hjnKx3617Re");
-ctn::MessageOptions msgOpts("utf8", true, "auto", true);
-
-try {
-    client.sendMessage(data, targetDevice, "My message to send", msgOpts);
-
-    std::cout << "ID of sent message: " << data.messageId << std::endl;
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 POST /messages/send

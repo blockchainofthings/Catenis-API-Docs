@@ -124,31 +124,6 @@ ctnApiClient.setPermissionRights('receive-msg', {
 });
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::SetRightsClient clientRights;
-clientRights.allowed.push_back(std::string("self"));
-clientRights.denied.push_back(std::string("cjNhuvGMUYoepFcRZadP"));
-
-ctn::SetRightsDevice deviceRights;
-deviceRights.allowed.push_back(ctn::Device("dv3htgvK7hjnKx3617Re"));
-deviceRights.allowed.push_back(ctn::Device("XYZ0001", true));
-
-try {
-    ctnApiClient.setPermissionRights(data, "receive-msg", "", nullptr, &clientRights, &deviceRights);
-
-    std::cout << "Permission rights successfully set" << std::endl;
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 POST /permission/events/`:eventName`/rights

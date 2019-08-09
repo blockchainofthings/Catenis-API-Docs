@@ -78,30 +78,6 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
 });
 ```
 
-```cpp
-#include "CatenisApiClient.h"
-
-std::string device_id("dnN3Ea43bhMTHtTvpytS");
-
-ctn::CtnApiClient ctnApiClient(device_id, api_access_secret, "catenis.io", "", "sandbox");
-
-ctn::RetrieveMessageContainerResult data;
-std::string message_id("mDWPuD5kjCsEiNEEWwrW");
-
-try {
-    client.retrieveMessageContainer(data, message_id);
-
-    std::cout << "ID of blockchain transaction containing the message: " << data.blockchain.txid << endl;
-
-    if (data.externalStorage != nullptr) {
-       std::cout << "IPFS reference to message: " << (*data.externalStorage)["ipfs"] << endl;
-    }
-}
-catch (ctn::CatenisAPIException &errObject) {
-    std::cerr << errObject.getErrorDescription() << std::endl;
-}
-```
-
 ### Request
 
 GET /messages/`:messageId`/container
