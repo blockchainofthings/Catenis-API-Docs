@@ -92,20 +92,14 @@ The following notification message dispatchers are currently available:
 
 This notification message dispatcher uses a WebSocket connection as the communication transport for the notification channel.
 
-Two versions of the WebSocket notification message dispatcher are currently available: **version 0.1** and **version 0.2**. 
-
-<aside class="notice">
-There are some differences in the way these two versions behave. Those differences are pointed out below as appropriate.
-</aside>
+The WebSocket notification message dispatcher is currently at **version 0.1**.
 
 To open a notification channel, one needs to establish a WebSocket connection
 using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment - version 0.1**: <span class="url">wss://sandbox.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
-
-**Sandbox environment - version 0.2**: <span class="url">wss://sandbox.catenis.io/api/notify/0.1/ws/0.2/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.1/ws/0.1/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -161,18 +155,6 @@ the following properties:
 | `x-bcot-timestamp` | String | The value of the `X-BCoT-Timestamp` HTTP header saved at step 3 above. |
 | `authorization` | String | The value of the `Authorization` HTTP header saved at step 3 above. |
 
-### Authentication response
-
-If a successful authentication message is not received by the WebSocket message dispatcher within 5 seconds after the
-WebSocket connection is established, the WebSocket connection is closed by the Catenis server.
-
-<aside class="notice">
-The following behavior applies only to <b>version 0.2</b> of the WebSocket message dispatcher.
+<aside class="warning">
+Failure to do so will result in the WebSocket connection being closed by the Catenis server.
 </aside>
-
-### Notification Channel Open message
-
-After receiving a successful authentication message, the WebSocket message dispatcher will send a special message the
- content of which is `NOTIFICATION_CHANNEL_OPEN`.
-
-This message is used to confirm that the WebSocket notification channel is open and ready to send notifications.
