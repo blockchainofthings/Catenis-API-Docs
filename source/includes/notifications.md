@@ -3,8 +3,6 @@
 Catenis Enterprise provides a notification service where a virtual device can receive a real-time message notifying
 that a given predefined event that concerns it has taken place. Such predefined events are referred to as *notification events*.
 
-The Catenis notification service is currently at **version 0.3**.
-
 ## Notification events
 
 The following notification events are currently defined:
@@ -228,14 +226,12 @@ The following notification message dispatchers are currently available:
 
 This notification message dispatcher uses a WebSocket connection as the communication transport for the notification channel.
 
-The WebSocket notification message dispatcher is currently at **version 0.2**.
-
 To open a notification channel, one needs to establish a WebSocket connection
 using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/notify/0.3/ws/0.2/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/0.8/notify/ws/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -258,7 +254,7 @@ connection to open the notification channel:
 > Sample authenticated dummy WebSocket notification request:
 
 ```http
-GET /api/notify/ws/new-msg-received HTTP/1.1
+GET /api/0.8/notify/ws/new-msg-received HTTP/1.1
 X-BCoT-Timestamp: 20180219T223932Z
 Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180219/ctn1_request, Signature=59b44f3d504b272e92c1f96694b7f6abb39b8cb7726ffe8b57d2cb46aedf568b
 Host: sandbox.catenis.io

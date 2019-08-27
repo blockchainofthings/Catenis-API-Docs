@@ -8,7 +8,7 @@ A virtual device can use it to identify newly received messages, for instance.
 > Sample request:
 
 ```http--raw
-GET /api/0.7/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z HTTP/1.1
+GET /api/0.8/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z&limit=200&skip=0 HTTP/1.1
 X-BCoT-Timestamp: 20180216T135036Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180216/ctn1_request, Signature=bb8a7853798df41e6f9af1a900da4c3cecc161265ec85649f8b883678e8993ed
 Host: sandbox.catenis.io
@@ -17,7 +17,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.7/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z" \
+curl "https://sandbox.catenis.io/api/0.8/messages?action=send&direction=inbound&fromDeviceIds=dv3htgvK7hjnKx3617Re&readState=unread&startDate=2018-01-01T00:00:00Z&endDate=2018-02-28T23:59:59Z&limit=200&skip=0" \
      -H 'X-BCoT-Timestamp: 20180216T135101Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180216/ctn1_request, Signature=c0bb81382db103e30859056646bfa17759e9e8f73778abc0245fdbdb54be4656'
 ```
@@ -41,7 +41,7 @@ ctnApiClient.listMessages({
         readState: 'unread',
         startDate: '20180101T000000Z',
         endDate: '20180228T235959Z'
-    },
+    }, 200, 0,
     function (err, data) {
         if (err) {
             // Process error
@@ -51,8 +51,8 @@ ctnApiClient.listMessages({
             if (data.msgCount > 0) {
                 console.log('Returned messages:', data.messages);
 
-                if (data.countExceeded) {
-                    console.log('Warning: not all messages fulfilling search criteria have been returned!';
+                if (data.hasMore) {
+                    console.log('Not all messages have been returned');
                 }
             }
         }
@@ -78,7 +78,7 @@ ctnApiClient.listMessages({
         readState: 'unread',
         startDate: '20180101T000000Z',
         endDate: '20180228T235959Z'
-    },
+    }, 200, 0,
     function (err, data) {
         if (err) {
             // Process error
@@ -88,8 +88,8 @@ ctnApiClient.listMessages({
             if (data.msgCount > 0) {
                 console.log('Returned messages:', data.messages);
 
-                if (data.countExceeded) {
-                    console.log('Warning: not all messages fulfilling search criteria have been returned!';
+                if (data.hasMore) {
+                    console.log('Not all messages have been returned');
                 }
             }
         }
@@ -119,14 +119,14 @@ try {
         'readState' => 'unread',
         'startDate' => '20180101T000000Z',
         'endDate' => '20180228T235959Z'
-    ]);
+    ], 200, 0);
 
     // Process returned data
     if ($data->msgCount > 0) {
         echo 'Returned messages: ' . print_r($data->messages, true);
         
-        if ($data->countExceeded) {
-            echo 'Warning: not all messages fulfilling search criteria have been returned!' . PHP_EOL;
+        if ($data->hasMore) {
+            echo 'Not all messages have been returned' . PHP_EOL;
         }
     }
 }
@@ -154,6 +154,8 @@ GET /messages
   <li>`readState`: *(optional, default: __`any`__)* The current read state of the message. Valid options: `read`, `unread`, `any`. Use `read` to retrieve only logged or inbound sent messages that had already been read by the virtual device issuing the request, or outbound sent messages sent with the read confirmation option set for which a message read notification has already been received. Use `unread` to retrieve only logged or inbound sent messages that had not yet been read by the device issuing the request, or outbound sent messages sent with the read confirmation option set for which a message read notification has not been received yet. Use `any` if you do not care about the read state of the message to be retrieved.</li>
   <li>`startDate`: *(optional)* <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted date and time specifying the inclusive lower bound of the time frame within which the messages to be retrieved had been: logged, for logged messages; sent, for outbound sent messages; and received, for inbound sent messages.</li>
   <li>`endDate`: *(optional)* ISO 8601 formatted date and time specifying the inclusive upper bound of the time frame within which the messages to be retrieved had been: logged, for logged messages; sent, for outbound sent messages; and received, for inbound sent messages.</li>
+  <li>`limit`: *(optional, default: __`500`__)* Maximum number of messages that should be returned. Must be a positive integer value not greater than 500.</li>
+  <li>`skip`: *(optional, default: __`0`__)* Number of messages that should be skipped (from beginning of list of matching messages) and not returned. Must be a non-negative (includes zero) integer value.</li>
 </ul>
 
 > Sample response:
@@ -183,7 +185,7 @@ GET /messages
       }
     ],
     "msgCount": 2,
-    "countExceeded": false
+    "hasMore": false
   }
 }
 ```
@@ -212,7 +214,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`read` | Boolean | *(not returned for outbound sent messages sent with read confirmation not enabled)* Indicates whether the message had already been read. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`date` | String | ISO 8601 formatted date and time when the message had been: logged, for logged message; sent, for outbound sent message; and received, for inbound sent message. |
 | &nbsp;&nbsp;`msgCount` | Number | Number of messages for which information was returned. |
-| &nbsp;&nbsp;`countExceeded` | Boolean | Indicates whether the number of messages that satisfies the search criteria exceeded the maximum allowed number of returned messages, and thus the returned result set had been truncated. |
+| &nbsp;&nbsp;`hasMore` | Boolean | Indicates whether there are more messages that satisfy the search criteria yet to be returned. |
 
 <aside class="notice">
 The returned <code>msgCount</code> field does not always match the number of message information entries returned. This
@@ -226,11 +228,6 @@ message, and another where the message appears as an inbound message.
 The practice of a virtual device sending a message to itself, although possible, is fully discouraged. Instead, a virtual device should
 choose to log — as opposed to send — the message in such cases. This not only avoids the idiosyncrasy
 mentioned in the notice above, but also and more importantly leads to a more efficient and less expensive solution.
-</aside>
-
-<aside class="success">
-It is always a good practice to revise the search creteria in order to restrict the search when the returned
-<code>countExceeded</code> field is true so a complete result set can be returned.
 </aside>
 
 ### Possible errors
