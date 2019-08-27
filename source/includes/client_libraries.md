@@ -8,6 +8,7 @@ The following libraries are currently available:
 * [Node.js](https://github.com/blockchainofthings/CatenisAPIClientNodeJS)
 * [PHP](https://github.com/blockchainofthings/CatenisAPIClientPHP)
 * [Node-RED](https://github.com/blockchainofthings/CatenisAPINodeRed)
+* [WordPress](https://github.com/blockchainofthings/CatenisAPIClientWPPlugin)
 
 ###Paw extensions
 
