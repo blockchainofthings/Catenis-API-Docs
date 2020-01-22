@@ -62,9 +62,79 @@ ctnApiClient.retrieveMessageProgress(cachedMessageId,
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var cachedMessageId = 'hfHtyPCS68toB9FjA8rM';
+
+ctnApiClient.retrieveMessageProgress(cachedMessageId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Number of bytes processed so far:', data.progress.bytesProcessed);
+                
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Get result
+                    console.log('Asynchronous processing result:', data.result);
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$cachedMessageId = 'hfHtyPCS68toB9FjA8rM';
+
+try {
+    $data = $ctnApiClient->retrieveMessageProgress($cachedMessageId);
+
+    // Process returned data
+    echo 'Number of bytes processed so far: ' . $data->progress->bytesProcessed . PHP_EOL;
+
+    if ($data->progress->done) {
+        if ($data->progress->success) {
+            // Get result
+            echo 'Asynchronous processing result: ' . $data->result . PHP_EOL;
+        }
+        else {
+            // Process error
+            echo 'Asynchronous processing error: [' . $data->progress->error->code . '] - '
+                . $data->progress->error->message . PHP_EOL;
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ### Request
