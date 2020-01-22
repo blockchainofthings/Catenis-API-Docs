@@ -63,7 +63,7 @@ Aside from the essential headers, after the request is authenticated, it will in
 The following sections describe the elements that are needed for composing the contents of the *Authorization* header.
 
 <aside class="notice">
-<b>Convention</b>: the folowing text conventions are used in the following sections:
+<b>Convention</b>: the following text conventions are used in the following sections:
 <p style="margin-left:2em; margin-bottom:0"><b>"this is it"</b> - any text in double quotes specifies a string literal containing the text within quotes.</p>
 <p style="margin-left:2em; margin-bottom:0"><b>"\n"</b> - a backslash immediately followed by a lowercase <i>n</i> letter in a string literal specifies a newline (or linefeed, ASCII 0x0a) character.</p>
 <p style="margin-left:2em; margin-bottom:0"><b>"\x0f"</b> - a backslash immediately followed by a lowercase <i>x</i> letter and two hexadecimal digits specifies a single byte the value of which is the two-digit hexadecimal number.</p>
