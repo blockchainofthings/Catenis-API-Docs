@@ -5,28 +5,29 @@ Records a message on the blockchain.
 > Sample request:
 
 ```http--raw
-POST /api/0.8/messages/log HTTP/1.1
-X-BCoT-Timestamp: 20180127T173944Z
-Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180127/ctn1_request, Signature=35e284726b17533d087f75ebea2bda5792011e503c391132d4e14fdb67fdaf30
+POST /api/0.9/messages/log HTTP/1.1
+X-BCoT-Timestamp: 20200122T195904Z
+Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=867604b6d15575907e6c40ca8ef5f5d07c4791eed1a7a6a0fc358cd5d850948a
 Content-Type: application/json; charset=utf-8
-Host: sandbox.catenis.io
+Host: localhost:3000
 Connection: close
-User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
-Content-Length: 95
+User-Agent: Paw/3.1.10 (Macintosh; OS X/10.15.2) GCDHTTPRequest
+Content-Length: 111
 
-{"message":"This is only a test","options":{"encoding":"utf8","encrypt":true,"storage":"auto"}}
+{"message":"This is only a test","options":{"encoding":"utf8","encrypt":true,"offChain":true,"storage":"auto"}}
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.8/messages/log" \
-     -H 'X-BCoT-Timestamp: 20180127T174023Z' \
-     -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180127/ctn1_request, Signature=72d51cd708e5a81ee1a50b33c72f98c906084b183a60904cd0ce3f4119659581' \
+curl -X "POST" "http://localhost:3000/api/0.9/messages/log" \
+     -H 'X-BCoT-Timestamp: 20200122T195936Z' \
+     -H 'Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=a68ef08c0f45b23a557440cc505380b30c1850828c75b8a96d351d129d3022db' \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
   "message": "This is only a test",
   "options": {
     "encoding": "utf8",
     "encrypt": true,
+    "offChain": true,
     "storage": "auto"
   }
 }'
@@ -45,6 +46,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 ctnApiClient.logMessage('This is only a test', {
         encoding: 'utf8',
         encrypt: true,
+        offChain: true,
         storage: 'auto'
     },
     function (err, data) {
@@ -71,6 +73,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 ctnApiClient.logMessage('This is only a test', {
         encoding: 'utf8',
         encrypt: true,
+        offChain: true,
         storage: 'auto'
     },
     function (err, data) {
@@ -101,6 +104,7 @@ try {
     $data = $ctnApiClient->logMessage('This is only a test', [
         'encoding' => 'utf8',
         'encrypt' => true,
+        'offChain' => true,
         'storage' => 'auto'
     ]);
 
@@ -131,6 +135,7 @@ A JSON containing the following properties:
 | `options` | Object | |
 | &nbsp;&nbsp;`encoding` | String | *(optional, default: __`utf8`__)* Value identifying the encoding of the message. Valid options: `utf8`, `base64`, `hex`. |
 | &nbsp;&nbsp;`encrypt` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be encrypted before storing it. |
+| &nbsp;&nbsp;`offChain` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be logged as a Catenis off-chain message. |
 | &nbsp;&nbsp;`storage` | String | *(optional, default: __`auto`__)* Value identifying where the message should be stored. Valid options: `auto`, `embedded`, `external`. The value `embedded` specifies that the message should be stored on the blockchain transaction itself; the value `external` specifies that the message should be stored in an external repository; and the value `auto` is used to specify that the message be embedded whenever possible otherwise it should be stored in the external storage. |
 | &nbsp;&nbsp;`async` | Boolean | *(optional, default: __`false`__)* Indicates whether processing — storage of message to the blockchain — should be done asynchronously. |
 
@@ -140,7 +145,18 @@ The <code>message.data</code> field can be omitted or have an empty string value
 </aside>
 
 <aside class="notice">
-When message is passed in chunks, options <code>encrypt</code>, <code>storage</code> and <code>async</code> are only taken into consideration, and thus the respective fields only need to be passed, for the final message data chunk.
+<b>Catenis off-chain messages</b> are stored on the external storage repository and only later its reference is settled
+ to the blockchain along with references of other off-chain messages. The main advantage of off-chain messages is that
+ they <b>cost significantly less</b> than regular Catenis messages since a single transaction is used to record several off-chain
+ messages to the blockchain at a time.
+</aside>
+
+<aside class="notice">
+When logging a message as a Catenis off-chain message (<code>offChain</code> option equals <i>true</i>), the value of the <code>storage</code> option is disregarded, and the processing is done as if <code>storage</code> was set to <i>external</i>.
+</aside>
+
+<aside class="notice">
+When message is passed in chunks, options <code>encrypt</code>, <code>offChain</code>, <code>storage</code> and <code>async</code> are only taken into consideration, and thus the respective fields only need to be passed, for the final message data chunk.
 </aside>
 
 <aside class="notice">
@@ -178,7 +194,7 @@ The 15 MB limitation referred above applies to the whole data that is sent with 
 {
   "status": "success",
   "data": {
-    "messageId": "muczbRbcgo3F8XoC6ejE"
+    "messageId": "ouczbRbcgo3F8XoC6ejE"
   }
 }
 ```

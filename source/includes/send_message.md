@@ -12,34 +12,34 @@ Depending on the current permission rights setting, it is possible that the sent
 > Sample request:
 
 ```http--raw
-POST /api/0.8/messages/send HTTP/1.1
-X-BCoT-Timestamp: 20180207T201833Z
-Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180207/ctn1_request, Signature=fc1c92fbdb248e2d0aa363babd2d4b32342e29a93a2782fb76bd4e3a45ce3488
+POST /api/0.9/messages/send HTTP/1.1
+X-BCoT-Timestamp: 20200122T200146Z
+Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=bb952d55523490deb8dafd2c0f7d7acaf71959026fa844a2fa36de1084d3d54c
 Content-Type: application/json; charset=utf-8
-Host: sandbox.catenis.io
+Host: localhost:3000
 Connection: close
-User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
-Content-Length: 187
+User-Agent: Paw/3.1.10 (Macintosh; OS X/10.15.2) GCDHTTPRequest
+Content-Length: 180
 
-{"targetDevice":{"id":"dv3htgvK7hjnKx3617Re","isProdUniqueId":false},"message":"This is only a test","options":{"readConfirmation":true,"encoding":"utf8","encrypt":true,"storage":"auto"}}
+{"message":"This is only a test","targetDevice":{"id":"dv3htgvK7hjnKx3617Re"},"options":{"encoding":"utf8","encrypt":true,"offChain":true,"storage":"auto","readConfirmation":true}}
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.8/messages/send" \
-     -H 'X-BCoT-Timestamp: 20180207T201727Z' \
-     -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180207/ctn1_request, Signature=3a8a28c50ce40cac7586df4231a7bee4ad6d08de3b289f96984c4458bf86c370' \
+curl -X "POST" "http://localhost:3000/api/0.9/messages/send" \
+     -H 'X-BCoT-Timestamp: 20200122T200220Z' \
+     -H 'Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=406727fab045ade27eb6fa87012698b542aca4a44b889951dee249b05350b3b9' \
      -H 'Content-Type: application/json; charset=utf-8' \
      -d $'{
   "message": "This is only a test",
   "options": {
-    "storage": "auto",
     "encoding": "utf8",
-    "readConfirmation": true,
-    "encrypt": true
+    "encrypt": true,
+    "offChain": true,
+    "storage": "auto",
+    "readConfirmation": true
   },
   "targetDevice": {
-    "id": "dv3htgvK7hjnKx3617Re",
-    "isProdUniqueId": false
+    "id": "dv3htgvK7hjnKx3617Re"
   }
 }'
 ```
@@ -61,6 +61,7 @@ var targetDevice = {
 ctnApiClient.sendMessage('This is only a test', targetDevice, {
         encoding: 'utf8',
         encrypt: true,
+        offChain: true,
         storage: 'auto',
         readConfirmation: true
     },
@@ -90,10 +91,11 @@ var targetDevice = {
 }
 
 ctnApiClient.sendMessage(targetDevice, 'This is only a test', {
-        readConfirmation: true,
         encoding: 'utf8',
         encrypt: true,
-        storage: 'auto'
+        offChain: true,
+        storage: 'auto',
+        readConfirmation: true
     },
     function (err, data) {
         if (err) {
@@ -125,10 +127,11 @@ $targetDevice = [
 
 try {
     $data = $ctnApiClient->sendMessage($targetDevice, 'My message to send', [
-        'readConfirmation' => true,
         'encoding' => 'utf8',
         'encrypt' => true,
-        'storage' => 'auto'
+        'offChain' => true,
+        'storage' => 'auto',
+        'readConfirmation' => true
     ]);
 
     // Process returned data
@@ -161,6 +164,7 @@ A JSON containing the following properties:
 | `options` | Object | |
 | &nbsp;&nbsp;`encoding` | String | *(optional, default: __`utf8`__)* Value identifying the encoding of the message. Valid options: `utf8`, `base64`, `hex`. |
 | &nbsp;&nbsp;`encrypt` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be encrypted before storing it. |
+| &nbsp;&nbsp;`offChain` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be sent as a Catenis off-chain message. |
 | &nbsp;&nbsp;`storage` | String | *(optional, default: __`auto`__)* Value identifying where the message should be stored. Valid options: `auto`, `embedded`, `external`. The value `embedded` specifies that the message should be stored on the blockchain transaction itself; the value `external` specifies that the message should be stored in an external repository; and the value `auto` is used to specify that the message be embedded whenever possible otherwise it should be stored in the external storage. |
 | &nbsp;&nbsp;`readConfirmation` | Boolean | *(optional, default: __`false`__)* Indicates whether message should be sent with read confirmation enabled. This should be used when the origin device intends to be notified when the target device first reads the message. |
 | &nbsp;&nbsp;`async` | Boolean | *(optional, default: __`false`__)* Indicates whether processing — storage of message to the blockchain — should be done asynchronously. |
@@ -171,7 +175,18 @@ The <code>message.data</code> field can be omitted or have an empty string value
 </aside>
 
 <aside class="notice">
-When message is passed in chunks, options <code>encrypt</code>, <code>storage</code>, <code>readConfirmation</code> and <code>async</code> are only taken into consideration, and thus the respective fields only need to be passed, for the final message data chunk.
+<b>Catenis off-chain messages</b> are stored on the external storage repository and only later its reference is settled
+ to the blockchain along with references of other off-chain messages. The main advantage of off-chain messages is that
+ they <b>cost significantly less</b> than regular Catenis messages since a single transaction is used to record several off-chain
+ messages to the blockchain at a time.
+</aside>
+
+<aside class="notice">
+When sending a message as a Catenis off-chain message (<code>offChain</code> option equals <i>true</i>), the value of the <code>storage</code> option is disregarded, and the processing is done as if <code>storage</code> was set to <i>external</i>.
+</aside>
+
+<aside class="notice">
+When message is passed in chunks, options <code>encrypt</code>, <code>offChain</code>, <code>storage</code> and <code>async</code> are only taken into consideration, and thus the respective fields only need to be passed, for the final message data chunk.
 </aside>
 
 <aside class="notice">
@@ -207,13 +222,13 @@ The 15 MB limitation referred above applies to the whole data that is sent with 
  size of the message would be limited to around 11.2 MB.
 </aside>
 
-> Sample respose:
+> Sample response:
 
 ```json
 {
   "status": "success",
   "data": {
-    "messageId": "muczbRbcgo3F8XoC6ejE"
+    "messageId": "ouczbRbcgo3F8XoC6ejE"
   }
 }
 ```

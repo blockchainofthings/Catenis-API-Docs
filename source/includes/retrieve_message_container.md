@@ -11,7 +11,7 @@ A message container can be retrieved either by the virtual device that originall
 > Sample request:
 
 ```http--raw
-GET /api/0.8/messages/mDWPuD5kjCsEiNEEWwrW/container HTTP/1.1
+GET /api/0.9/messages/oDWPuD5kjCsEiNEEWwrW/container HTTP/1.1
 X-BCoT-Timestamp: 20180215T200325Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180215/ctn1_request, Signature=f06dc359270c2a3a91326ef2e7fd5506fd75dc9740b2609ed796ce01b3f92afb
 Host: sandbox.catenis.io
@@ -20,7 +20,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.8/messages/mDWPuD5kjCsEiNEEWwrW/container" \
+curl "https://sandbox.catenis.io/api/0.9/messages/oDWPuD5kjCsEiNEEWwrW/container" \
      -H 'X-BCoT-Timestamp: 20180215T200350Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180215/ctn1_request, Signature=7e50993e18975294f7f22aae7ee7ef4e4d68425502e38961c40743b1f72194eb'
 ```
@@ -35,7 +35,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'sandbox'
 });
 
-var messageId = 'mDWPuD5kjCsEiNEEWwrW';
+var messageId = 'oDWPuD5kjCsEiNEEWwrW';
 
 ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     if (err) {
@@ -43,7 +43,13 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     }
     else {
         // Process returned data
-        console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+        if (data.offChain) {
+            console.log('IPFS CID of Catenis off-chain message envelope:', data.offChain.cid);
+        }
+        
+        if (data.blockchain) {
+            console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+        }
 
         if (data.externalStorage) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
@@ -62,7 +68,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
     environment: 'sandbox'
 });
 
-var messageId = 'mDWPuD5kjCsEiNEEWwrW';
+var messageId = 'oDWPuD5kjCsEiNEEWwrW';
 
 ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     if (err) {
@@ -70,7 +76,13 @@ ctnApiClient.retrieveMessageContainer(messageId, function (err, data) {
     }
     else {
         // Process returned data
-        console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+        if (data.offChain) {
+            console.log('IPFS CID of Catenis off-chain message envelope:', data.offChain.cid);
+        }
+        
+        if (data.blockchain) {
+            console.log('ID of blockchain transaction containing the message:', data.blockchain.txid);
+        }
 
         if (data.externalStorage) {
             console.log('IPFS reference to message:', data.externalStorage.ipfs);
@@ -92,16 +104,22 @@ $ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
     'environment' => 'sandbox'
 ]);
 
-$messageId = 'mDWPuD5kjCsEiNEEWwrW';
+$messageId = 'oDWPuD5kjCsEiNEEWwrW';
 
 try {
     $data = $ctnApiClient->retrieveMessageContainer($messageId);
 
     // Process returned data
-    echo 'ID of blockchain transaction containing the message: ' . $data->blockchain->txid . PHP_EOL;
+    if (isset($data->offChain)) {
+        echo 'IPFS CID of Catenis off-chain message envelope: ' . $data->offChain->cid . PHP_EOL;
+    }
+    
+    if (isset($data->blockchain)) {
+        echo 'ID of blockchain transaction containing the message: ' . $data->blockchain->txid . PHP_EOL;
+    }
 
     if (isset($data->externalStorage)) {
-        echo 'IPFS reference to message: ' . $data->externalStorage->ipfs;
+        echo 'IPFS reference to message: ' . $data->externalStorage->ipfs . PHP_EOL;
     }
 }
 catch (CatenisException $ex) {
@@ -128,12 +146,15 @@ GET /messages/`:messageId`/container
 {
   "status": "success",
   "data": {
+    "offChain": {
+      "cid": "QmUPNgbkB2esFHLZdS5rhD8wxFaCBU8JeBrBePWqMfSWub"
+    },
     "blockchain": {
-      "txid": "f624e66c5fc424fbde00b5c134fa0f4fe45ed2f7d0e4540cb0b302815f2ea7f8",
-      "isConfirmed": false
+      "txid": "e4080d2badac0b4d4524aa20cd3abfa2f1bdd05a15c85b9d156374c7c6bbfc82",
+      "isConfirmed": true
     },
     "externalStorage": {
-      "ipfs": "QmfWZ7GCNouMNHjkz9BBJazCsfvR5hY9j62HVh5K6uzrwd"
+      "ipfs": "QmQ2UaYLHwSjU4VvHyD4SfCUyo7AvrufdNrX1kmsbtbn3w"
     }
   }
 }
@@ -147,10 +168,12 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`blockchain` | Object | |
+| &nbsp;&nbsp;`offChain` | Object | *(only returned for Catenis off-chain messages)* |
+| &nbsp;&nbsp;&nbsp;&nbsp;`cid` | String | IPFS CID of Catenis off-chain message envelope data structure that holds the off-chain message's contents. |
+| &nbsp;&nbsp;`blockchain` | Object | *(for Catenis off-chain messages, this property refers to the transaction used to settle the message to the blockchain, and it is only returned at a later time after the settlement takes place)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID of the blockchain transaction where the message was recorded. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`confirmed` | Boolean | Indicates whether the blockchain transaction has already been confirmed. |
-| &nbsp;&nbsp;`externalStorage` | String |  *(only returned if message is stored on an external storage rather than on the blockchain transaction itself)* |
+| &nbsp;&nbsp;`externalStorage` | Object | *(only returned if message is stored on an external storage rather than on the blockchain transaction itself)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`ipfs` | String | The hash used to reference the message on IPFS. |
 
 ### Possible errors

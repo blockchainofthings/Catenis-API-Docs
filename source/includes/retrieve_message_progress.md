@@ -9,7 +9,7 @@ Alternatively, instead of calling this API method, one may choose to receive a <
 > Sample request:
 
 ```http--raw
-GET /api/0.8/messages/hfHtyPCS68toB9FjA8rM/progress HTTP/1.1
+GET /api/0.9/messages/hfHtyPCS68toB9FjA8rM/progress HTTP/1.1
 X-BCoT-Timestamp: 20190318T212628Z
 Authorization: CTN1-HMAC-SHA256 Credential=dL8zaQDcyNvxRW3FqsJd/20190318/ctn1_request, Signature=d98b79672098eeea5f261e102d213168f757c3234a3ee28a2192b5acd739e664
 Host: sandbox.catenis.io
@@ -18,7 +18,7 @@ User-Agent: Paw/3.1.8 (Macintosh; OS X/10.14.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.8/messages/hfHtyPCS68toB9FjA8rM/progress" \
+curl "https://sandbox.catenis.io/api/0.9/messages/hfHtyPCS68toB9FjA8rM/progress" \
      -H 'X-BCoT-Timestamp: 20190318T212739Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dL8zaQDcyNvxRW3FqsJd/20190318/ctn1_request, Signature=3ee6e3c7fe58319e4b53a7342a38af2a923908bbe1da5864f5f800d7330abdc1'
 ```

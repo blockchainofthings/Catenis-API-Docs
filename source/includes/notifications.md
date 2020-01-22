@@ -231,7 +231,7 @@ using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/0.8/notify/ws/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/0.9/notify/ws/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -254,7 +254,7 @@ connection to open the notification channel:
 > Sample authenticated dummy WebSocket notification request:
 
 ```http
-GET /api/0.8/notify/ws/new-msg-received HTTP/1.1
+GET /api/0.9/notify/ws/new-msg-received HTTP/1.1
 X-BCoT-Timestamp: 20180219T223932Z
 Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180219/ctn1_request, Signature=59b44f3d504b272e92c1f96694b7f6abb39b8cb7726ffe8b57d2cb46aedf568b
 Host: sandbox.catenis.io
