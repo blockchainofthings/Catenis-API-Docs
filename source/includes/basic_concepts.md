@@ -81,22 +81,22 @@ For a given pair of permission event and controlling device, the permission righ
 * *Catenis node* - it controls the permission right for all devices that belong to any client defined for that Catenis
 node.
 
-* *Client* - it controls de permission right for all devices that belong to this client.
+* *Client* - it controls the permission right for all devices that belong to this client.
 
-* *Device* - it controls de permission right for this specific device.
+* *Device* - it controls the permission right for this specific device.
 
 ### Permission right evaluation
 
 For a given pair of permission event and controlling device, the effective permission right for a given (controlled)
 device is evaluated according to the following procedure:
 
-1. Starting at the device level, we check if the permission right for that (controlled) device is set. If so, that is
-the permission right that is in effect.
+1. Starting at the device level, we check if the permission right for that (controlled) device is set. If it is set, 
+this is the permission right that is in effect.
 
 2. Otherwise, we go to the level above, and check if the permission right for the client to which the (controlled) device
-belongs is set. If so, that is the permission right that is in effect.
+belongs is set. If it is set, this is the permission right that is in effect.
 
 3. Otherwise, we go to the level above, and check if the permission right for the Catenis node where the client to which
-the (controlled) device belongs is defined is set. If so, that is permission right that is in effect.
+the (controlled) device belongs is defined is set. If it is set, this is the permission right that is in effect.
 
 4. Otherwise, whatever permission right that is set at the system level is what is in effect.
