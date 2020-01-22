@@ -1,5 +1,44 @@
 # Changelog
 
+## Version 2.4.0
+
+*October 19, 2019*
+
+- Move repository from lord/slate to slatedocs/slate
+- Fix documentation to point at new repo link, thanks to [Arun](https://github.com/slash-arun), [Gustavo Gawryszewski](https://github.com/gawry), and [Daniel Korbit](https://github.com/danielkorbit)
+- Update `nokogiri` to 1.10.4
+- Update `ffi` in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jackmack](https://github.com/jakemack)
+- Update `rack` to 2.0.7 in `Gemfile.lock` to fix security warnings, thanks to [Grey Baker](https://github.com/greysteil) and [jackmack](https://github.com/jakemack)
+- Update middleman to `4.3` and relax constraints on middleman related gems, thanks to [jackmack](https://github.com/jakemack)
+- Add sass gem, thanks to [jackmack](https://github.com/jackmack)
+- Activate `asset_cache` in middleman to improve cacheability of static files, thanks to [Sam Gilman](https://github.com/thenengah)
+- Update to using bundler 2 for `Gemfile.lock`, thanks to [jackmack](https://github.com/jakemack)
+
+## Version 2.3.1
+
+*July 5, 2018*
+
+- Update `sprockets` in `Gemfile.lock` to fix security warnings
+
+## Version 2.3
+
+*July 5, 2018*
+
+- Allows strikethrough in markdown by default.
+- Upgrades jQuery to 3.2.1, thanks to [Tomi Takussaari](https://github.com/TomiTakussaari)
+- Fixes invalid HTML in `layout.erb`, thanks to [Eric Scouten](https://github.com/scouten) for pointing out
+- Hopefully fixes Vagrant memory issues, thanks to [Petter Blomberg](https://github.com/p-blomberg) for the suggestion
+- Cleans HTML in headers before setting `document.title`, thanks to [Dan Levy](https://github.com/justsml)
+- Allows trailing whitespace in markdown files, thanks to [Samuel Cousin](https://github.com/kuzyn)
+- Fixes pushState/replaceState problems with scrolling not changing the document hash, thanks to [Andrey Fedorov](https://github.com/anfedorov)
+- Removes some outdated examples, thanks [@al-tr](https://github.com/al-tr), [Jerome Dahdah](https://github.com/jdahdah), and [Ricardo Castro](https://github.com/mccricardo)
+- Fixes `nav-padding` bug, thanks [Jerome Dahdah](https://github.com/jdahdah)
+- Code style fixes thanks to [Sebastian Zaremba](https://github.com/vassyz)
+- Nokogiri version bump thanks to [Grey Baker](https://github.com/greysteil)
+- Fix to default `index.md` text thanks to [Nick Busey](https://github.com/NickBusey)
+
+Thanks to everyone who contributed to this release!
+
 ## Version 2.2
 
 *January 19, 2018*
