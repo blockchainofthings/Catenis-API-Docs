@@ -155,7 +155,7 @@ To avoid a possible timeout while waiting for Catenis Enterprise to process the 
 </aside>
 
 <aside class="warning">
-Embedded messages are limited to the following size restriction: 75 bytes for unencrypted messages, and 64 bytes when the message is encrypted.
+Embedded messages are limited to the following size restriction: 75 bytes for unencrypted messages, and 63 bytes when the message is encrypted.
 </aside>
 
 <aside class="warning">
