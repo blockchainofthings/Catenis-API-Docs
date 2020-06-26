@@ -13,7 +13,7 @@ The virtual device issuing the request must have permission right to retrieve id
 > Sample request:
 
 ```http--raw
-GET /api/0.9/devices/dv3htgvK7hjnKx3617Re HTTP/1.1
+GET /api/0.10/devices/dv3htgvK7hjnKx3617Re HTTP/1.1
 X-BCoT-Timestamp: 20180219T133757Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=ff2a8f3d8dc232d60208dc28f668351234ed25ead274e820ac081a480a275012
 Host: sandbox.catenis.io
@@ -22,7 +22,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.9/devices/dv3htgvK7hjnKx3617Re" \
+curl "https://sandbox.catenis.io/api/0.10/devices/dv3htgvK7hjnKx3617Re" \
      -H 'X-BCoT-Timestamp: 20180219T133846Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=74b0618fe8fe40278b3325cccdac350bed538a5faac86689c3d07e3f1df085f0'
 ```
@@ -104,6 +104,10 @@ catch (CatenisException $ex) {
     // Process exception
 }
 ```
+
+### Accessibility
+
+Private
 
 ### Request
 

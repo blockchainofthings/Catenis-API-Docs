@@ -71,6 +71,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_144">Message already complete</span> | Catenis Enterprise has already received the full message's contents, and an additional message chunk cannot be accepted. |
 | <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis Enterprise cannot fulfill the request. |
 | <span id="error_msg_148">Message not available</span> | The message, which has been requested to be read asynchronously, is not yet ready to be read. |
+| <span id="error_msg_151">Message origin cannot be disclosed</span> | The message's origin device does not allow the disclosure of information about it. |
 | <span id="error_msg_149">Message too large for reading at once</span> | The contents of the message being read is too large for Catenis Enterprise to returned it in a single call. |
 | <span id="error_msg_150">Message too long to be embedded</span> | Request specified that message should be stored embedded in the blockchain transaction but it is too large (over 75 bytes unencrypted or 64 bytes encrypted) to fit in. |
 | <span id="error_msg_155">Not enough credits to pay for issue asset service</span> | The client service account balance is too low to cover the issue asset service's expense. |

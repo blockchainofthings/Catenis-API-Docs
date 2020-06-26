@@ -5,11 +5,11 @@ Records a message on the blockchain.
 > Sample request:
 
 ```http--raw
-POST /api/0.9/messages/log HTTP/1.1
+POST /api/0.10/messages/log HTTP/1.1
 X-BCoT-Timestamp: 20200122T195904Z
 Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=867604b6d15575907e6c40ca8ef5f5d07c4791eed1a7a6a0fc358cd5d850948a
 Content-Type: application/json; charset=utf-8
-Host: localhost:3000
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.10 (Macintosh; OS X/10.15.2) GCDHTTPRequest
 Content-Length: 111
@@ -18,7 +18,7 @@ Content-Length: 111
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.9/messages/log" \
+curl -X "POST" "http://localhost:3000/api/0.10/messages/log" \
      -H 'X-BCoT-Timestamp: 20200122T195936Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=a68ef08c0f45b23a557440cc505380b30c1850828c75b8a96d351d129d3022db' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -115,6 +115,10 @@ catch (CatenisException $ex) {
     // Process exception
 }
 ```
+
+### Accessibility
+
+Private
 
 ### Request
 

@@ -23,6 +23,7 @@ includes:
 - send_message
 - read_message
 - retrieve_message_container
+- retrieve_message_origin
 - retrieve_message_progress
 - list_messages
 - issue_asset

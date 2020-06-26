@@ -5,7 +5,7 @@ Gets the current balance of a given asset held by the device.
 > Sample request:
 
 ```http--raw
-GET /api/0.9/assets/aQjlzShmrnEZeeYBZihc/balance HTTP/1.1
+GET /api/0.10/assets/aQjlzShmrnEZeeYBZihc/balance HTTP/1.1
 X-BCoT-Timestamp: 20180417T165555Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=0531b1ce00b03de1ca707db48fd2474328e21fdb6930b8661a4608e8fe735b84
 Host: sandbox.catenis.io
@@ -14,7 +14,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.9/assets/aQjlzShmrnEZeeYBZihc/balance" \
+curl "https://sandbox.catenis.io/api/0.10/assets/aQjlzShmrnEZeeYBZihc/balance" \
      -H 'X-BCoT-Timestamp: 20180417T165613Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=2f85718595bc2633e13b21315babeb00b60327b317e3c56dab3865f2aa29115c'
 ```
@@ -95,6 +95,10 @@ catch (CatenisException $ex) {
     // Process exception
 }
 ```
+
+### Accessibility
+
+Private
 
 ### Request
 

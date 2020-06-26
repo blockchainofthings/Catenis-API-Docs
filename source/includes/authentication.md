@@ -2,7 +2,7 @@
 
 ## General
 
-The Catenis Enterprise API methods require authentication on each request. The authentication mechanism used is a SHA-256 Keyed-Hash Message Authentication Code (HMAC-SHA256).
+Most Catenis Enterprise API methods require authentication on each request. The authentication mechanism used is a SHA-256 Keyed-Hash Message Authentication Code (HMAC-SHA256).
 It is based on the <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html" target="_blank">AWS Signature version 4</a> authentication scheme, although it is not the same, and thus libraries that implement the AWS authentication scheme cannot be used with the Catenis Enterprise API.
 
 With HMAC-SHA256, the server and the client share a secret signing key. The signing key lives in the respective client application and is never transmitted across the line. Instead, the key is used to generate a hash for signing the message contents.
@@ -12,6 +12,14 @@ To authenticate and use the services provided by the Catenis Enterprise API meth
 <aside class="warning">
 The virtual device's API access secret carries many privileges, so be sure to keep it secret! Do not share it in publicly accessible areas such as GitHub, client-side code, and so forth.
 </aside>
+
+### Public API methods
+
+A few Catenis Enterprise API methods are public and do not require any authentication. The end user can access these
+ services by simply making a request to the API method's URL as he or she would normally do when accessing a Web page.
+ 
+Unlike regular (private) API methods, public API methods are not called for a given virtual device. No virtual device is
+ required, and the end user does not even need to have a Catenis client account. 
 
 ## Usage
 
@@ -40,7 +48,7 @@ This section describes how to issue and authenticate an HTTP request that confor
 > Not yet authenticated request (used in following examples):
 
 ```http
-POST /api/0.9/messages/log HTTP/1.1
+POST /api/0.10/messages/log HTTP/1.1
 Host: sandbox.catenis.io
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 X-BCoT-Timestamp: 20180127T121358Z
@@ -78,14 +86,14 @@ The following sections describe the elements that are needed for composing the c
 > String literal:
 
 ```c
-  "POST\n/api/0.9/message/send\nhost:api.catenis.com\nx-bcot-timestamp:20180127T121358Z\n\n792cdbeef04dc33e8ebb4974070ec5a75bd1e3a6c5ef49b1c3ec1b87152694c6\n"
+  "POST\n/api/0.10/message/send\nhost:api.catenis.com\nx-bcot-timestamp:20180127T121358Z\n\n792cdbeef04dc33e8ebb4974070ec5a75bd1e3a6c5ef49b1c3ec1b87152694c6\n"
 ```
 
 > Printed text:
 
 ```text
   POST
-  api/0.9/message/send
+  api/0.10/message/send
   host:api.catenis.com
   x-bcot-timestamp:20180127T121358Z
 
@@ -102,7 +110,7 @@ Where:
 | Term | Description |
 | ---- | ----------- |
 | `<http_verb>` | The HTTP method of the request. One of: `GET`, `POST`, `PUT`, `HEAD`, or `DELETE`. |
-| `<api_endpoint_path>` | The complete path of the URL of the API method endpoint. Example: */api/0.9/message/send* |
+| `<api_endpoint_path>` | The complete path of the URL of the API method endpoint. Example: */api/0.10/message/send* |
 | `<essential_headers>` | A list showing the <a href="#essential-headers">essential headers<a> with their respective contents. Each item is defined as: <code style="white-space:normal">&lt;header_name&gt; + ":" + &lt;header_contents&gt; + "\n"</code>; where `<header_name>` is the lowercase name of the header, and `<header_contents>` is the contents of the header. Example: *host:sandbox.catenis.io\nx-bcot-timestamp:20170125T103246Z\n* |
 | `<payload_hash>` | Defined as: <code style="white-space:normal">HEX(SHA256(&lt;payload&gt;))</code>; where `<payload>` is the payload (or body) of the HTTP request. If the request has no payload, an empty string should be used in its place. |
 
@@ -192,7 +200,7 @@ The signature is defined as:
 > Authenticated request:
 
 ```http
-POST /api/0.9/messages/log HTTP/1.1
+POST /api/0.10/messages/log HTTP/1.1
 Host: sandbox.catenis.io
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 X-BCoT-Timestamp: 20180127T121358Z

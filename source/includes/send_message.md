@@ -12,11 +12,11 @@ Depending on the current permission rights setting, it is possible that the sent
 > Sample request:
 
 ```http--raw
-POST /api/0.9/messages/send HTTP/1.1
+POST /api/0.10/messages/send HTTP/1.1
 X-BCoT-Timestamp: 20200122T200146Z
 Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=bb952d55523490deb8dafd2c0f7d7acaf71959026fa844a2fa36de1084d3d54c
 Content-Type: application/json; charset=utf-8
-Host: localhost:3000
+Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.10 (Macintosh; OS X/10.15.2) GCDHTTPRequest
 Content-Length: 180
@@ -25,7 +25,7 @@ Content-Length: 180
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.9/messages/send" \
+curl -X "POST" "http://localhost:3000/api/0.10/messages/send" \
      -H 'X-BCoT-Timestamp: 20200122T200220Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=d8YpQ7jgPBJEkBrnvp58/20200122/ctn1_request, Signature=406727fab045ade27eb6fa87012698b542aca4a44b889951dee249b05350b3b9' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -141,6 +141,10 @@ catch (CatenisException $ex) {
     // Process exception
 }
 ```
+
+### Accessibility
+
+Private
 
 ### Request
 
