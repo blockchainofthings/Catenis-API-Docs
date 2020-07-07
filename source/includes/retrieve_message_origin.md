@@ -16,12 +16,101 @@ curl "https://sandbox.catenis.io/api/0.10/messages/oDWPuD5kjCsEiNEEWwrW/origin?m
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var ctnApiClient = new CtnApiClient({
+    environment: 'sandbox'
+});
+
+var messageId = 'oDWPuD5kjCsEiNEEWwrW';
+
+ctnApiClient.retrieveMessageOrigin(messageId, 'Any text to be signed',
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            if (data.tx) {
+                console.log('Catenis message transaction info:', data.tx);
+            }
+
+            if (data.offChainMsgEnvelope) {
+                console.log('Off-chain message envelope info:', data.offChainMsgEnvelope);
+            }
+
+            if (data.proof) {
+                console.log('Origin proof info:', data.proof);
+            }
+        }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var ctnApiClient = new CtnApiClient({
+    environment: 'sandbox'
+});
+
+var messageId = 'oDWPuD5kjCsEiNEEWwrW';
+
+ctnApiClient.retrieveMessageOrigin(messageId, 'Any text to be signed',
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            if (data.tx) {
+                console.log('Catenis message transaction info:', data.tx);
+            }
+
+            if (data.offChainMsgEnvelope) {
+                console.log('Off-chain message envelope info:', data.offChainMsgEnvelope);
+            }
+
+            if (data.proof) {
+                console.log('Origin proof info:', data.proof);
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$ctnApiClient = new ApiClient(null, null, [
+    'environment' => 'sandbox'
+]);
+
+$messageId = 'oDWPuD5kjCsEiNEEWwrW';
+
+try {
+    $data = $ctnApiClient->retrieveMessageOrigin($messageId, 'Any text to be signed');
+
+    // Process returned data
+    if (isset($data->tx)) {
+        echo 'Catenis message transaction info: ' . print_r($data->tx, true);
+    }
+    
+    if (isset($data->offChainMsgEnvelope)) {
+        echo 'Off-chain message envelope info: ' . print_r($data->offChainMsgEnvelope, true);
+    }
+
+    if (isset($data->proof)) {
+        echo 'Origin proof info: ' . print_r($data->proof, true);
+    }
+}
+catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ### Accessibility
