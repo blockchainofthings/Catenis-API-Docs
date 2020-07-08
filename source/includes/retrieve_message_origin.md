@@ -169,7 +169,7 @@ GET /messages/`:messageId`/origin
     },
     "proof": {
       "message": "This is only a test",
-      "signature": "1fa6edeac97b4fa569394435a1fd2b8d81264f7bb5e21f203fb926a161b86846e534d73d671d34b516b17313d9812c649961f6e36ec504e144e56fedf5f816e1e5"
+      "signature": "H6bt6sl7T6VpOUQ1of0rjYEmT3u14h8gP7kmoWG4aEblNNc9Zx00tRaxcxPZgSxkmWH2427FBOFE5W/t9fgW4eU="
     }
   }
 }
@@ -213,7 +213,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`domains` | Array(String) | *(only returned if defined)* List of internet domains owned by this company or person. |
 | &nbsp;&nbsp;`proof` | Object | |
 | &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Message for which the signature was generated. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`signature` | String | Hex-encoded message's signature generated using origin device's private key. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`signature` | String | Base64-encoded message's signature generated using origin device's private key. |
 
 ### Possible errors
 
