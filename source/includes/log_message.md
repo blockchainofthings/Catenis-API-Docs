@@ -128,7 +128,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`data` | String | *(optional)* The next message data chunk. The actual message's contents should be comprised of one or more data chunks. |
 | &nbsp;&nbsp;`isFinal` | Boolean | *(optional, default: __`true`__)* Indicates whether this is the final message data chunk. |
 | &nbsp;&nbsp;`continuationToken` | String | *(optional)* Indicates that this is a continuation message data chunk. It should be filled with the value returned in the `continuationToken` field of the response to the request used to pass the previous message data chunk. |
-| `options` | Object | |
+| `options` | Object | *(optional)* |
 | &nbsp;&nbsp;`encoding` | String | *(optional, default: __`utf8`__)* Value identifying the encoding of the message. Valid options: `utf8`, `base64`, `hex`. |
 | &nbsp;&nbsp;`encrypt` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be encrypted before storing it. |
 | &nbsp;&nbsp;`storage` | String | *(optional, default: __`auto`__)* Value identifying where the message should be stored. Valid options: `auto`, `embedded`, `external`. The value `embedded` specifies that the message should be stored on the blockchain transaction itself; the value `external` specifies that the message should be stored in an external repository; and the value `auto` is used to specify that the message be embedded whenever possible otherwise it should be stored in the external storage. |

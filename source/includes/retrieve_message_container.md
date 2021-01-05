@@ -149,7 +149,7 @@ A JSON containing the following properties:
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`blockchain` | Object | |
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID of the blockchain transaction where the message was recorded. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`confirmed` | Boolean | Indicates whether the blockchain transaction has already been confirmed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isConfirmed` | Boolean | Indicates whether the blockchain transaction has already been confirmed. |
 | &nbsp;&nbsp;`externalStorage` | String |  *(only returned if message is stored on an external storage rather than on the blockchain transaction itself)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`ipfs` | String | The hash used to reference the message on IPFS. |
 

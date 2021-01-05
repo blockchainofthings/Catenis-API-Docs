@@ -167,7 +167,7 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`assetId` | String | ID of the newlly issued asset. |
+| &nbsp;&nbsp;`assetId` | String | ID of the newly issued asset. |
 
 ### Possible errors
 
