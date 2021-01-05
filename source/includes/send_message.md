@@ -161,7 +161,7 @@ A JSON containing the following properties:
 | `targetDevice` | Object | |
 | &nbsp;&nbsp;`id` | String | The ID of the virtual device to which the message is directed. Should be a device ID unless `isProdUniqueId` is set. |
 | &nbsp;&nbsp;`isProdUniqueId` | Boolean | *(optional, default: __`false`__)* Indicates whether the supplied ID is a product unique ID. |
-| `options` | Object | |
+| `options` | Object | *(optional)* |
 | &nbsp;&nbsp;`encoding` | String | *(optional, default: __`utf8`__)* Value identifying the encoding of the message. Valid options: `utf8`, `base64`, `hex`. |
 | &nbsp;&nbsp;`encrypt` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be encrypted before storing it. |
 | &nbsp;&nbsp;`offChain` | Boolean | *(optional, default: __`true`__)* Indicates whether message should be sent as a Catenis off-chain message. |
