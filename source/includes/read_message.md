@@ -48,7 +48,7 @@ ctnApiClient.readMessage(messageId, 'utf8', function (err, data) {
         console.log('Read message:', data.msgData.message);
 
         if (data.msgInfo.action === 'send') {
-            console.log('Message set from:', data.msgInfo.from);
+            console.log('Message sent from:', data.msgInfo.from);
         }
     }
 });
@@ -172,7 +172,7 @@ Catenis Enterprise restricts the size of the largest message that can be read in
       "from": {
         "deviceId": "dv3htgvK7hjnKx3617Re",
         "name": "Catenis device #1"
-      },
+      }
     },
     "msgData": "This is only a test"
   }

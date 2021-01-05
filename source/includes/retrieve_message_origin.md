@@ -185,7 +185,7 @@ A JSON containing the following properties:
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`tx` | Object | *(not returned for off-chain messages not yet settled to the blockchain)* Information about the blockchain transaction used to record the Catenis message to the blockchain — the Catenis message transaction. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | ID of Catenis message transaction. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`type` | String | Type of Catenis message transaction. One of: `Send Message`, `Log Message`, or <code style="white-space: normal">Settle Off-Chain Message</code>. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`type` | String | Type of Catenis message transaction. One of: `Send Message`, `Log Message`, or <code style="white-space: normal">Settle Off-Chain Messages</code>. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`batchDoc` | Object | *(only returned for off-chain messages)* Information about the batch document used to settle off-chain messages on the blockchain. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`cid` | String | Content ID (CID) of batch document on IPFS. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`originDevice` | Object | *(not returned for off-chain messages)* Information about the virtual device that recorded the message — the origin device. |
@@ -211,7 +211,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`contact` | String | *(only returned if defined and `company` is returned)* Name of company's contact. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if `company` is not returned)* Name of the person who owns the origin device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`domains` | Array(String) | *(only returned if defined)* List of internet domains owned by this company or person. |
-| &nbsp;&nbsp;`proof` | Object | |
+| &nbsp;&nbsp;`proof` | Object | *(only returned if `msgToSign` parameter is supplied)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Message for which the signature was generated. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`signature` | String | Base64-encoded message's signature generated using origin device's private key. |
 

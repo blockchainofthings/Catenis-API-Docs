@@ -176,7 +176,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`cid` | String | IPFS CID of Catenis off-chain message envelope data structure that holds the off-chain message's contents. |
 | &nbsp;&nbsp;`blockchain` | Object | *(for Catenis off-chain messages, this property refers to the transaction used to settle the message to the blockchain, and it is only returned at a later time after the settlement takes place)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID of the blockchain transaction where the message was recorded. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`confirmed` | Boolean | Indicates whether the blockchain transaction has already been confirmed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isConfirmed` | Boolean | Indicates whether the blockchain transaction has already been confirmed. |
 | &nbsp;&nbsp;`externalStorage` | Object | *(only returned if message is stored on an external storage rather than on the blockchain transaction itself)* |
 | &nbsp;&nbsp;&nbsp;&nbsp;`ipfs` | String | The hash used to reference the message on IPFS. |
 
