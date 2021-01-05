@@ -7,6 +7,7 @@ The following libraries are currently available:
 * [JavaScript (for Web browsers)](https://github.com/blockchainofthings/CatenisAPIClientJS)
 * [Node.js](https://github.com/blockchainofthings/CatenisAPIClientNodeJS)
 * [PHP](https://github.com/blockchainofthings/CatenisAPIClientPHP)
+* [Rust](https://crates.io/crates/catenis_api_client)
 * [Node-RED](https://github.com/blockchainofthings/CatenisAPINodeRed)
 * [WordPress](https://github.com/blockchainofthings/CatenisAPIClientWPPlugin)
 
