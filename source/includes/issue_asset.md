@@ -175,7 +175,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`name` | String | The name of the asset to create. |
 | &nbsp;&nbsp;`description` | String | *(optional)* A description of the asset to create. |
 | &nbsp;&nbsp;`canReissue` | Boolean | Indicates whether more units of this asset can be issued at another time. |
-| &nbsp;&nbsp;`decimalPlaces` | Number | The maximum number of decimal places that can be used to specify a fractional amount of this asset. |
+| &nbsp;&nbsp;`decimalPlaces` | Number | The maximum number of decimal places that can be used to specify a fractional amount of this asset. Must be an integer value between 0 and 7. |
 | `amount` | Number | The amount of asset to issue. |
 | `holdingDevice` | Object | *(optional)* Virtual device for which the asset is issued and that shall hold the issued amount. |
 | &nbsp;&nbsp;`id` | String | The ID of the holding device. Should be a device ID unless `isProdUniqueId` is set. |
