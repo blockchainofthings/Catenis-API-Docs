@@ -5,14 +5,14 @@ Gets information about the origin of a previously recorded — either logged or 
 > Sample request:
 
 ```http--raw
-GET /api/0.10/messages/oDWPuD5kjCsEiNEEWwrW/origin?msgToSign=This%20is%20only%20a%20test HTTP/1.1
+GET /api/0.11/messages/oDWPuD5kjCsEiNEEWwrW/origin?msgToSign=This%20is%20only%20a%20test HTTP/1.1
 Host: sandbox.catenis.io
 Connection: close
 User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.10/messages/oDWPuD5kjCsEiNEEWwrW/origin?msgToSign=This%20is%20only%20a%20test"
+curl "https://sandbox.catenis.io/api/0.11/messages/oDWPuD5kjCsEiNEEWwrW/origin?msgToSign=This%20is%20only%20a%20test"
 ```
 
 ```html--javascript

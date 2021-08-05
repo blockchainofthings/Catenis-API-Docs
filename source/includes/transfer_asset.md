@@ -5,7 +5,7 @@ Transfers an amount of an asset to a device.
 > Sample request:
 
 ```http--raw
-POST /api/0.10/assets/aQjlzShmrnEZeeYBZihc/transfer/ HTTP/1.1
+POST /api/0.11/assets/aQjlzShmrnEZeeYBZihc/transfer/ HTTP/1.1
 X-BCoT-Timestamp: 20180417T132059Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=44e21bb5c895eceafce0910a27d0879e3be7dcff278c07a01597f09e6c0bb317
 Content-Type: application/json; charset=utf-8
@@ -18,7 +18,7 @@ Content-Length: 64
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.10/assets/aQjlzShmrnEZeeYBZihc/transfer/" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.11/assets/aQjlzShmrnEZeeYBZihc/transfer/" \
      -H 'X-BCoT-Timestamp: 20180417T132027Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=17bb4e914bd10aa517d15df1c985f0e9604a660a3a146219e16a1c94a8f7bf93' \
      -H 'Content-Type: application/json; charset=utf-8' \
