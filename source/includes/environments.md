@@ -1,6 +1,6 @@
 # Environments
 
-The **Catenis Enterprise API ver. 0.11** is available in the following environments.
+The **Catenis API ver. 0.11** is available in the following environments.
 
 ## Sandbox
 

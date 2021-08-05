@@ -1,10 +1,10 @@
 # Errors
 
-Catenis Enterprise uses conventional HTTP response status codes to indicate the general outcome of an API request.
+Catenis uses conventional HTTP response status codes to indicate the general outcome of an API request.
 
 ## HTTP status codes
 
-The following HTTP status codes are returned by the Catenis Enterprise API.
+The following HTTP status codes are returned by the Catenis API.
 
 | Status&nbsp;code | Explanation |
 | ---------- | ------- |
@@ -40,7 +40,7 @@ To better describe the condition that led to the error, a JSON with the followin
 
 ## Error messages
 
-The following is a comprehensive list of the error messages returned by the Catenis Enterprise API.
+The following is a comprehensive list of the error messages returned by the Catenis API.
 
 | Error&nbsp;message | Explanation |
 | ----------- | ------- |
@@ -53,26 +53,26 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_40">Authorization failed; signature date not well formed</span> | Request could not be authorized because the format of the date included in the credentials (Authorization header contents) is not correct. |
 | <span id="error_msg_50">Authorization failed; signature date out of bounds</span> | Request could not be authorized because the date included in the credentials (Authorization header contents) is not within 7 days of the current date. |
 | <span id="error_msg_60">Authorization failed; timestamp not well formed</span> | Request could not be authorized because the contents of the X-BCoT-Timestamp HTTP header is not a valid timestamp or it is not in the correct format. |
-| <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis Enterprise server time. |
+| <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis server time. |
 | <span id="error_msg_80">Device is deleted</span> | Virtual device no longer exists as it has been deleted. |
 | <span id="error_msg_90">Device is not active</span> | Virtual device is not yet ready to be used. |
 | <span id="error_msg_95">Insufficient balance to transfer asset</span> | Virtual device does not currently hold enough units of the asset to fulfill the transfer. |
-| <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis Enterprise from correctly processing the request. |
+| <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis from correctly processing the request. |
 | <span id="error_msg_105">Invalid asset ID</span> | The supplied asset ID is invalid or no asset with that ID could be found. |
 | <span id="error_msg_110">Invalid device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued assets is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_115">Invalid holding device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued asset amount is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
-| <span id="error_msg_125">Invalid or unexpected continuation token</span> | The supplied ID is not a valid continuation token, or that is not the ID that Catenis Enterprise expects to continue processing the message. |
+| <span id="error_msg_125">Invalid or unexpected continuation token</span> | The supplied ID is not a valid continuation token, or that is not the ID that Catenis expects to continue processing the message. |
 | <span id="error_msg_127">Invalid or expired ephemeral message</span> | The supplied ID is not a valid ephemeral message, or the asynchronous processing status cannot be retrieved for the given ephemeral message. |
 | <span id="error_msg_130">Invalid parameters</span> | One or more of the parameters are not well formed or required parameter is missing. |
 | <span id="error_msg_135">Invalid receiving device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the transferred assets is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the message is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_142">Message already read</span> | The message, which has been requested to be read asynchronously or in chunks, has already been fully read. |
-| <span id="error_msg_144">Message already complete</span> | Catenis Enterprise has already received the full message's contents, and an additional message chunk cannot be accepted. |
-| <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis Enterprise cannot fulfill the request. |
+| <span id="error_msg_144">Message already complete</span> | Catenis has already received the full message's contents, and an additional message chunk cannot be accepted. |
+| <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis cannot fulfill the request. |
 | <span id="error_msg_148">Message not available</span> | The message, which has been requested to be read asynchronously, is not yet ready to be read. |
 | <span id="error_msg_151">Message origin cannot be disclosed</span> | The message's origin device does not allow the disclosure of information about it. |
-| <span id="error_msg_149">Message too large for reading at once</span> | The contents of the message being read is too large for Catenis Enterprise to returned it in a single call. |
+| <span id="error_msg_149">Message too large for reading at once</span> | The contents of the message being read is too large for Catenis to returned it in a single call. |
 | <span id="error_msg_150">Message too long to be embedded</span> | Request specified that message should be stored embedded in the blockchain transaction but it is too large (over 75 bytes unencrypted or 64 bytes encrypted) to fit in. |
 | <span id="error_msg_155">Not enough credits to pay for issue asset service</span> | The client service account balance is too low to cover the issue asset service's expense. |
 | <span id="error_msg_160">Not enough credits to pay for log message service</span> | The client service account balance is too low to cover the log message service's expense. |
@@ -89,8 +89,8 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_205">No permission to transfer asset to receiving device</span> | Virtual device has no permission to transfer an amount of the asset to the specified receiving device. |
 | <span id="error_msg_207">Progress not available</span> | Asynchronous processing status not yet available for the given ephemeral message. |
 | <span id="error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i></span> | One or more of the supplied entity IDs (Catenis Node index, client ID, device ID, or product unique ID) are not valid or there are no entities (Catenis Node, client, or virtual device) with those IDs. |
-| <span id="error_msg_215">Request data too large to be processed</span> | Catenis Enterprise refuses to process the request because the data sent with the request (typically a message's contents) is too large. |
-| <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis Enterprise is not currently ready to process requests. |
+| <span id="error_msg_215">Request data too large to be processed</span> | Catenis refuses to process the request because the data sent with the request (typically a message's contents) is too large. |
+| <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis is not currently ready to process requests. |
 
 <aside class="notice">
 The terms within <b>square brackets ([ ])</b> in the <b>Invalid entity ID: </b> error message above are only displayed (without the square brackets) if IDs of the corresponding type are invalid, and the <b>eliipsis (...)</b> represent a comma-seprated list of invalid IDs.<br>

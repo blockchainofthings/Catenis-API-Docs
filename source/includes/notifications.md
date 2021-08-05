@@ -1,6 +1,6 @@
 # Notifications
 
-Catenis Enterprise provides a notification service where a virtual device can receive a real-time message notifying
+Catenis provides a notification service where a virtual device can receive a real-time message notifying
 that a given predefined event that concerns it has taken place. Such predefined events are referred to as *notification events*.
 
 ## Notification events
@@ -21,7 +21,7 @@ The list of all system defined notification events can be programmatically retri
 
 ## Notification messages
 
-The Catenis Enterprise notifications are conveyed by means of notification messages the contents of which vary according to the
+The Catenis notifications are conveyed by means of notification messages the contents of which vary according to the
 notification event, as follows:
 
 ### New message received (new-msg-received)

@@ -2,12 +2,12 @@
 
 ## General
 
-Most Catenis Enterprise API methods require authentication on each request. The authentication mechanism used is a SHA-256 Keyed-Hash Message Authentication Code (HMAC-SHA256).
-It is based on the <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html" target="_blank">AWS Signature version 4</a> authentication scheme, although it is not the same, and thus libraries that implement the AWS authentication scheme cannot be used with the Catenis Enterprise API.
+Most Catenis API methods require authentication on each request. The authentication mechanism used is a SHA-256 Keyed-Hash Message Authentication Code (HMAC-SHA256).
+It is based on the <a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-header-based-auth.html" target="_blank">AWS Signature version 4</a> authentication scheme, although it is not the same, and thus libraries that implement the AWS authentication scheme cannot be used with the Catenis API.
 
 With HMAC-SHA256, the server and the client share a secret signing key. The signing key lives in the respective client application and is never transmitted across the line. Instead, the key is used to generate a hash for signing the message contents.
 
-To authenticate and use the services provided by the Catenis Enterprise API methods, one must have an active client account, and use one of their virtual devices to actually consume the service. The virtual device's **device ID** and **API access secret** are then used to generate the authentication token that needs to be sent with every request.
+To authenticate and use the services provided by the Catenis API methods, one must have an active client account, and use one of their virtual devices to actually consume the service. The virtual device's **device ID** and **API access secret** are then used to generate the authentication token that needs to be sent with every request.
 
 <aside class="warning">
 The virtual device's API access secret carries many privileges, so be sure to keep it secret! Do not share it in publicly accessible areas such as GitHub, client-side code, and so forth.
@@ -15,7 +15,7 @@ The virtual device's API access secret carries many privileges, so be sure to ke
 
 ### Public API methods
 
-A few Catenis Enterprise API methods are public and do not require any authentication. The end user can access these
+A few Catenis API methods are public and do not require any authentication. The end user can access these
  services by simply making a request to the API method's URL as he or she would normally do when accessing a Web page.
  
 Unlike regular (private) API methods, public API methods are not called for a given virtual device. No virtual device is
@@ -23,7 +23,7 @@ Unlike regular (private) API methods, public API methods are not called for a gi
 
 ## Usage
 
-To properly call a Catenis Enterprise API method, the client application must authenticate the request before sending it, for which the following general steps must be taken:
+To properly call a Catenis API method, the client application must authenticate the request before sending it, for which the following general steps must be taken:
 
 1. Constructs an HTTP request for the API method that needs to be called;
 2. Signs the request using the virtual device's *API access secret*;
@@ -33,15 +33,15 @@ To properly call a Catenis Enterprise API method, the client application must au
 The <a href="#detailed-specification">Catenis HMAC-SHA256 authentication specification</a> should be used as a reference when performing the tasks listed above.
 </aside>
 
-Alternatively, one of the supplied [Catenis API client libraries](#client-libraries) can be used, which makes issuing and authenticating Catenis Enterprise API requests much simpler.
+Alternatively, one of the supplied [Catenis API client libraries](#client-libraries) can be used, which makes issuing and authenticating Catenis API requests much simpler.
 
 <aside class="notice">
-When accessing the Catenis Enterprise API using one of the Catenis API client libraries, the authentication process is handled by the library itself.
+When accessing the Catenis API using one of the Catenis API client libraries, the authentication process is handled by the library itself.
 </aside>
 
 ## Detailed specification
 
-This section describes how to issue and authenticate an HTTP request that conforms with the Catenis HMAC-SHA256 authentication scheme used by the Catenis Enterprise API.
+This section describes how to issue and authenticate an HTTP request that conforms with the Catenis HMAC-SHA256 authentication scheme used by the Catenis API.
 
 ### HTTP headers
 

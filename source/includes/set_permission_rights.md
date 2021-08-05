@@ -12,7 +12,7 @@ other virtual devices or at deferent levels are not modified.
 </aside>
 
 <aside class="notice">
-For more information about Catenis Enterprise permission rights, please refer to the <a href="#permission-rights">Permission rights</a> section above.
+For more information about Catenis permission rights, please refer to the <a href="#permission-rights">Permission rights</a> section above.
 </aside>
 
 > Sample request:

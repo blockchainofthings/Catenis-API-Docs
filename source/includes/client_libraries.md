@@ -1,6 +1,6 @@
 # Client libraries
 
-To make it easier for developers to interact with the Catenis Enterprise API and overcome the hurdles of authenticating each request, Blockchain of Things provide open-source client libraries for different programming languages and environments.
+To make it easier for developers to interact with the Catenis API and overcome the hurdles of authenticating each request, Blockchain of Things provide open-source client libraries for different programming languages and environments.
 
 The following libraries are currently available:
 
@@ -13,4 +13,4 @@ The following libraries are currently available:
 
 ###Paw extensions
 
-Aside from the Catenis API client libraries listed above, Blockchain of Things have also made available a set of customized [Paw extensions](https://paw.cloud/extensions?q=Catenis) that can be used to facilitate the creation and use of Catenis API requests from within [Paw](https://paw.cloud) on a Mac, allowing for easy prototyping and testing of the Catenis Enterprise API methods.
+Aside from the Catenis API client libraries listed above, Blockchain of Things have also made available a set of customized [Paw extensions](https://paw.cloud/extensions?q=Catenis) that can be used to facilitate the creation and use of Catenis API requests from within [Paw](https://paw.cloud) on a Mac, allowing for easy prototyping and testing of the Catenis API methods.

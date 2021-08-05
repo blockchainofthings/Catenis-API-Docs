@@ -6,7 +6,7 @@ The virtual device issuing the request acts as the controlling device. Thus the 
 pair composed of the permission event specified in the API request and the virtual device issuing the request.
 
 <aside class="notice">
-For more information about Catenis Enterprise permission rights, please refer to the <a href="#permission-rights">Permission rights</a> section above.
+For more information about Catenis permission rights, please refer to the <a href="#permission-rights">Permission rights</a> section above.
 </aside>
 
 > Sample request:

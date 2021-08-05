@@ -195,14 +195,14 @@ Parameters <code>dataChunkSize</code> and <code>async</code> are only taken into
 </aside>
 
 <aside class="notice">
-To avoid a possible timeout while waiting for Catenis Enterprise to process the message, especially when reading large
+To avoid a possible timeout while waiting for Catenis to process the message, especially when reading large
  messages, one can choose to do the processing asynchronously — <code>async</code> parameter set to <code><b>true</b></code>.
  In that case, the request will return a <b>cached message ID</b>, which should be used to retrieve the processing
  outcome by calling the <a href="#retrieve-message-progress">Retrieve Message Progress</a> API method.
 </aside>
 
 <aside class="warning">
-Catenis Enterprise restricts the size of the largest message that can be read in a single call to 15 MB. When
+Catenis restricts the size of the largest message that can be read in a single call to 15 MB. When
  that limit is exceeded, a <a href="#error_msg_149">[400] - Message too large for reading at once</a> error is returned.
  To work around that restriction when reading a large message, one must choose to read the message in chunks instead.
 </aside>

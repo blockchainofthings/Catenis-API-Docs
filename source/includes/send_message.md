@@ -240,14 +240,14 @@ When message is passed in chunks, options <code>encrypt</code>, <code>offChain</
 </aside>
 
 <aside class="notice">
-To avoid a possible timeout while waiting for Catenis Enterprise to process the message, especially when sending large
+To avoid a possible timeout while waiting for Catenis to process the message, especially when sending large
  messages, one may choose to do the processing asynchronously — <code>async</code> option set to <code><b>true</b></code>.
  In that case, the request will return a <b>provisional message ID</b>, which should be used to retrieve the processing
  outcome by calling the <a href="#retrieve-message-progress">Retrieve Message Progress</a> API method.
 </aside>
 
 <aside class="notice">
-Currently, <a href="https://ipfs.io" target="_blank">IPFS - the InterPlanetary File System</a> is the only external storage made available by Catenis Enterprise.
+Currently, <a href="https://ipfs.io" target="_blank">IPFS - the InterPlanetary File System</a> is the only external storage made available by Catenis.
 </aside>
 
 <aside class="warning">
@@ -259,7 +259,7 @@ Embedded messages are limited to the following size restriction: 75 bytes for un
 </aside>
 
 <aside class="warning">
-Catenis Enterprise restricts the size of the data that can be sent in a request to no more than 15 MB. When that limit
+Catenis restricts the size of the data that can be sent in a request to no more than 15 MB. When that limit
  is exceeded, a <a href="#error_msg_215">[413] - Request data too large to be processed</a> error is returned. To work around that restriction
  when sending a large message, one must choose to pass the message in chunks instead.
 </aside>

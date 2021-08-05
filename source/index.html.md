@@ -1,6 +1,6 @@
 ---
 
-title: Catenis Enterprise REST API
+title: Catenis REST API
 
 language_tabs:
   - http--raw: Raw
