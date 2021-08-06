@@ -43,10 +43,17 @@ ctnApiClient.listAssetHolders(assetId, 200, 0,
         else {
             // Process returned data
             data.assetHolders.forEach(function (assetHolder, idx) {
-                console.log('Asset holder #', idx + 1, ':');
-                console.log('  - device holding an amount of the asset:', assetHolder.holder);
-                console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
-                console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                if (!assetHolder.migrated) {
+                    console.log('Asset holder #', idx + 1, ':');
+                    console.log('  - device holding an amount of the asset:', assetHolder.holder);
+                    console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
+                    console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                }
+                else {
+                    console.log('Migrated asset:');
+                    console.log('  - total migrated amount:', assetHolder.balance.total);
+                    console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                }
             });
 
             if (data.hasMore) {
@@ -76,10 +83,17 @@ ctnApiClient.listAssetHolders(assetId, 200, 0,
         else {
             // Process returned data
             data.assetHolders.forEach(function (assetHolder, idx) {
-                console.log('Asset holder #', idx + 1, ':');
-                console.log('  - device holding an amount of the asset:', assetHolder.holder);
-                console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
-                console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                if (!assetHolder.migrated) {
+                    console.log('Asset holder #', idx + 1, ':');
+                    console.log('  - device holding an amount of the asset:', assetHolder.holder);
+                    console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
+                    console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                }
+                else {
+                    console.log('Migrated asset:');
+                    console.log('  - total migrated amount:', assetHolder.balance.total);
+                    console.log('  - amount not yet confirmed:', assetHolder.balance.unconfirmed);
+                }
             });
 
             if (data.hasMore) {
@@ -109,10 +123,16 @@ try {
     
     // Process returned data
     forEach($data->assetHolders as $idx => $assetHolder) {
-        echo 'Asset holder #' . ($idx + 1) . ':' . PHP_EOL;
-        echo '  - device holding an amount of the asset: ' . print_r($assetHolder->holder, true);
-        echo '  - amount of asset currently held by device: ' . $assetHolder->balance->total . PHP_EOL;
-        echo '  - amount not yet confirmed: ' . $assetHolder->balance->unconfirmed . PHP_EOL;
+        if (!$assetHolder->migrated) {
+            echo 'Asset holder #' . ($idx + 1) . ':' . PHP_EOL;
+            echo '  - device holding an amount of the asset: ' . print_r($assetHolder->holder, true);
+            echo '  - amount of asset currently held by device: ' . $assetHolder->balance->total . PHP_EOL;
+            echo '  - amount not yet confirmed: ' . $assetHolder->balance->unconfirmed . PHP_EOL;
+        } else {
+            echo 'Migrated asset:' . PHP_EOL;
+            echo '  - total migrated amount: ' . $assetHolder->balance->total . PHP_EOL;
+            echo '  - amount not yet confirmed: ' . $assetHolder->balance->unconfirmed . PHP_EOL;
+        }
     }
 
     if ($data->hasMore) {
@@ -156,10 +176,16 @@ fn main() -> Result<()> {
     for idx in 0..result.asset_holders.len() {
         let asset_holder = &result.asset_holders[idx];
 
-        println!("Asset holder #{}:", idx + 1);
-        println!(" - device holding an amount of the asset: {:?}", asset_holder.holder);
-        println!(" - amount of asset currently held by device: {}", asset_holder.balance.total);
-        println!(" - amount not yet confirmed: {}", asset_holder.balance.unconfirmed);
+        if let None = asset_holder.migrated {
+            println!("Asset holder #{}:", idx + 1);
+            println!(" - device holding an amount of the asset: {:?}", asset_holder.holder.unwrap());
+            println!(" - amount of asset currently held by device: {}", asset_holder.balance.total);
+            println!(" - amount not yet confirmed: {}", asset_holder.balance.unconfirmed);
+        } else {
+          println!("Migrated asset:");
+          println!(" - total migrated amount: {}", asset_holder.balance.total);
+          println!(" - amount not yet confirmed: {}", asset_holder.balance.unconfirmed);
+        }
     }
 
     if result.has_more {
@@ -222,6 +248,13 @@ GET /assets/`:assetId`/holders
           "total": 504.25,
           "unconfirmed": 0
         }
+      },
+      {
+        "migrated": true,
+        "balance": {
+          "total": 50,
+          "unconfirmed": 0
+        }
       }
     ],
     "hasMore": false
@@ -238,12 +271,13 @@ A JSON containing the following properties:
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`assetHolders` | Array(Object) | The list of asset holder entries returned.  |
-| &nbsp;&nbsp;&nbsp;&nbsp;`holder` | Object | The virtual device that holds an amount of the asset — the *holding device*. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`holder` | Object | *(not returned for the special entry reporting the migrated asset amount)* The virtual device that holds an amount of the asset — the *holding device*. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The name of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The product unique ID of the holding device. |
+| &nbsp;&nbsp;`migrated` | Boolean | *(only returned for the special entry reporting the migrated asset amount)* The value **`true`** indicating that this is the special entry reporting the migrated asset amount. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`balance` | Object | |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`total` | Number | The current balance of the asset held by this holding device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`total` | Number | The current balance of the asset held by this holding device or that had been migrated. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`unconfirmed` | Number | The amount from the balance that is not yet confirmed. |
 | &nbsp;&nbsp;`hasMore` | Boolean | Indicates whether there are more entries that have not been included in the returned list. |
 
