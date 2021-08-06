@@ -58,13 +58,13 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis from correctly processing the request. |
 | <span id="error_msg_105">Invalid asset ID</span> | The supplied asset ID is invalid or no asset with that ID could be found. |
 | <span id="error_msg_110">Invalid device</span> | The supplied ID is not a valid device ID or product unique ID, or there is no virtual device with that ID. |
-| <span id="error_msg_115">Invalid holding device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued asset amount is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_115">Invalid holding device</span> | The ID (either the device ID or the product unique ID) of the virtual device to hold the issued asset amount is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
 | <span id="error_msg_125">Invalid or unexpected continuation token</span> | The supplied ID is not a valid continuation token, or that is not the ID that Catenis expects to continue processing the message. |
-| <span id="error_msg_127">Invalid or expired ephemeral message</span> | The supplied ID is not a valid ephemeral message, or the asynchronous processing status cannot be retrieved for the given ephemeral message. |
+| <span id="error_msg_127">Invalid or expired ephemeral message</span> | The supplied ID is not of a valid ephemeral message, or the asynchronous processing status cannot be retrieved for the given ephemeral message. |
 | <span id="error_msg_130">Invalid parameters</span> | One or more of the parameters are not well formed or required parameter is missing. |
-| <span id="error_msg_135">Invalid receiving device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the transferred assets is not valid or there is no virtual device with that ID. |
-| <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the message is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_135">Invalid receiving device</span> | The ID (either the device ID or the product unique ID) of the virtual device to receive the transferred assets is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) of the virtual device to receive the message is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_142">Message already read</span> | The message, which has been requested to be read asynchronously or in chunks, has already been fully read. |
 | <span id="error_msg_144">Message already complete</span> | Catenis has already received the full message's contents, and an additional message chunk cannot be accepted. |
 | <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis cannot fulfill the request. |
