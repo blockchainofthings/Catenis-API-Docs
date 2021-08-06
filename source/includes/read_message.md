@@ -247,7 +247,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_120">Invalid message ID</a><br><a href="#error_msg_125">Invalid or unexpected continuation token</a><br><a href="#error_msg_130">Invalid parameters</a><br><a href="#error_msg_142">Message already read</a><br><a href="#error_msg_146">Message expired</a><br><a href="#error_msg_148">Message not available</a><br><a href="#error_msg_149">Message too large for reading at once</a> |
+| 400 | <a href="#error_msg_120">Invalid message ID</a><br><a href="#error_msg_125">Invalid or unexpected continuation token</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_142">Message already read</a><br><a href="#error_msg_146">Message expired</a><br><a href="#error_msg_148">Message not available</a><br><a href="#error_msg_149">Message too large for reading at once</a> |
 | 403 | <a href="#error_msg_180">No permission to read message</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

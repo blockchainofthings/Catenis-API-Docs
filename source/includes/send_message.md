@@ -299,7 +299,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_125">Invalid or unexpected continuation token</a><br><a href="#error_msg_130">Invalid parameters</a><br><a href="#error_msg_140">Invalid target device</a><br><a href="#error_msg_144">Message already complete</a><br><a href="#error_msg_146">Message expired</a><br><a href="#error_msg_150">Message too long to be embedded</a><br><a href="#error_msg_170">Not enough credits to pay for send message service</a> |
+| 400 | <a href="#error_msg_125">Invalid or unexpected continuation token</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_140">Invalid target device</a><br><a href="#error_msg_144">Message already complete</a><br><a href="#error_msg_146">Message expired</a><br><a href="#error_msg_150">Message too long to be embedded</a><br><a href="#error_msg_170">Not enough credits to pay for send message service</a> |
 | 413 | <a href="#error_msg_215">Request data too large to be processed</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

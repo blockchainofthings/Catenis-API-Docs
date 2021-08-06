@@ -213,7 +213,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_110">Invalid device</a><br><a href="#error_msg_130">Invalid parameters</a> |
+| 400 | <a href="#error_msg_110">Invalid device</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a> |
 | 403 | <a href="#error_msg_190">No permission to retrieve info</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |
