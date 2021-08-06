@@ -92,5 +92,6 @@ The following is a comprehensive list of the error messages returned by the Cate
 
 <aside class="notice">
 The terms within <b>square brackets ([ ])</b> in the <b>Invalid entity ID: </b> error message above are only displayed (without the square brackets) if IDs of the corresponding type are invalid, and the <b>eliipsis (...)</b> represent a comma-seprated list of invalid IDs.<br>
+The terms within <b>square brackets ([ ])</b> in the <b>Invalid entity ID: </b> error message above are only displayed (without the square brackets) if IDs of the corresponding type are invalid, and the <b>eliipsis (...)</b> represent a comma-separated list of invalid IDs.<br>
 Example of a complete error message: <b>Invalid entity ID: clientId: xyz001, xyz002; deviceId: abc001</b>
 </aside>
