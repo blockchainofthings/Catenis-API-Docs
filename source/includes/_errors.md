@@ -82,10 +82,10 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_190">No permission to retrieve info</span> | The virtual device has no permission to retrieve information about the requested device. |
 | <span id="error_msg_200">No permission to retrieve message container</span> | The virtual device attempting to retrieve the message container information is not the device that sent/logged the message. |
 | <span id="error_msg_205">No permission to transfer asset to receiving device</span> | The virtual device has no permission to transfer an amount of the asset to the specified receiving device. |
-| <span id="error_msg_155">Not enough credits to pay for issue asset service</span> | The client service account balance is too low to cover the issue asset service's expense. |
-| <span id="error_msg_160">Not enough credits to pay for log message service</span> | The client service account balance is too low to cover the log message service's expense. |
-| <span id="error_msg_170">Not enough credits to pay for send message service</span> | The client service account balance is too low to cover the send message service's expense. |
-| <span id="error_msg_172">Not enough credits to pay for transfer asset service</span> | The client service account balance is too low to cover the transfer asset service's expense. |
+| <span id="error_msg_155">Not enough credits to pay for issue asset service</span> | The virtual device's client service account balance is too low to cover the issue asset service's expense. |
+| <span id="error_msg_160">Not enough credits to pay for log message service</span> | The virtual device's client service account balance is too low to cover the log message service's expense. |
+| <span id="error_msg_170">Not enough credits to pay for send message service</span> | The virtual device's client service account balance is too low to cover the send message service's expense. |
+| <span id="error_msg_172">Not enough credits to pay for transfer asset service</span> | The virtual device's client service account balance is too low to cover the transfer asset service's expense. |
 | <span id="error_msg_207">Progress not available</span> | Asynchronous processing status not yet available for the given ephemeral message. |
 | <span id="error_msg_215">Request data too large to be processed</span> | Catenis refuses to process the request because the data sent with the request (typically a message's contents) is too large. |
 | <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis is not currently ready to process requests. |
