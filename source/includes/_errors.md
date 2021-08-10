@@ -46,7 +46,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | ----------- | ------- |
 | <span id="error_msg_3">Amount to issue is too large</span> | The specified amount of asset to be issued is larger than the largest allowed amount (2^53 - 1), or the total available amount of the asset, after the issuance, would be larger than the largest allowed amount. |
 | <span id="error_msg_5">Amount to transfer is too large</span> | The specified amount of asset to be transferred is larger than the largest allowed amount (2^53 - 1). |
-| <span id="error_msg_7">Asset cannot be reissued</span> | The specified asset does not allow for more units of it to be issued after its first issuance. |
+| <span id="error_msg_7">Asset cannot be reissued</span> | The specified asset does not allow for additional quantities of it to be issued after its first issuance. |
 | <span id="error_msg_10">Authorization failed; authorization value not well formed</span> | Request could not be authorized because the contents of the Authorization HTTP header is not as expected. |
 | <span id="error_msg_20">Authorization failed; invalid device or signature</span> | Request could not be authorized because the device ID and/or the signature included in the credentials (Authorization header contents) are not valid. Note that a deleted or inactive device will trigger this error. |
 | <span id="error_msg_30">Authorization failed; missing required HTTP headers</span> | Request could not be authorized because one or more of the required HTTP headers are missing. |
@@ -54,7 +54,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_50">Authorization failed; signature date out of bounds</span> | Request could not be authorized because the date included in the credentials (Authorization header contents) is not within 7 days of the current date. |
 | <span id="error_msg_60">Authorization failed; timestamp not well formed</span> | Request could not be authorized because the contents of the X-BCoT-Timestamp HTTP header is not a valid timestamp or it is not in the correct format. |
 | <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis server time. |
-| <span id="error_msg_95">Insufficient balance to transfer asset</span> | The virtual device does not currently hold enough units of the asset to fulfill the transfer. |
+| <span id="error_msg_95">Insufficient balance to transfer asset</span> | The virtual device does not currently hold a large enough quantity of the asset to fulfill the transfer. |
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis from correctly processing the request. |
 | <span id="error_msg_105">Invalid asset ID</span> | The supplied asset ID is invalid or no asset with that ID could be found. |
 | <span id="error_msg_110">Invalid device</span> | The supplied ID is not a valid device ID or product unique ID, or there is no virtual device with that ID. |
@@ -76,7 +76,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_175">No permission to assign issued asset to holding device</span> | The virtual device has no permission to assign the amount of the asset to be issued to the specified holding device. |
 | <span id="error_msg_177">No permission to list asset holders</span> | The virtual device has no permission to list holders of the requested asset. |
 | <span id="error_msg_180">No permission to read message</span> | The virtual device has no permission to read the requested message. |
-| <span id="error_msg_185">No permission to reissue asset</span> | The virtual device attempting to issue more units of the asset is not the device that issued the initial amount of that asset. |
+| <span id="error_msg_185">No permission to reissue asset</span> | The virtual device attempting to issue an additional quantity of the asset is not the device that issued the initial amount of that asset. |
 | <span id="error_msg_187">No permission to retrieve asset info</span> | The virtual device has no permission to retrieve information about the requested asset. |
 | <span id="error_msg_188">No permission to retrieve asset issuance history</span> | The virtual device has no permission to retrieve issuance history of the requested asset. |
 | <span id="error_msg_190">No permission to retrieve info</span> | The virtual device has no permission to retrieve information about the requested device. |
