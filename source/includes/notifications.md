@@ -14,6 +14,8 @@ The following notification events are currently defined:
 | `asset-received` | An amount of an asset has been received |
 | `asset-confirmed` | An amount of an asset that was pending due to an asset transfer has been confirmed |
 | `final-msg-progress` | Progress of asynchronous message processing has come to an end |
+| `asset-export-outcome` | Asset export has been finalized |
+| `asset-migration-outcome` | Asset migration has been finalized |
 
 <aside class="notice">
 The list of all system defined notification events can be programmatically retrieved by means of the <a href="#list-notification-events">List Notification Events</a> API method.
@@ -209,6 +211,93 @@ This notification signals the end of the asynchronous processing of a message. U
  field returned by either the <a href="#log-message">Log Message</a> or <a href="#send-message">Send Message</a> API method. When <b>reading</b> a message asynchronously, it should
  match the ID in the <b><code>cachedMessageId</code></b> field returned by the <a href="#read-message">Read Message</a> API method instead.
 </aside>
+
+### Asset export outcome (asset-export-outcome)
+
+> Sample notification message:
+
+```json
+{
+  "assetId": "amNiawM69NjYM8QghoPD",
+  "foreignBlockchain": "ethereum",
+  "foreignTransaction": {
+    "isPending": false,
+    "success": true,
+    "txid": "0x1738722379007192cac3b8e7ee3babfd1c8304133ea1a7957b93f6134ed62e48"
+  },
+  "token": {
+    "name": "Catenis test token #5",
+    "symbol": "CTK5",
+    "id": "0xbAE69964D40900c6933A2CF8dD53f97c97Ab9BE7"
+  },
+  "status": "success",
+  "date": "2021-07-02T21:26:33.841Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `assetId` | String | The ID of the exported asset. |
+| `foreignBlockchain` | String | The key identifying the foreign blockchain to where the asset has been exported. One of: `ethereum`, `binance`, or `polygon`. |
+| `foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to create the resulting foreign token. |
+| &nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
+| &nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether the foreign blockchain transaction has been successfully executed or not. |
+| &nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
+| `token` | Object | Information about the resulting foreign token. |
+| &nbsp;&nbsp;`name` | String | The token name. |
+| &nbsp;&nbsp;`symbol` | String | The token symbol. |
+| &nbsp;&nbsp;`id` | String | *(only returned if the asset is successfully export)* The ID (or address) of the token on the foreign blockchain. |
+| `status` | String | The final state of the asset export. One of: `success`, or `error`. |
+| `date` | String | ISO 8601 formatted date and time when the asset has been exported. |
+
+### Asset migration outcome (asset-migration-outcome)
+
+> Sample notification message:
+
+```json
+{
+  "migrationId": "gbRQqs5z3ReCGfygorai",
+  "assetId": "amNiawM69NjYM8QghoPD",
+  "foreignBlockchain": "ethereum",
+  "direction": "outward",
+  "amount": 50,
+  "catenisService": {
+    "status": "fulfilled",
+    "txid": "823941a1e02eab77d5ceecc943d7745bc49068f35d4109f7d60f9ca6fc669838"
+  },
+  "foreignTransaction": {
+    "isPending": false,
+    "success": true,
+    "txid": "0x098d5588d03db577edfc8fc5b0094a62e22825bc9c7fc8e38430563350c75bfd"
+  },
+  "status": "success",
+  "date": "2021-07-03T12:51:04.771Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `migrationId` | String | The ID of the asset migration. |
+| `assetId` | String | The ID of the asset the amount of which has been migrated. |
+| `foreignBlockchain` | String | The key identifying the foreign blockchain to/from where the asset amount has been migrated. One of: `ethereum`, `binance`, or `polygon`. |
+| `direction` | String | The direction of the migration. One of: `outward` or `inward`. |
+| `amount` | Number | The migrated asset amount. |
+| `catenisService` | Object | Information about the execution of the migrate asset Catenis service. |
+| &nbsp;&nbsp;`status` | String | The current state of the service's execution. One of: `awaiting`, `failure`, or `fulfilled`. |
+| &nbsp;&nbsp;`txid` | String | *(only returned if the service is successfully fulfilled)* The ID of the Catenis transaction issued to fulfill the service. |
+| &nbsp;&nbsp;`error` | String | *(only returned if the service's execution has failed)* An error message describing what went wrong when executing the service. |
+| `foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to mint/burn the amount of the foreign token. |
+| &nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
+| &nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether the foreign blockchain transaction has been successfully executed or not. |
+| &nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
+| `status` | String | The final state of the asset migration. One of: `interrupted`, `success`, or `error`. |
+| `date` | String | ISO 8601 formatted date and time when the asset amount has been migrated. |
 
 ## Notification channel
 

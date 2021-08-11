@@ -20,6 +20,13 @@ The following is a comprehensive list of the methods that comprise the Catenis A
   - [List Issued Assets](#list-issued-assets)
   - [Retrieve Asset Issuance History](#retrieve-asset-issuance-history)
   - [List Asset Holders](#list-asset-holders)
+- Asset export methods
+  - [Export Asset](#export-asset)
+  - [Migrate Asset](#migrate-asset)
+  - [Asset Export Outcome](#asset-export-outcome)
+  - [Asset Migration Outcome](#asset-migration-outcome)
+  - [List Exported Assets](#list-exported-assets)
+  - [List Asset Migrations](#list-asset-migrations)
 - Permission methods
   - [List Permission Events](#list-permission-events)
   - [Retrieve Permission Rights](#retrieve-permission-rights)
