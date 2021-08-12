@@ -275,7 +275,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The name of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The product unique ID of the holding device. |
-| &nbsp;&nbsp;`migrated` | Boolean | *(only returned for the special entry reporting the migrated asset amount)* The value **`true`** indicating that this is the special entry reporting the migrated asset amount. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`migrated` | Boolean | *(only returned for the special entry reporting the migrated asset amount)* The value **`true`** indicating that this is the special entry reporting the migrated asset amount. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`balance` | Object | |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`total` | Number | The current balance of the asset held by this holding device or that had been migrated. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`unconfirmed` | Number | The amount from the balance that is not yet confirmed. |
