@@ -123,7 +123,7 @@ try {
     
     // Process returned data
     forEach($data->assetHolders as $idx => $assetHolder) {
-        if (!$assetHolder->migrated) {
+        if (!isset($assetHolder->migrated)) {
             echo 'Asset holder #' . ($idx + 1) . ':' . PHP_EOL;
             echo '  - device holding an amount of the asset: ' . print_r($assetHolder->holder, true);
             echo '  - amount of asset currently held by device: ' . $assetHolder->balance->total . PHP_EOL;
