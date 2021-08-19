@@ -212,7 +212,7 @@ This notification signals the end of the asynchronous processing of a message. U
  match the ID in the <b><code>cachedMessageId</code></b> field returned by the <a href="#read-message">Read Message</a> API method instead.
 </aside>
 
-### Asset export outcome (asset-export-outcome)
+### Final asset export outcome (asset-export-outcome)
 
 > Sample notification message:
 
@@ -243,7 +243,7 @@ A JSON containing the following properties:
 | `foreignBlockchain` | String | The key identifying the foreign blockchain to where the asset has been exported. One of: `ethereum`, `binance`, or `polygon`. |
 | `foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to create the resulting foreign token. |
 | &nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
-| &nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;`isPending` | Boolean | The value `false`, indicating that the foreign blockchain transaction has already been executed. |
 | &nbsp;&nbsp;`success` | Boolean | Indicates whether the foreign blockchain transaction has been successfully executed or not. |
 | &nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
 | `token` | Object | Information about the resulting foreign token. |
@@ -253,7 +253,7 @@ A JSON containing the following properties:
 | `status` | String | The final state of the asset export. One of: `success`, or `error`. |
 | `date` | String | ISO 8601 formatted date and time when the asset has been exported. |
 
-### Asset migration outcome (asset-migration-outcome)
+### Final asset migration outcome (asset-migration-outcome)
 
 > Sample notification message:
 
@@ -293,7 +293,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`error` | String | *(only returned if the service's execution has failed)* An error message describing what went wrong when executing the service. |
 | `foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to mint/burn the amount of the foreign token. |
 | &nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
-| &nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;`isPending` | Boolean | The value `false`, indicating that the foreign blockchain transaction has already been executed. |
 | &nbsp;&nbsp;`success` | Boolean | Indicates whether the foreign blockchain transaction has been successfully executed or not. |
 | &nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
 | `status` | String | The final state of the asset migration. One of: `interrupted`, `success`, or `error`. |

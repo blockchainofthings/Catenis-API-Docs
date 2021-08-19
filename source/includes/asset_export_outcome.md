@@ -85,7 +85,7 @@ A JSON containing the following properties:
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to create the resulting foreign token. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
 | &nbsp;&nbsp;`token` | Object | Information about the resulting foreign token. |

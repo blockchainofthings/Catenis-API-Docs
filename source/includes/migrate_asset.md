@@ -93,7 +93,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`destAddress` | String | *(optional, only required for an in-migration)* The address of the account on the foreign blockchain that should be credited with the specified amount of the foreign token. |
 | `options` | Object | *(optional)* |
 | &nbsp;&nbsp;`consumptionProfile` | String | *(optional)* Name of the foreign blockchain's native coin consumption profile to use. Valid options: `fastest`, `fast`, `average`, `slow`. |
-| &nbsp;&nbsp;`estimateOnly` | Boolean | *(optional, default: __`false`__)* Indicates that no asset migration should be done. Instead, only the estimated price (in the foreign blockchain's native coin) to fulfill the operation should be returned. |
+| &nbsp;&nbsp;`estimateOnly` | Boolean | *(optional, default: __`false`__)* When set, indicates that no asset migration should be executed but only the estimated price (in the foreign blockchain's native coin) to fulfill the operation should be returned. |
 
 <aside class="notice">
 If the <code>options.consumptionProfile</code> property is not specified, the value currently set (via Catenis's client
@@ -135,7 +135,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | *(only returned if the service is successfully fulfilled)* The ID of the Catenis transaction issued to fulfill the service. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the service's execution has failed)* An error message describing what went wrong when executing the service. |
 | &nbsp;&nbsp;`foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to mint/burn the amount of the foreign token. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates that the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
 | &nbsp;&nbsp;`status` | String | The current state of the asset migration. One of: `pending`, `interrupted`, `success`, or `error`. |
