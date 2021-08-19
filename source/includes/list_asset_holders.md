@@ -43,7 +43,7 @@ ctnApiClient.listAssetHolders(assetId, 200, 0,
         else {
             // Process returned data
             data.assetHolders.forEach(function (assetHolder, idx) {
-                if (!assetHolder.migrated) {
+                if (assetHolder.holder) {
                     console.log('Asset holder #', idx + 1, ':');
                     console.log('  - device holding an amount of the asset:', assetHolder.holder);
                     console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
@@ -83,7 +83,7 @@ ctnApiClient.listAssetHolders(assetId, 200, 0,
         else {
             // Process returned data
             data.assetHolders.forEach(function (assetHolder, idx) {
-                if (!assetHolder.migrated) {
+                if (assetHolder.holder) {
                     console.log('Asset holder #', idx + 1, ':');
                     console.log('  - device holding an amount of the asset:', assetHolder.holder);
                     console.log('  - amount of asset currently held by device:', assetHolder.balance.total);
@@ -123,7 +123,7 @@ try {
     
     // Process returned data
     forEach($data->assetHolders as $idx => $assetHolder) {
-        if (!isset($assetHolder->migrated)) {
+        if (isset($assetHolder->holder)) {
             echo 'Asset holder #' . ($idx + 1) . ':' . PHP_EOL;
             echo '  - device holding an amount of the asset: ' . print_r($assetHolder->holder, true);
             echo '  - amount of asset currently held by device: ' . $assetHolder->balance->total . PHP_EOL;
@@ -176,9 +176,9 @@ fn main() -> Result<()> {
     for idx in 0..result.asset_holders.len() {
         let asset_holder = &result.asset_holders[idx];
 
-        if let None = asset_holder.migrated {
+        if let Some(holder) = &asset_holder.holder {
             println!("Asset holder #{}:", idx + 1);
-            println!(" - device holding an amount of the asset: {:?}", asset_holder.holder.unwrap());
+            println!(" - device holding an amount of the asset: {:?}", holder);
             println!(" - amount of asset currently held by device: {}", asset_holder.balance.total);
             println!(" - amount not yet confirmed: {}", asset_holder.balance.unconfirmed);
         } else {
