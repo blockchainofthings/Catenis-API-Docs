@@ -122,7 +122,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`symbol` | String | The token symbol. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`id` | String | *(only returned if the asset is successfully export)* The ID (or address) of the token on the foreign blockchain. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`status` | String | The current state of the asset export. One of: `pending`, `success`, or `error` |
-| &nbsp;&nbsp;&nbsp;&nbsp;`date` | String | ISO 8601formatted date and time when the asset has been exported. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`date` | String | ISO 8601 formatted date and time when the asset has been exported. |
 | &nbsp;&nbsp;`hasMore` | Boolean | Indicates whether there are more asset exports that satisfy the search criteria yet to be returned. |
 
 ### Possible errors
