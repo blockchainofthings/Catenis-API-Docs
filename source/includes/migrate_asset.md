@@ -100,7 +100,7 @@ If the <code>options.consumptionProfile</code> property is not specified, the va
  admin UI) for the virtual device's client foreign blockchain consumption profile is used.
 </aside>
 
-> Sample response:
+> Sample response (regular migration):
 
 ```json
 {
@@ -121,32 +121,6 @@ If the <code>options.consumptionProfile</code> property is not specified, the va
 }
 ```
 
-### Success response
-
-A JSON containing the following properties:
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| `status` | String | The value **`success`**, indicating that the request was successful. |
-| `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`migrationId` | String | A unique ID used to identify this asset migration. |
-| &nbsp;&nbsp;`catenisService` | Object | Information about the execution of the migrate asset Catenis service. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`status` | String | The current state of the service's execution. One of: `awaiting`, `failure`, or `fulfilled`. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | *(only returned if the service is successfully fulfilled)* The ID of the Catenis transaction issued to fulfill the service. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the service's execution has failed)* An error message describing what went wrong when executing the service. |
-| &nbsp;&nbsp;`foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to mint/burn the amount of the foreign token. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
-| &nbsp;&nbsp;`status` | String | The current state of the asset migration. One of: `pending`, `interrupted`, `success`, or `error`. |
-| &nbsp;&nbsp;`date` | String | <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted date and time when the asset amount has been migrated. |
-
-<aside class="notice">
-The status value <code>interrupted</code> represents a final state that indicates that the migration started (amount
- successfully deducted) but failed during its final step (to credit the amount). Note that this is an
- <b>inconsistent</b> state, and the migration should be <b>reprocessed</b>.
-</aside>
-
 > Sample response (estimate only):
 
 ```json
@@ -158,7 +132,7 @@ The status value <code>interrupted</code> represents a final state that indicate
 }
 ```
 
-### Success response (estimate only)
+### Success response
 
 A JSON containing the following properties:
 
@@ -166,7 +140,24 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`estimatedPrice` | String | A text value representing the price, in the foreign blockchain's native coin, required to execute the foreign blockchain transaction. |
+| &nbsp;&nbsp;`migrationId` | String | *(not returned for estimate only)* A unique ID used to identify this asset migration. |
+| &nbsp;&nbsp;`catenisService` | Object | *(not returned for estimate only)* Information about the execution of the migrate asset Catenis service. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`status` | String | The current state of the service's execution. One of: `awaiting`, `failure`, or `fulfilled`. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | *(only returned if the service is successfully fulfilled)* The ID of the Catenis transaction issued to fulfill the service. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the service's execution has failed)* An error message describing what went wrong when executing the service. |
+| &nbsp;&nbsp;`foreignTransaction` | Object | *(not returned for estimate only)* Information about the transaction issued on the foreign blockchain to mint/burn the amount of the foreign token. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
+| &nbsp;&nbsp;`status` | String | *(not returned for estimate only)* The current state of the asset migration. One of: `pending`, `interrupted`, `success`, or `error`. |
+| &nbsp;&nbsp;`date` | String | *(not returned for estimate only)* <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted date and time when the asset amount has been migrated. |
+| &nbsp;&nbsp;`estimatedPrice` | String | *(only returned for estimate only)* A text value representing the price, in the foreign blockchain's native coin, required to execute the foreign blockchain transaction. |
+
+<aside class="notice">
+The status value <code>interrupted</code> represents a final state that indicates that the migration started (amount
+ successfully deducted) but failed during its final step (to credit the amount). Note that this is an
+ <b>inconsistent</b> state, and the migration should be <b>reprocessed</b>.
+</aside>
 
 <aside class="notice">
 Note that the estimated price is <b>volatile</b>, and it will vary depending on the current foreign blockchain fee

@@ -88,7 +88,7 @@ If the <code>options.consumptionProfile</code> property is not specified, the va
  admin UI) for the virtual device's client foreign blockchain consumption profile is used.
 </aside>
 
-> Sample response:
+> Sample response (regular export):
 
 ```json
 {
@@ -108,26 +108,6 @@ If the <code>options.consumptionProfile</code> property is not specified, the va
 }
 ```
 
-### Success response
-
-A JSON containing the following properties:
-
-| Property | Type | Description |
-| -------- | ---- | ----------- |
-| `status` | String | The value **`success`**, indicating that the request was successful. |
-| `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`foreignTransaction` | Object | Information about the transaction issued on the foreign blockchain to create the resulting foreign token. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
-| &nbsp;&nbsp;`token` | Object | Information about the resulting foreign token. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`name` | String | The token name. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`symbol` | String | The token symbol. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`id` | String | *(only returned if the asset is successfully export)* The ID (or address) of the token on the foreign blockchain. |
-| &nbsp;&nbsp;`status` | String | The current state of the asset export. One of: `pending`, `success`, or `error`. |
-| &nbsp;&nbsp;`date` | String | <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted date and time when the asset has been exported. |
-
 > Sample response (estimate only):
 
 ```json
@@ -139,7 +119,7 @@ A JSON containing the following properties:
 }
 ```
 
-### Success response (estimate only)
+### Success response
 
 A JSON containing the following properties:
 
@@ -147,7 +127,18 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`estimatedPrice` | String | A text value representing the price, in the foreign blockchain's native coin, required to execute the foreign blockchain transaction. |
+| &nbsp;&nbsp;`foreignTransaction` | Object | *(not returned for estimate only)* Information about the transaction issued on the foreign blockchain to create the resulting foreign token. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`txid` | String | The ID (or hash) of the foreign blockchain transaction. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`isPending` | Boolean | Indicates whether the foreign blockchain transaction is yet to be executed. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`success` | Boolean | *(only returned after the foreign blockchain transaction is executed)* Indicates whether the foreign blockchain transaction has been successfully executed or not. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
+| &nbsp;&nbsp;`token` | Object | *(not returned for estimate only)* Information about the resulting foreign token. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`name` | String | The token name. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`symbol` | String | The token symbol. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`id` | String | *(only returned if the asset is successfully export)* The ID (or address) of the token on the foreign blockchain. |
+| &nbsp;&nbsp;`status` | String | *(not returned for estimate only)* The current state of the asset export. One of: `pending`, `success`, or `error`. |
+| &nbsp;&nbsp;`date` | String | *(not returned for estimate only)* <a href="https://en.wikipedia.org/wiki/ISO_8601" target="_blank">ISO 8601</a> formatted date and time when the asset has been exported. |
+| &nbsp;&nbsp;`estimatedPrice` | String | *(only returned for estimate only)* A text value representing the price, in the foreign blockchain's native coin, required to execute the foreign blockchain transaction. |
 
 <aside class="notice">
 Note that the estimated price is <b>volatile</b>, and it will vary depending on the current foreign blockchain fee
