@@ -89,8 +89,8 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `migration` | Object&#124;String | Object describing a new asset migration, or the ID of the asset migration to be reprocessed. |
 | &nbsp;&nbsp;`direction` | String | The direction of the migration. Valid options: `outward`, `inward`. |
-| &nbsp;&nbsp;`amount` | String | The amount of the asset to be migrated. |
-| &nbsp;&nbsp;`destAddress` | String | *(optional, only required for an in-migration)* The address of the account on the foreign blockchain that should be credited with the specified amount of the foreign token. |
+| &nbsp;&nbsp;`amount` | Number | The amount of the asset to be migrated. |
+| &nbsp;&nbsp;`destAddress` | String | *(optional, only required for an out-migration)* The address of the account on the foreign blockchain that should be credited with the specified amount of the foreign token. |
 | `options` | Object | *(optional)* |
 | &nbsp;&nbsp;`consumptionProfile` | String | *(optional)* Name of the foreign blockchain's native coin consumption profile to use. Valid options: `fastest`, `fast`, `average`, `slow`. |
 | &nbsp;&nbsp;`estimateOnly` | Boolean | *(optional, default: __`false`__)* When set, indicates that no asset migration should be executed but only the estimated price (in the foreign blockchain's native coin) to fulfill the operation should be returned. |
