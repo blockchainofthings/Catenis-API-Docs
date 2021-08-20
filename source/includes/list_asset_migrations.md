@@ -130,6 +130,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`error` | String | *(only returned if the foreign blockchain transaction's execution has failed)* An error message describing what went wrong when executing the transaction. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`status` | String | The current state of the asset migration. One of: `pending`, `interrupted`, `success`, or `error`. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`date` | String | ISO 8601 formatted date and time when the asset amount has been migrated. |
+| &nbsp;&nbsp;`hasMore` | Boolean | Indicates whether there are more asset migrations that satisfy the search criteria yet to be returned. |
 
 ### Possible errors
 
