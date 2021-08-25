@@ -170,7 +170,7 @@ fn main() -> Result<()> {
     };
 
     let result = ctn_client.send_message(
-        "This is only a test",
+        Message::Whole(String::from("This is only a test")),
         target_device,
         Some(SendMessageOptions {
             encoding: Some(Encoding::UTF8),
