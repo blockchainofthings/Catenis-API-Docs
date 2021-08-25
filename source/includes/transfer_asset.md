@@ -43,7 +43,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 var assetId = 'aQjlzShmrnEZeeYBZihc';
 var receivingDevice = {
     id: 'dv3htgvK7hjnKx3617Re'
-}
+};
 
 ctnApiClient.transferAsset(assetId, 54.25, receivingDevice,
     function (err, data) {
@@ -70,7 +70,7 @@ var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
 var assetId = 'aQjlzShmrnEZeeYBZihc';
 var receivingDevice = {
     id: 'dv3htgvK7hjnKx3617Re'
-}
+};
 
 ctnApiClient.transferAsset(assetId, 54.25, receivingDevice,
     function (err, data) {
