@@ -24,15 +24,155 @@ curl "http://localhost:3000/api/0.11/assets/aH2AkrrL55GcThhPNa3J/export/ethereum
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'aH2AkrrL55GcThhPNa3J';
+var foreignBlockchain = 'ethereum';
+
+ctnApiClient.assetExportOutcome(assetId, foreignBlockchain, function(error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.status === 'success') {
+            // Asset successfully exported
+            console.log('Foreign token ID (address):', data.token.id);
+        }
+        else if (data.status === 'pending') {
+            // Final asset export state not yet reached
+        }
+        else {
+            // Asset export has failed. Process error
+            console.error('Error executing foreign blockchain transaction:', data.foreignTransaction.error);
+        }
+    }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'aH2AkrrL55GcThhPNa3J';
+var foreignBlockchain = 'ethereum';
+
+ctnApiClient.assetExportOutcome(assetId, foreignBlockchain, function(error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.status === 'success') {
+            // Asset successfully exported
+            console.log('Foreign token ID (address):', data.token.id);
+        }
+        else if (data.status === 'pending') {
+            // Final asset export state not yet reached
+        }
+        else {
+            // Asset export has failed. Process error
+            console.error('Error executing foreign blockchain transaction:', data.foreignTransaction.error);
+        }
+    }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aH2AkrrL55GcThhPNa3J';
+$foreignBlockchain = 'ethereum';
+
+try {
+    $data = $ctnApiClient->assetExportOutcome($assetId, $foreignBlockchain);
+
+    // Process returned data
+    if ($data->status === 'success') {
+        // Asset successfully exported
+        echo 'Foreign token ID (address): ' . $data->token->id . PHP_EOL;
+    } elseif ($data->status === 'pending') {
+        // Final asset export state not yet reached
+    } else {
+        // Asset export has failed. Process error
+        echo 'Error executing foreign blockchain transaction: ' . $data->foreignTransaction->error . PHP_EOL;
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let asset_id = "aH2AkrrL55GcThhPNa3J";
+
+    let result = ctn_client.asset_export_outcome(
+        asset_id,
+        ForeignBlockchain::Ethereum,
+    )?;
+
+    match result.status {
+        AssetExportStatus::Success => {
+            // Asset successfully exported
+            println!("Foreign token ID (address): {}", result.token.id.unwrap());
+        },
+        AssetExportStatus::Pending => {
+            // Final asset export state not yet reached
+        },
+        AssetExportStatus::Error => {
+            // Asset export has failed. Process error
+            println!(
+                "Error executing foreign blockchain transaction: {}",
+                result.foreign_transaction.error.unwrap()
+            );
+        },
+    }
+
+    Ok(())
+}
 ```
 
 ### Accessibility

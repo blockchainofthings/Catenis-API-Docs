@@ -5,7 +5,7 @@ Retrieves a list of issued asset exports that satisfy a given search criteria.
 > Sample request:
 
 ```http--raw
-GET /api/0.11/assets/exported?status=success,error&startDate=2021-08-01 HTTP/1.1
+GET /api/0.11/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0 HTTP/1.1
 X-BCoT-Timestamp: 20210811T115512Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=34abef10e2e75e8a3c2f66f1b40d50a2cb2e6f88ff7baff8e8fbd983a29d1c4b
 Host: localhost:3000
@@ -14,21 +14,152 @@ User-Agent: Paw/3.2.3 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.11/assets/exported?status=success,error&startDate=2021-08-01" \
+curl "http://localhost:3000/api/0.11/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0" \
      -H 'X-BCoT-Timestamp: 20210811T115534Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=258e511f7272407ba344922c0d68a63388018e70bcc2885acf343c415f0caf36'
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+ctnApiClient.listExportedAssets({
+    foreignBlockchain: 'ethereum',
+    status: 'success',
+    startDate: new Date('2021-08-01')
+}, 200, 0, function (error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.exportedAssets.length > 0) {
+            console.log('Returned asset exports:', data.exportedAssets);
+            
+            if (data.hasMore) {
+                console.log('Not all asset exports have been returned');
+            }
+        }
+    }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+ctnApiClient.listExportedAssets({
+    foreignBlockchain: 'ethereum',
+    status: 'success',
+    startDate: new Date('2021-08-01')
+}, 200, 0, function (error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.exportedAssets.length > 0) {
+            console.log('Returned asset exports:', data.exportedAssets);
+            
+            if (data.hasMore) {
+                console.log('Not all asset exports have been returned');
+            }
+        }
+    }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+try {
+    $data = $ctnApiClient->listExportedAssets([
+        'foreignBlockchain' => 'ethereum',
+        'status' => 'success',
+        'startDate' => new \DateTime('20210801T000000Z')
+    ], 200, 0);
+
+    // Process returned data
+    if (count($data->exportedAssets) > 0) {
+        echo 'Returned asset exports: ' . print_r($data->exportedAssets, true);
+        
+        if ($data->hasMore) {
+            echo 'Not all asset exports have been returned' . PHP_EOL;
+        }
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let result = ctn_client.list_exported_assets(
+        Some(ListExportedAssetsOptions {
+            asset_id: None,
+            foreign_blockchain: Some(ForeignBlockchain::Ethereum),
+            token_symbol: None,
+            status: Some(vec![AssetExportStatus::Success]),
+            negate_status: None,
+            start_date: Some("2021-08-01T00:00:00Z".into()),
+            end_date: None,
+            limit: Some(200),
+            skip: Some(0),
+        }),
+    )?;
+  
+    if result.exported_assets.len() > 0 {
+        println!("Returned asset exports: {:?}", result.exported_assets);
+    
+        if result.has_more {
+            println!("Not all asset exports have been returned");
+        }
+    }
+
+    Ok(())
+}
 ```
 
 ### Accessibility

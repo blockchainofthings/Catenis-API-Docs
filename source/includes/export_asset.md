@@ -41,15 +41,134 @@ curl -X "POST" "http://localhost:3000/api/0.11/assets/aH2AkrrL55GcThhPNa3J/expor
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'aH2AkrrL55GcThhPNa3J';
+var foreignBlockchain = 'ethereum';
+
+ctnApiClient.exportAsset(assetId, foreignBlockchain, {
+    name: 'Catenis test token #10',
+    symbol: 'CTK10'
+}, function (error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        console.log('Pending asset export:', data);
+        
+        // Start polling for asset export outcome
+    }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'aH2AkrrL55GcThhPNa3J';
+var foreignBlockchain = 'ethereum';
+
+ctnApiClient.exportAsset(assetId, foreignBlockchain, {
+    name: 'Catenis test token #10',
+    symbol: 'CTK10'
+}, function (error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        console.log('Pending asset export:', data);
+        
+        // Start polling for asset export outcome
+    }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'aH2AkrrL55GcThhPNa3J';
+$foreignBlockchain = 'ethereum';
+
+try {
+    $data = $ctnApiClient->exportAsset($assetId, $foreignBlockchain, [
+        'name' => 'Catenis test token #10',
+        'symbol' => 'CTK10'
+    ]);
+
+    // Process returned data
+    echo 'Pending asset export: ' . print_r($data, true);
+    
+    // Start polling for asset export outcome
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let asset_id = "aH2AkrrL55GcThhPNa3J";
+
+    let result = ctn_client.export_asset(
+        asset_id,
+        ForeignBlockchain::Ethereum,
+        NewForeignTokenInfo {
+            name: String::from("Catenis test token #10"),
+            symbol: String::from("CTK10"),
+        },
+        None,
+    )?;
+
+    println!("Pending asset export: {:?}", result);
+
+    // Start polling for asset export outcome
+
+    Ok(())
+}
 ```
 
 ### Accessibility

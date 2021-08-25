@@ -24,15 +24,172 @@ curl "http://localhost:3000/api/0.11/assets/migrations/gq8x3efLpEXTkGQchHTb" \
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var migrationId = 'gq8x3efLpEXTkGQchHTb';
+
+ctnApiClient.assetMigrationOutcome(migrationId, function(error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.status === 'success') {
+            // Asset amount successfully migrated
+            console.log('Asset amount successfully migrated');
+        }
+        else if (data.status === 'pending') {
+            // Final asset migration state not yet reached
+        }
+        else {
+            // Asset migration has failed. Process error
+            if (data.catenisService.error) {
+                console.error('Error executing Catenis service:', data.catenisService.error);
+            }
+            
+            if (data.foreignTransaction.error) {
+                console.error('Error executing foreign blockchain transaction:', data.foreignTransaction.error);
+            }
+        }
+    }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var migrationId = 'gq8x3efLpEXTkGQchHTb';
+
+ctnApiClient.assetMigrationOutcome(migrationId, function(error, data) {
+    if (error) {
+        // Process error
+    }
+    else {
+        // Process returned data
+        if (data.status === 'success') {
+            // Asset amount successfully migrated
+            console.log('Asset amount successfully migrated');
+        }
+        else if (data.status === 'pending') {
+            // Final asset migration state not yet reached
+        }
+        else {
+            // Asset migration has failed. Process error
+            if (data.catenisService.error) {
+                console.error('Error executing Catenis service:', data.catenisService.error);
+            }
+            
+            if (data.foreignTransaction.error) {
+                console.error('Error executing foreign blockchain transaction:', data.foreignTransaction.error);
+            }
+        }
+    }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$migrationId = 'gq8x3efLpEXTkGQchHTb';
+
+try {
+    $data = $ctnApiClient->assetMigrationOutcome($migrationId);
+
+    // Process returned data
+    if ($data->status === 'success') {
+        // Asset amount successfully migrated
+        echo 'Asset amount successfully migrated' . PHP_EOL;
+    } elseif ($data->status === 'pending') {
+        // Final asset migration state not yet reached
+    } else {
+        // Asset migration has failed. Process error
+        if (isset($data->catenisService->error)) {
+            echo 'Error executing Catenis service: ' . $data->catenisService->error . PHP_EOL;
+        }
+
+        if (isset($data->foreignTransaction->error)) {
+            echo 'Error executing foreign blockchain transaction: ' . $data->foreignTransaction->error . PHP_EOL;
+        }
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let migration_id = "gq8x3efLpEXTkGQchHTb";
+
+    let result = ctn_client.asset_migration_outcome(
+        migration_id,
+    )?;
+  
+    match result.status {
+        AssetMigrationStatus::Success => {
+            // Asset amount successfully migrated
+            println!("Asset amount successfully migrated");
+        },
+        AssetMigrationStatus::Pending => {
+            // Final asset migration state not yet reached
+        },
+        _ => {
+            // Asset migration has failed. Process error
+            if let Some(error) = result.catenis_service.error {
+                println!("Error executing Catenis service: {}", error);
+            }
+      
+            if let Some(error) = result.foreign_transaction.error {
+                println!("Error executing foreign blockchain transaction: {}", error);
+            }
+        },
+    }
+
+    Ok(())
+}
 ```
 
 ### Accessibility
