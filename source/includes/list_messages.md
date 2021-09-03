@@ -219,7 +219,7 @@ A JSON containing the following properties:
 <aside class="notice">
 The returned <code>msgCount</code> field does not always match the number of message information entries returned. This
 is due to the fact that, in the rare cases where the virtual device issuing the request had sent messages to itself, if such
-messages are included in the returned result set and the search criteria allows for both inbound and outbond sent messages
+messages are included in the returned result set and the search criteria allows for both inbound and outbound sent messages
 to be returned, there will be two entries for each of those messages: one in which the message appears as an outbound
 message, and another where the message appears as an inbound message.
 </aside>
