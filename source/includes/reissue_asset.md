@@ -172,7 +172,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_3">Amount to issue is too large</a><br><a href="#error_msg_7">Asset cannot be reissued</a><br><a href="#error_msg_80">Device is deleted</a><br><a href="#error_msg_90">Device is not active</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_115">Invalid holding device</a><br><a href="#error_msg_130">Invalid parameters</a><br><a href="#error_msg_155">Not enough credits to pay for issue asset service</a> |
+| 400 | <a href="#error_msg_3">Amount to issue is too large</a><br><a href="#error_msg_7">Asset cannot be reissued</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_115">Invalid holding device</a><br><a href="#error_msg_130">Invalid parameters</a><br><a href="#error_msg_155">Not enough credits to pay for issue asset service</a> |
 | 403 | <a href="#error_msg_185">No permission to reissue asset</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |
