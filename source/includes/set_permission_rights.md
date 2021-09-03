@@ -194,7 +194,7 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`success` | String | The value **`true`** indicating that the permission rights have been correctly set. |
+| &nbsp;&nbsp;`success` | Boolean | The value **`true`** indicating that the permission rights have been correctly set. |
 
 ### Possible errors
 
