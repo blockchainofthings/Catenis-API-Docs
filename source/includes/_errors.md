@@ -44,14 +44,12 @@ The following is a comprehensive list of the error messages returned by the Cate
 | Error&nbsp;message | Explanation |
 | ----------- | ------- |
 | <span id="error_msg_10">Authorization failed; authorization value not well formed</span> | Request could not be authorized because the contents of the Authorization HTTP header is not as expected. |
-| <span id="error_msg_20">Authorization failed; invalid device or signature</span> | Request could not be authorized because the device ID and/or the signature included in the credentials (Authorization header contents) are not valid. |
+| <span id="error_msg_20">Authorization failed; invalid device or signature</span> | Request could not be authorized because the device ID and/or the signature included in the credentials (Authorization header contents) are not valid. Note that a deleted or inactive device will trigger this error. |
 | <span id="error_msg_30">Authorization failed; missing required HTTP headers</span> | Request could not be authorized because one or more of the required HTTP headers are missing. |
 | <span id="error_msg_40">Authorization failed; signature date not well formed</span> | Request could not be authorized because the format of the date included in the credentials (Authorization header contents) is not correct. |
 | <span id="error_msg_50">Authorization failed; signature date out of bounds</span> | Request could not be authorized because the date included in the credentials (Authorization header contents) is not within 7 days of the current date. |
 | <span id="error_msg_60">Authorization failed; timestamp not well formed</span> | Request could not be authorized because the contents of the X-BCoT-Timestamp HTTP header is not a valid timestamp or it is not in the correct format. |
 | <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis Enterprise server time. |
-| <span id="error_msg_80">Device is deleted</span> | Virtual device no longer exists as it has been deleted. |
-| <span id="error_msg_90">Device is not active</span> | Virtual device is not yet ready to be used. |
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis Enterprise from correctly processing the request. |
 | <span id="error_msg_110">Invalid device</span> | The ID (either the device ID or the product unique ID) for the specified virtual device is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
