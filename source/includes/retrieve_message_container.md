@@ -156,7 +156,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_80">Device is deleted<br><a href="#error_msg_90">Device is not active<br><a href="#error_msg_120">Invalid message ID<br><a href="#error_msg_130">Invalid parameters |
+| 400 | <a href="#error_msg_120">Invalid message ID<br><a href="#error_msg_130">Invalid parameters |
 | 403 | <a href="#error_msg_200">No permission to retrieve message container |
 | 500 | <a href="#error_msg_100">Internal server error |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time |

@@ -237,6 +237,6 @@ It is always a good practice to revise the search creteria in order to restrict 
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_80">Device is deleted<br><a href="#error_msg_90">Device is not active<br><a href="#error_msg_130">Invalid parameters |
+| 400 | <a href="#error_msg_130">Invalid parameters |
 | 500 | <a href="#error_msg_100">Internal server error |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time |
