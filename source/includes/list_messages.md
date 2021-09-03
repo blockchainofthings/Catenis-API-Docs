@@ -255,7 +255,7 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`messages` | Array(Object) | The returned list of message information entries including the messages that satisfies the search criteria. The list is sorted in ascending order in regard to the returned `date` field.  |
+| &nbsp;&nbsp;`messages` | Array(Object) | The returned list of message information entries including the messages that satisfy the search criteria. The list is sorted in ascending order in regard to the returned `date` field.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;`messageId` | String | The ID of the message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`action` | String | Action originally performed on the message. Possible values: `log`, `send`. The value `log` indicates that this is a logged message, and the value `send` indicates that this is a sent message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`direction` | String | *(only returned for sent messages)* The direction of the sent message. Possible values: `inbound`, `outbound`. The value `inbound` indicates that this is a message received by the virtual device issuing the request, and the value `outbound` indicates that this is a message sent by the device issuing the request. |
