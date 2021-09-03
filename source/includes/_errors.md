@@ -57,7 +57,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_95">Insufficient balance to transfer asset</span> | Virtual device does not currently hold enough units of the asset to fulfill the transfer. |
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis Enterprise from correctly processing the request. |
 | <span id="error_msg_105">Invalid asset ID</span> | The supplied asset ID is invalid or no asset with that ID could be found. |
-| <span id="error_msg_110">Invalid device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued assets is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_110">Invalid device</span> | The supplied ID is not a valid device ID or product unique ID, or there is no virtual device with that ID. |
 | <span id="error_msg_115">Invalid holding device</span> | The ID (either the device ID or the product unique ID) for the virtual device to hold the issued asset amount is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
 | <span id="error_msg_125">Invalid or unexpected continuation token</span> | The supplied ID is not a valid continuation token, or that is not the ID that Catenis Enterprise expects to continue processing the message. |
