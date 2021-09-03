@@ -51,7 +51,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_60">Authorization failed; timestamp not well formed</span> | Request could not be authorized because the contents of the X-BCoT-Timestamp HTTP header is not a valid timestamp or it is not in the correct format. |
 | <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis Enterprise server time. |
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis Enterprise from correctly processing the request. |
-| <span id="error_msg_110">Invalid device</span> | The ID (either the device ID or the product unique ID) for the specified virtual device is not valid or there is no virtual device with that ID. |
+| <span id="error_msg_110">Invalid device</span> | The supplied ID is not a valid device ID or product unique ID, or there is no virtual device with that ID. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
 | <span id="error_msg_130">Invalid parameters</span> | One or more of the parameters are not well formed or required parameter is missing. |
 | <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the message is not valid or there is no virtual device with that ID. |
