@@ -52,16 +52,16 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_70">Authorization failed; timestamp not within acceptable time variation</span> | Request could not be authorized because its timestamp (X-BCoT-Timestamp header contents) is not within +/-5 minutes of the current Catenis Enterprise server time. |
 | <span id="error_msg_100">Internal server error</span> | An unexpected situation prevented Catenis Enterprise from correctly processing the request. |
 | <span id="error_msg_110">Invalid device</span> | The supplied ID is not a valid device ID or product unique ID, or there is no virtual device with that ID. |
+| <span id="error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i></span> | One or more of the supplied entity IDs (Catenis Node index, client ID, device ID, or product unique ID) are not valid or there are no entities (Catenis Node, client, or virtual device) with those IDs. |
 | <span id="error_msg_120">Invalid message ID</span> | The supplied message ID is invalid or no message with that ID could be found. |
 | <span id="error_msg_130">Invalid parameters</span> | One or more of the parameters are not well formed or required parameter is missing. |
 | <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) for the virtual device to receive the message is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_150">Message too long to be embedded</span> | Request specified that message should be stored embedded in the blockchain transaction but it is too large (over 75 bytes unencrypted or 64 bytes encrypted) to fit in. |
-| <span id="error_msg_160">Not enough credits to pay for log message service</span> | The client service account balance is too low to cover the log message service's expense. |
-| <span id="error_msg_170">Not enough credits to pay for send message service</span> | The client service account balance is too low to cover the send message service's expense. |
 | <span id="error_msg_180">No permission to read message</span> | Virtual device has no permission to read the requested message. |
 | <span id="error_msg_190">No permission to retrieve info</span> | Virtual device has no permission to retrieve information about the requested device. |
 | <span id="error_msg_200">No permission to retrieve message container</span> | Virtual device attempting to retrieve the message container information is not the device who sent/logged the message. |
-| <span id="error_msg_210">Invalid entity ID: <i>[ctnNodeIdx: …][; clientId: …][; deviceId: …][; prodUniqueId: …]</i></span> | One or more of the supplied entity IDs (Catenis Node index, client ID, device ID, or product unique ID) are not valid or there are no entities (Catenis Node, client, or virtual device) with those IDs. |
+| <span id="error_msg_160">Not enough credits to pay for log message service</span> | The client service account balance is too low to cover the log message service's expense. |
+| <span id="error_msg_170">Not enough credits to pay for send message service</span> | The client service account balance is too low to cover the send message service's expense. |
 | <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis Enterprise is not currently ready to process requests. |
 
 <aside class="notice">
