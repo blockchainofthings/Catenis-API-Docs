@@ -154,7 +154,7 @@ A JSON containing the following properties:
 | -------- | ---- | ----------- |
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
-| &nbsp;&nbsp;`messages` | Array(Object) | The returned list of message information entries including the messages that satisfies the search criteria. The list is sorted in ascending order in regard to the returned `date` field.  |
+| &nbsp;&nbsp;`messages` | Array(Object) | The returned list of message information entries including the messages that satisfy the search criteria. The list is sorted in ascending order in regard to the returned `date` field.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;`messageId` | String | The ID of the message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`action` | String | Action originally performed on the message. Possible values: `log`, `send`. The value `log` indicates that this is a logged message, and the value `send` indicates that this is a sent message. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`direction` | String | *(only returned for sent messages)* The direction of the sent message. Possible values: `inbound`, `outbound`. The value `inbound` indicates that this is a message received by the virtual device issuing the request, and the value `outbound` indicates that this is a message sent by the device issuing the request. |
@@ -170,7 +170,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`read` | Boolean | *(not returned for outbound sent messages sent with read confirmation not enabled)* Indicates whether the message had already been read. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`date` | String | ISO 8601 formatted date and time when the message had been: logged, for logged message; sent, for outbound sent message; and received, for inbound sent message. |
 | &nbsp;&nbsp;`msgCount` | Number | Number of messages for which information was returned. |
-| &nbsp;&nbsp;`countExceeded` | Boolean | Indicates whether the number of messages that satisfies the search criteria exceeded the maximum allowed number of returned messages, and thus the returned result set had been truncated. |
+| &nbsp;&nbsp;`countExceeded` | Boolean | Indicates whether the number of messages that satisfy the search criteria exceeded the maximum allowed number of returned messages, and thus the returned result set had been truncated. |
 
 <aside class="notice">
 The returned <code>msgCount</code> field does not always match the number of message information entries returned. This
