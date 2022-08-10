@@ -52,4 +52,10 @@ includes:
 - errors
 
 search: true
+
+code_clipboard: true
+
+meta:
+  - name: description
+    content: Catenis API documentation
 ---
