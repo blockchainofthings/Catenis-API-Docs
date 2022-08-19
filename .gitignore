@@ -24,3 +24,6 @@ doc/
 .idea/
 
 deploy/
+
+# Vagrant artifacts
+ubuntu-*-console.log
