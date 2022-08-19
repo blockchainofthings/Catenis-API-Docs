@@ -12,7 +12,7 @@ For more information about Catenis permission rights, please refer to the <a hre
 > Sample request:
 
 ```http--raw
-GET /api/0.11/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re HTTP/1.1
+GET /api/0.12/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re HTTP/1.1
 X-BCoT-Timestamp: 20180219T104640Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=0753e60d70a02448386d6485ab6d7ca34b1faa851bf71b6219256ae5059dfa09
 Host: sandbox.catenis.io
@@ -21,7 +21,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.3) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.11/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re" \
+curl "https://sandbox.catenis.io/api/0.12/permission/events/receive-msg/rights/dv3htgvK7hjnKx3617Re" \
      -H 'X-BCoT-Timestamp: 20180219T104602Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180219/ctn1_request, Signature=521537ae60e0cc6099c459220702aad51d68c7c6d82328d6df3d3dc122de8683'
 ```

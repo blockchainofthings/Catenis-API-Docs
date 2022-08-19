@@ -65,6 +65,8 @@ The following permission events are currently defined:
 | `disclose-identity-info` | Disclose device's basic identification information to a device |
 | `receive-asset-of` | Receive an amount of an asset issued by a device |
 | `receive-asset-from` | Receive an amount of an asset from a device |
+| `receive-nf-token-of` | Receive a non-fungible token issued by a device |
+| `receive-nf-token-from` | Receive a non-fungible token from a device |
 
 <aside class="notice">
 The list of all system defined permission events can be programmatically retrieved by means of the <a href="#list-permission-events">List Permission Events</a> API method.

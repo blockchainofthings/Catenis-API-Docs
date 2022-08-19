@@ -1,6 +1,6 @@
 # API methods
 
-The following is a comprehensive list of the methods that comprise the Catenis API ver. 0.11.
+The following is a comprehensive list of the methods that comprise the Catenis API ver. 0.12.
 
 - Message methods
   - [Log Message](#log-message)
@@ -20,6 +20,14 @@ The following is a comprehensive list of the methods that comprise the Catenis A
   - [List Issued Assets](#list-issued-assets)
   - [Retrieve Asset Issuance History](#retrieve-asset-issuance-history)
   - [List Asset Holders](#list-asset-holders)
+- Non-fungible asset methods
+  - [Issue Non-Fungible Asset](#issue-non-fungible-asset)
+  - [Reissue Non-Fungible Asset](#reissue-non-fungible-asset)
+  - [Retrieve Non-Fungile Asset Issuance Progress](#retrieve-non-fungible-asset-issuance-progress)
+  - [Retrieve Non-Fungible Token](#retrieve-non-fungible-token)
+  - [Retrieve Non-Fungible Token Retrieval Progress](#retrieve-non-fungible-token-retrieval-progress)
+  - [Transfer Non-Fungible Token](#transfer-non-fungible-token)
+  - [Retrieve Non-Fungible Token Transfer Progress](#retrieve-non-fungible-token-transfer-progress)
 - Asset export methods
   - [Export Asset](#export-asset)
   - [Migrate Asset](#migrate-asset)

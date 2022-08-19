@@ -10,7 +10,7 @@ can retrieve information about that asset.
 > Sample request:
 
 ```http--raw
-GET /api/0.11/assets/aQjlzShmrnEZeeYBZihc HTTP/1.1
+GET /api/0.12/assets/aQjlzShmrnEZeeYBZihc HTTP/1.1
 X-BCoT-Timestamp: 20180417T143840Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=d73532614d4e46fb4e9be59255a660b540a122322aa7800fcb8a0ea4c3a0e40a
 Host: sandbox.catenis.io
@@ -19,7 +19,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.11/assets/aQjlzShmrnEZeeYBZihc" \
+curl "https://sandbox.catenis.io/api/0.12/assets/aQjlzShmrnEZeeYBZihc" \
      -H 'X-BCoT-Timestamp: 20180417T143900Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=b6501dab96c6838807817c63d9e75f5020806c5a4a0075558a7ff3477b468a1a'
 ```
@@ -157,6 +157,7 @@ GET /assets/`:assetId`
     "assetId": "aQjlzShmrnEZeeYBZihc",
     "name": "XYZ001",
     "description": "Testing asset #1",
+    "isNonFungible": false,
     "canReissue": true,
     "decimalPlaces": 2,
     "issuer": {
@@ -180,6 +181,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`assetId` | String | The ID of the asset. |
 | &nbsp;&nbsp;`name` | String | The name of the asset. |
 | &nbsp;&nbsp;`description` | String | The description of the asset. |
+| &nbsp;&nbsp;`isNonFungible` | Boolean | Indicates whether this is a non-fungible asset. |
 | &nbsp;&nbsp;`canReissue` | Boolean | Indicates whether more units of this asset can be issued. |
 | &nbsp;&nbsp;`decimalPlaces` | Number | The maximum number of decimal places that can be used to specify a fractional amount of this asset. |
 | &nbsp;&nbsp;`issuer` | Object | The virtual device that originally issued this asset — the *issuing device*. |

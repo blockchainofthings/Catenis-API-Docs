@@ -5,7 +5,7 @@ Retrieves a list of assets that have been issued by the device.
 > Sample request:
 
 ```http--raw
-GET /api/0.11/assets/issued?limit=200 HTTP/1.1
+GET /api/0.12/assets/issued?limit=200 HTTP/1.1
 X-BCoT-Timestamp: 20180417T193403Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=ba41de81d939995b7cf76c03a4bc5861bf2176b7622348648c64fbb6f38dbc3a
 Host: sandbox.catenis.io
@@ -14,7 +14,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.11/assets/issued?limit=200" \
+curl "https://sandbox.catenis.io/api/0.12/assets/issued?limit=200" \
      -H 'X-BCoT-Timestamp: 20180417T193421Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=eb1e37742272ef732dae3d85cd0d75b32731b6d85d20d501d7969d55ca998849'
 ```

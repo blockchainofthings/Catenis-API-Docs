@@ -15,7 +15,7 @@ This method requires that an amount of the foreign blockchain's native coin be s
 > Sample request:
 
 ```http--raw
-POST /api/0.11/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
+POST /api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
 X-BCoT-Timestamp: 20210809T144134Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210809/ctn1_request, Signature=87ed19ecefc670d61d4d85c0da80b608fc102a060e45c3d5caa5057eefc33d13
 Content-Type: application/json; charset=utf-8
@@ -28,7 +28,7 @@ Content-Length: 60
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.11/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
+curl -X "POST" "http://localhost:3000/api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
      -H 'X-BCoT-Timestamp: 20210809T144203Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210809/ctn1_request, Signature=989280734b7ebf40057ec305d02af8d2d899f78cddcfca1ff4d30c652a3b8dc6' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -269,7 +269,7 @@ Note that the estimated price is <b>volatile</b>, and it will vary depending on 
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_6">Asset already exported</a><br><a href="#error_msg_80">Discarded concurrent foreign token smart contract call</a><br><a href="#error_msg_90">Foreign blockchain funds not enough to cover transaction execution price (<i>&lt;value&gt;</i>)</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_230">Unexpected error calling foreign token smart contract</a> |
+| 400 | <a href="#error_msg_6">Asset already exported</a><br><a href="#error_msg_80">Discarded concurrent foreign token smart contract call</a><br><a href="#error_msg_90">Foreign blockchain funds not enough to cover transaction execution price (<i>&lt;value&gt;</i>)</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_240">Not a regular (fungible) asset</a><br><a href="#error_msg_230">Unexpected error calling foreign token smart contract</a> |
 | 403 | <a href="#error_msg_176">No permission to export asset</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

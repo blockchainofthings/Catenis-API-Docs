@@ -9,7 +9,7 @@ Only the virtual device that issued the asset export can retrieve information ab
 > Sample request:
 
 ```http--raw
-GET /api/0.11/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
+GET /api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
 X-BCoT-Timestamp: 20210810T195125Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=2d30b89906b459b0ebc5c5df6bf12b862b59851530a636c11320d2fd89c5614e
 Host: localhost:3000
@@ -18,7 +18,7 @@ User-Agent: Paw/3.2.3 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.11/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
+curl "http://localhost:3000/api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
      -H 'X-BCoT-Timestamp: 20210810T195231Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=3fc5a2654f845c15b0fa731094e9ac8b7f0aa1b2f657580c162985e31d3b5438'
 ```
@@ -239,7 +239,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_8">Asset is not yet exported</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a> |
+| 400 | <a href="#error_msg_8">Asset is not yet exported</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_240">Not a regular (fungible) asset</a> |
 | 403 | <a href="#error_msg_186">No permission to retrieve asset export outcome</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

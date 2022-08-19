@@ -25,7 +25,7 @@ This method requires that an amount of the foreign blockchain's native coin be s
 > Sample request:
 
 ```http--raw
-POST /api/0.11/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum HTTP/1.1
+POST /api/0.12/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum HTTP/1.1
 X-BCoT-Timestamp: 20210810T121125Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=e0493fed7f758c444bc29be683723165e255df40549ecc60d292d5745e1dcb68
 Content-Type: application/json; charset=utf-8
@@ -38,7 +38,7 @@ Content-Length: 108
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.11/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum" \
+curl -X "POST" "http://localhost:3000/api/0.12/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum" \
      -H 'X-BCoT-Timestamp: 20210809T203625Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210809/ctn1_request, Signature=a94d8ed1df52dfd21959f3a04436bdc68f47ea41685cd7f20fbf126f6fec63df' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -292,7 +292,7 @@ Note that the estimated price is <b>volatile</b>, and it will vary depending on 
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_4">Amount to migrate is too large</a><br><a href="#error_msg_8">Asset is not yet exported</a><br><a href="#error_msg_9">Asset migration already successfully processed</a><br><a href="#error_msg_80">Discarded concurrent foreign token smart contract call</a><br><a href="#error_msg_90">Foreign blockchain funds not enough to cover transaction execution price (<i>&lt;value&gt;</i>)</a><br><a href="#error_msg_91">Foreign token balance too low to in-migrate the asset amount</a><br><a href="#error_msg_93">Insufficient balance to out-migrate asset</a><br><a href="#error_msg_97">Insufficient migrated asset amount to in-migrate asset</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_107">Invalid asset migration ID</a><br><a href="#error_msg_113">Invalid foreign blockchain destination address</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_153">Mismatched asset migration</a><br><a href="#error_msg_165">Not enough credits to pay for migrate asset service</a><br><a href="#error_msg_230">Unexpected error calling foreign token smart contract</a> |
+| 400 | <a href="#error_msg_4">Amount to migrate is too large</a><br><a href="#error_msg_8">Asset is not yet exported</a><br><a href="#error_msg_9">Asset migration already successfully processed</a><br><a href="#error_msg_80">Discarded concurrent foreign token smart contract call</a><br><a href="#error_msg_90">Foreign blockchain funds not enough to cover transaction execution price (<i>&lt;value&gt;</i>)</a><br><a href="#error_msg_91">Foreign token balance too low to in-migrate the asset amount</a><br><a href="#error_msg_93">Insufficient balance to out-migrate asset</a><br><a href="#error_msg_97">Insufficient migrated asset amount to in-migrate asset</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_107">Invalid asset migration ID</a><br><a href="#error_msg_113">Invalid foreign blockchain destination address</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_153">Mismatched asset migration</a><br><a href="#error_msg_240">Not a regular (fungible) asset</a><br><a href="#error_msg_165">Not enough credits to pay for migrate asset service</a><br><a href="#error_msg_230">Unexpected error calling foreign token smart contract</a> |
 | 403 | <a href="#error_msg_178">No permission to migrate asset</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

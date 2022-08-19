@@ -10,7 +10,7 @@ the asset had been created with the <code>canReissue</code> property set.
 > Sample request:
 
 ```http--raw
-POST /api/0.11/assets/aQjlzShmrnEZeeYBZihc/issue/ HTTP/1.1
+POST /api/0.12/assets/aQjlzShmrnEZeeYBZihc/issue/ HTTP/1.1
 X-BCoT-Timestamp: 20180417T004201Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=71d61d674882e0bcfadcda962cf3393b300af6f0cbbc5fb211f1f33d5bbd8b3a
 Content-Type: application/json; charset=utf-8
@@ -23,7 +23,7 @@ Content-Length: 60
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.11/assets/aQjlzShmrnEZeeYBZihc/issue/" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.12/assets/aQjlzShmrnEZeeYBZihc/issue/" \
      -H 'X-BCoT-Timestamp: 20180417T004241Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=bfed2a3062c5ee48623ff863d5bc5bedee85189303617be7b01b080c8d9ca950' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -216,7 +216,7 @@ A JSON containing the following properties:
 
 | Status&nbsp;code | Error&nbsp;message |
 | ----------- | ------------- |
-| 400 | <a href="#error_msg_3">Amount to issue is too large</a><br><a href="#error_msg_7">Asset cannot be reissued</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_115">Invalid holding device</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_155">Not enough credits to pay for issue asset service</a> |
+| 400 | <a href="#error_msg_3">Amount to issue is too large</a><br><a href="#error_msg_7">Asset cannot be reissued</a><br><a href="#error_msg_105">Invalid asset ID</a><br><a href="#error_msg_115">Invalid holding device</a><br><a href="#error_msg_130">Invalid parameters: <i>&lt;param_list&gt;</i></a><br><a href="#error_msg_240">Not a regular (fungible) asset</a><br><a href="#error_msg_155">Not enough credits to pay for issue asset service</a> |
 | 403 | <a href="#error_msg_185">No permission to reissue asset</a> |
 | 500 | <a href="#error_msg_100">Internal server error</a> |
 | 503 | <a href="#error_msg_220">System currently not available; please try again at a later time</a> |

@@ -9,13 +9,18 @@ The following notification events are currently defined:
 
 | Event name | Description |
 | ---------- | ----------- |
-| `new-msg-received` | A new message has been received |
-| `sent-msg-read` | Previously sent message has been read by intended receiver (target device) |
-| `asset-received` | An amount of an asset has been received |
-| `asset-confirmed` | An amount of an asset that was pending due to an asset transfer has been confirmed |
-| `final-msg-progress` | Progress of asynchronous message processing has come to an end |
-| `asset-export-outcome` | Asset export has been finalized |
-| `asset-migration-outcome` | Asset migration has been finalized |
+| [`new-msg-received`](#new-message-received-new-msg-received) | A new message has been received |
+| [`sent-msg-read`](#sent-message-read-sent-msg-read) | Previously sent message has been read by intended receiver (target device) |
+| [`asset-received`](#asset-amount-received-asset-received) | An amount of an asset has been received |
+| [`asset-confirmed`](#asset-amount-confirmed-asset-confirmed) | An amount of an asset that was pending due to an asset transfer has been confirmed |
+| [`final-msg-progress`](#final-progress-of-message-processing-final-msg-progress) | Progress of asynchronous message processing has come to an end |
+| [`asset-export-outcome`](#final-asset-export-outcome-asset-export-outcome) | Asset export has been finalized |
+| [`asset-migration-outcome`](#final-asset-migration-outcome-asset-migration-outcome) | Asset migration has been finalized |
+| [`nf-asset-issuance-outcome`](#final-non-fungible-asset-issuance-outcome-nf-asset-issuance-outcome) | Non-fungible asset issuance has been finalized |
+| [`nf-token-received`](#non-fungible-token-received-nf-token-received) | One or more non-fungible tokens have been received |
+| [`nf-token-confirmed`](#non-fungible-token-confirmed-nf-token-confirmed) | One or more non-fungible tokens that were pending due to a non-fungible token transfer has been confirmed |
+| [`nf-token-retrieval-outcome`](#final-non-fungible-token-retrieval-outcome-nf-token-retrieval-outcome) | Non-fungible token retrieval has been finalized |
+| [`nf-token-transfer-outcome`](#final-non-fungible-token-transfer-outcome-nf-token-transfer-outcome) | Non-fungible token transfer has been finalized |
 
 <aside class="notice">
 The list of all system defined notification events can be programmatically retrieved by means of the <a href="#list-notification-events">List Notification Events</a> API method.
@@ -299,6 +304,224 @@ A JSON containing the following properties:
 | `status` | String | The final state of the asset migration. One of: `interrupted`, `success`, or `error`. |
 | `date` | String | ISO 8601 formatted date and time when the asset amount has been migrated. |
 
+### Final non-fungible asset issuance outcome (nf-asset-issuance-outcome)
+
+> Sample notification message:
+
+```json
+{
+  "assetIssuanceId": "iAf6MpZLp6HTqJqX7iF5",
+  "progress": {
+    "percentProcessed": 100,
+    "done": true,
+    "success": true,
+    "finishDate": "2022-08-06T14:54:43.939Z"
+  },
+  "result": {
+    "assetId": "asBEmCgFFApxDKNxYuC3",
+    "nfTokenIds": [
+      "t4bicJiRWq5JsoqW893Y",
+      "tZZwesXfFRvgZNsCN8gF"
+    ]
+  }
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `assetIssuanceId` | String | The ID of the non-fungible asset issuance. |
+| `assetId` | String | *(only returned in case of re-issuance)* The ID of the non-fungible asset for which more non-fungible tokens are being issued. |
+| `progress` | Object | Final processing status. |
+| &nbsp;&nbsp;`percentProcessed` | Number | The percentage of the total processing that has been already completed. |
+| &nbsp;&nbsp;`done` | Boolean | *(should always be __`true`__)* Indicates that the processing has finished. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether the asset issuance has been successfully completed. |
+| &nbsp;&nbsp;`error` | Object | *(only returned in case of error)* Information about the error that took place while processing the asset issuance. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error. |
+| &nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when processing has been finalized. |
+| `result` | Object | *(only returned in case of success)* The result of the asset issuance. |
+| &nbsp;&nbsp;`assetId` | String | *(not returned in case of re-issuance)* The ID of the newly created Catenis non-fungible asset. |
+| &nbsp;&nbsp;`nfTokenIds` | Array(String) | List of the IDs of the newly issued non-fungible tokens. |
+
+<aside class="notice">
+This notification signals the end of an asynchronous issuance of a non-fungible asset. Use the ID returned in the
+ <code>assetIssuanceId</code> field to identify the non-fungible asset issuance.
+</aside>
+
+### Non-fungible token received (nf-token-received)
+
+> Sample notification message:
+
+```json
+{
+  "nfTokenIds": [
+    "tZZwesXfFRvgZNsCN8gF"
+  ],
+  "issuer": {
+    "deviceId": "dnN3Ea43bhMTHtTvpytS",
+    "name": "deviceB",
+    "prodUniqueId": "XYZABC001"
+  },
+  "from": {
+    "deviceId": "dv3htgvK7hjnKx3617Re",
+    "name": "Catenis device #1"
+  },
+  "receivedDate": "2022-08-10T12:50:43.834Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `nfTokenIds` | Array(String) | List of the IDs of the non-fungible tokens that have been received. |
+| `issuer` | Object | Identifies the virtual device that issued the non-fungible tokens — the issuing device. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the issuing device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The name of the issuing device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the issuing device. |
+| `from` | Object | Identifies the virtual device that sent or assigned the non-fungible tokens — the *sending device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the sending device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The name of the sending device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the sending device. |
+| `receivedDate` | String | ISO 8601 formatted date and time when the non-fungible tokens have been received. |
+
+<aside class="notice">
+The event of a virtual device issuing non-fungible tokens of a non-fungible asset and assigning them to a different
+ virtual device can also trigger this notification.
+</aside>
+
+### Non-fungible token confirmed (nf-token-confirmed)
+
+> Sample notification message:
+
+```json
+{
+  "nfTokenIds": [
+    "tZZwesXfFRvgZNsCN8gF"
+  ],
+  "issuer": {
+    "deviceId": "dnN3Ea43bhMTHtTvpytS",
+    "name": "deviceB",
+    "prodUniqueId": "XYZABC001"
+  },
+  "from": {
+    "deviceId": "dv3htgvK7hjnKx3617Re",
+    "name": "Catenis device #1"
+  },
+  "confirmedDate": "2022-08-10T13:00:06.083Z"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `nfTokenIds` | Array(String) | List of the IDs of the non-fungible tokens that have been confirmed. |
+| `issuer` | Object | Identifies the virtual device that issued the non-fungible tokens — the issuing device. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the issuing device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The name of the issuing device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if issuing device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the issuing device. |
+| `from` | Object | Identifies the virtual device that sent or assigned the non-fungible tokens — the *sending device*. |
+| &nbsp;&nbsp;`deviceId` | String | The device ID of the sending device. |
+| &nbsp;&nbsp;`name` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The name of the sending device. |
+| &nbsp;&nbsp;`prodUniqueId` | String | *(only returned if sending device has this data, and the device receiving the notification has the necessary permission right)* The product unique ID of the sending device. |
+| `confirmedDate` | String | ISO 8601 formatted date and time when the non-fungible tokens have been confirmed. |
+
+<aside class="notice">
+A non-fungible asset issuance can also cause the issued non-fungible tokens to be pending. Thus the confirmation of such
+ pending non-fungible tokens can also trigger this notification.
+</aside>
+
+<aside class="notice">
+This notification can also be sent to the virtual device that initiated a non-fungible token transfer — the sending
+ device — in case that non-fungible tokens (held by the same unspent transaction output — UTXO) had to be sent back to
+ that device.
+</aside>
+
+### Final non-fungible token retrieval outcome (nf-token-retrieval-outcome)
+
+> Sample notification message:
+
+```json
+{
+  "nfTokenId": "t8uFtevcSysNJWQYykiZ",
+  "tokenRetrievalId": "rANdAbC4dkyuih49hE4B",
+  "progress": {
+    "bytesRetrieved": 397,
+    "done": true,
+    "success": true,
+    "finishDate": "2022-08-10T12:46:16.522Z"
+  },
+  "continuationToken": "e6cHx3AQ5ym94mp5G83s"
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `nfTokenId` | String | The ID of the non-fungible token being retrieved. |
+| `tokenRetrievalId` | String | The ID of the non-fungible token retrieval. |
+| `progress` | Object | Final processing status. |
+| &nbsp;&nbsp;`bytesRetrieved` | Number | Total number of bytes of non-fungible token data that have been retrieved. |
+| &nbsp;&nbsp;`done` | Boolean | *(should always be __`true`__)* Indicates that the data retrieval has been finalized. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether all the non-fungible token data has been successfully retrieved. |
+| &nbsp;&nbsp;`error` | Object | *(only returned in case of error)* Information about the error that took place while retrieving the non-fungible token data. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error. |
+| &nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when the data retrieval has been finalized. |
+| `continuationToken` | string | *(only returned in case of success)* The token that should be used to complete the retrieval of the non-fungible token. |
+
+<aside class="notice">
+This notification signals the end of an asynchronous retrieval of a non-fungible token. Use the ID returned in the
+ <code>tokenRetrievalId</code> field to identify the non-fungible token retrieval. Then, call the <a href="#retrieve-non-fungible-token">Retrieve Non-Fungible Token</a>
+ API method again passing the token returned in the <code>continuationToken</code> field.
+</aside>
+
+### Final non-fungible token transfer outcome (nf-token-transfer-outcome)
+
+> Sample notification message:
+
+```json
+{
+  "nfTokenId": "tZZwesXfFRvgZNsCN8gF",
+  "tokenTransferId": "x5ytgabGEnqme3N3GCLy",
+  "progress": {
+    "metadata": {
+      "bytesRead": 491,
+      "bytesWritten": 565
+    },
+    "done": true,
+    "success": true,
+    "finishDate": "2022-08-10T12:50:43.834Z"
+  }
+}
+```
+
+A JSON containing the following properties:
+
+| Property | Type | Description |
+| -------- | ---- | ----------- |
+| `nfTokenId` | String | The ID of the non-fungible token being transferred. |
+| `tokenTransferId` | String | The ID of the non-fungible token transfer. |
+| `progress` | Object | Final processing status. |
+| &nbsp;&nbsp;`dataManipulation` | Object | Progress of the non-fungible token data manipulation: reading and rewriting it after re-encryption (if required). |
+| &nbsp;&nbsp;&nbsp;&nbsp;`bytesRead` | Number | Number of bytes of non-fungible token data that have been read. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`bytesWritten` | Number | *(only returned if data needed to be re-encrypted)* Number of bytes of non-fungible token data that have been written. |
+| &nbsp;&nbsp;`done` | Boolean | *(should always be __`true`__)* Indicates that the non-fungible token transfer has been finalized. |
+| &nbsp;&nbsp;`success` | Boolean | Indicates whether the non-fungible token has been successfully transferred. |
+| &nbsp;&nbsp;`error` | Object | *(only returned in case of error)* Information about the error that took place while transferring the non-fungible token. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error. |
+| &nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when the non-fungible token transfer has been finalized. |
+
+<aside class="notice">
+This notification signals the end of an asynchronous transfer of a non-fungible token. Use the ID returned in the
+ <code>tokenTransferId</code> field to identify the non-fungible token transfer.
+</aside>
+
 ## Notification channel
 
 To be able to receive notifications, a virtual device must open a notification channel for a specific notification
@@ -320,7 +543,7 @@ using the information provided below.
 
 ### Connection endpoint URL
 
-**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/0.11/notify/ws/<i>:eventName</i></span>
+**Sandbox environment**: <span class="url">wss://sandbox.catenis.io/api/0.12/notify/ws/<i>:eventName</i></span>
 
 ### Parameters
 
@@ -343,7 +566,7 @@ connection to open the notification channel:
 > Sample authenticated dummy WebSocket notification request:
 
 ```http
-GET /api/0.11/notify/ws/new-msg-received HTTP/1.1
+GET /api/0.12/notify/ws/new-msg-received HTTP/1.1
 X-BCoT-Timestamp: 20180219T223932Z
 Authorization: CTN1-HMAC-SHA256 Credential=dmM2Dz32agLSGsSuoxsR/20180219/ctn1_request, Signature=59b44f3d504b272e92c1f96694b7f6abb39b8cb7726ffe8b57d2cb46aedf568b
 Host: sandbox.catenis.io

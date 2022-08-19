@@ -26,6 +26,7 @@ includes:
 - export_asset
 - get_asset_balance
 - issue_asset
+- issue_non-fungible_asset  
 - list_asset_holders
 - list_asset_migrations
 - list_exported_assets
@@ -38,16 +39,22 @@ includes:
 - migrate_asset
 - read_message
 - reissue_asset
+- reissue_non-fungible_asset
 - retrieve_asset_info
 - retrieve_asset_issuance_history
 - retrieve_device_identification_info
 - retrieve_message_container
 - retrieve_message_origin
 - retrieve_message_progress
+- retrieve_non-fungible_asset_issuance_progress
+- retrieve_non-fungible_token
+- retrieve_non-fungible_token_retrieval_progress
+- retrieve_non-fungible_token_transfer_progress
 - retrieve_permission_rights
 - send_message
 - set_permission_rights
 - transfer_asset
+- transfer_non-fungible_token
 - notifications
 - errors
 

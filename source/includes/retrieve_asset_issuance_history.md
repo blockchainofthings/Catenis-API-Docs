@@ -9,7 +9,7 @@ Only the virtual device that issued the asset can retrieve the issuance history 
 > Sample request:
 
 ```http--raw
-GET /api/0.11/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z&limit=200&skip=0 HTTP/1.1
+GET /api/0.12/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z&limit=200&skip=0 HTTP/1.1
 X-BCoT-Timestamp: 20180417T182853Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=57d779fbb24593ba4eff574e0c87961a3c39561cb90d99546d5041cdd7e964a9
 Host: sandbox.catenis.io
@@ -18,7 +18,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.11/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z&limit=200&skip=0" \
+curl "https://sandbox.catenis.io/api/0.12/assets/aQjlzShmrnEZeeYBZihc/issuance?startDate=20170101T000000Z&limit=200&skip=0" \
      -H 'X-BCoT-Timestamp: 20180417T182836Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=4990e4df2d0d73d01cd251dab65b6f4d2f702b43eb517d88c5ff3038d0bbd1f6'
 ```
@@ -199,7 +199,7 @@ GET /assets/`:assetId`/issuance
   <li>`skip`: *(optional, default: __`0`__)* Number of asset issuance events that should be skipped (from beginning of list of matching events) and not returned. Must be a non-negative (includes zero) integer value.</li>
 </ul>
 
-> Sample response:
+> Sample response (regular asset):
 
 ```json
 {
@@ -229,6 +229,52 @@ GET /assets/`:assetId`/issuance
 }
 ```
 
+> Sample response (non-fungible asset):
+
+```json
+{
+  "status": "success",
+  "data": {
+    "issuanceEvents": [
+      {
+        "nfTokenIds": [
+          "tTwEvLSN9SnSr95FdYPq",
+          "tmNvCvqLssu64tzZDqZa"
+        ],
+        "holdingDevices": [
+          {
+            "deviceId": "dnN3Ea43bhMTHtTvpytS",
+            "name": "deviceB",
+            "prodUniqueId": "XYZABC001"
+          },
+          {
+            "deviceId": "dv3htgvK7hjnKx3617Re",
+            "name": "Catenis device #1"
+          }
+        ],
+        "date": "2022-06-14T15:28:51.629Z"
+      },
+      {
+        "nfTokenIds": [
+          "tQyJrga3ke65RR23iyr2",
+          "tf2rbknDoo9wPsKBkskj",
+          "t9yNnxYD6jNk4pogi4fe"
+        ],
+        "holdingDevices": [
+          {
+            "deviceId": "dnN3Ea43bhMTHtTvpytS",
+            "name": "deviceB",
+            "prodUniqueId": "XYZABC001"
+          }
+        ],
+        "date": "2022-08-02T12:26:53.758Z"
+      }
+    ],
+    "hasMore": false
+  }
+}
+```
+
 ### Success response
 
 A JSON containing the following properties:
@@ -238,8 +284,13 @@ A JSON containing the following properties:
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`issuanceEvents` | Array(Object) | The list of asset issuance events returned. The events are sorted in ascending order in regard to the returned `date` field.  |
-| &nbsp;&nbsp;&nbsp;&nbsp;`amount` | Number | The amount of the asset issued. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`holdingDevice` | Object | The virtual device to which the issued amount was assigned. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`amount` | Number | *(only returned for regular (fungible) assets)* The amount of the asset issued. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`nfTokenIds` | Array(String) | *(only returned for non-fungible assets)* List of the IDs of the non-fungible tokens of the asset that have been issued. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`holdingDevice` | Object | *(only returned for regular (fungible) assets)* The virtual device to which the issued amount was assigned. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the holding device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The name of the holding device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The product unique ID of the holding device. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`holdingDevices` | Array(Object) | *(only returned for non-fungible assets)* List of the virtual devices to which the issued non-fungible tokens were assigned. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`deviceId` | String | The device ID of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The name of the holding device. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`prodUniqueId` | String | *(only returned if holding device has this data, and the virtual device issuing the request has the necessary permission right)* The product unique ID of the holding device. |

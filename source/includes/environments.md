@@ -1,6 +1,6 @@
 # Environments
 
-The **Catenis API ver. 0.11** is available in the following environments.
+The **Catenis API ver. 0.12** is available in the following environments.
 
 ## Sandbox
 
@@ -12,4 +12,4 @@ The sandbox environment is ideal for prototyping and testing since it does not c
 
 ### Base API URL
 
-`https://sandbox.catenis.io/api/0.11/`
+`https://sandbox.catenis.io/api/0.12/`
