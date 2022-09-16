@@ -50,6 +50,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_6">Asset already exported</span> | The asset that one wants to export is already exported. |
 | <span id="error_msg_7">Asset cannot be reissued</span> | The specified asset does not allow for additional quantities (either an asset amount or non-fungible tokens) of it to be issued after its first issuance. |
 | <span id="error_msg_8">Asset is not yet exported</span> | The asset that one wants to migrate an amount of it or to retrieve its outcome is not yet exported. |
+| <span id="error_msg_390">Asset issuance timed out</span> | The maximum time expected to continue sending data for issuing a non-fungible asset has elapsed, and Catenis cannot fulfill the request. |
 | <span id="error_msg_9">Asset migration already successfully processed</span> | The asset migration that one wants to reprocess has already been successfully processed. |
 | <span id="error_msg_10">Authorization failed; authorization value not well formed</span> | Request could not be authorized because the contents of the Authorization HTTP header is not as expected. |
 | <span id="error_msg_20">Authorization failed; invalid device or signature</span> | Request could not be authorized because the device ID and/or the signature included in the credentials (Authorization header contents) are not valid. Note that a deleted or inactive device will trigger this error. |
