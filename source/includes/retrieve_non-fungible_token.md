@@ -125,8 +125,8 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;`continuationToken` | String | *(only returned if there is more data to be retrieved)* The continuation token to be used in the next continuation call. |
 | &nbsp;&nbsp;`tokenRetrievalId` | String | *(only returned for the initial call when doing processing asynchronously)* The token retrieval ID. Used for retrieving the progress of an asynchronous non-fungible token retrieval. |
 | &nbsp;&nbsp;`nonFungibleToken` | Object | *(__not__ returned for the initial call when doing processing asynchronously)* The retrieved non-fungible token data. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`assetId` | String | *(not returned for a continuation call)* The ID of the non-fungible asset to which the non-fungible token belongs. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`metadata` | Object | *(not returned for a continuation call)* The non-fungible token metadata. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`assetId` | String | *(not returned for a continuation call or when retrieving only the contents)* The ID of the non-fungible asset to which the non-fungible token belongs. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`metadata` | Object | *(not returned for a continuation call or when retrieving only the contents)* The non-fungible token metadata. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | The name of the non-fungible token. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`description` | String | *(only returned if present)* A description of the non-fungible token. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`contentsEncrypted` | String | Indicates whether the stored contents is encrypted. |
@@ -135,7 +135,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`sensitiveProps` | Object | *(only returned if present)* User defined, sensitive properties of the non-fungible token. Sensitive properties are stored in an encrypted form. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_`<prop_name>`_ | * | A custom, sensitive property identified by _`prop_name`_. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_`<prop_name>`_ | * | A custom property identified by _`prop_name`_. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`contents` | Object | The retrieved non-fungible token contents data. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`contents` | Object | *(not returned when the contents should not be retrieved)* The retrieved non-fungible token contents data. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`data` | String | The text encoded non-fungible token contents data. |
 
 <aside class="notice">

@@ -90,7 +90,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | Object | *(only returned if the processing finished with error)* Information about the error that took place while processing the asset issuance. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when processing has been finalized. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`finishDate` | String | *(only returned if the processing has already been finished)* ISO 8601 formatted date and time when processing has been finalized. |
 | &nbsp;&nbsp;`result` | Object | *(only returned if the processing finished successfully)* The result of the asset issuance. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`assetId` | String | *(not returned in case of re-issuance)* The ID of the newly created Catenis non-fungible asset. |
 | &nbsp;&nbsp;&nbsp;&nbsp;`nfTokenIds` | Array(String) | List of the IDs of the newly issued non-fungible tokens. |

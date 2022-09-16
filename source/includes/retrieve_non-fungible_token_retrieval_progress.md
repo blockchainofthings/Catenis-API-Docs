@@ -85,7 +85,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`error` | Object | *(only returned if the processing finished with error)* Information about the error that took place while retrieving the non-fungible token data. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`code` | Number | Numeric code — equivalent to an HTML status code — of the error. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`message` | String | Text describing the error. |
-| &nbsp;&nbsp;&nbsp;&nbsp;`finishDate` | String | ISO 8601 formatted date and time when the data retrieval has been finalized. |
+| &nbsp;&nbsp;&nbsp;&nbsp;`finishDate` | String | *(only returned if the processing has already been finished)* ISO 8601 formatted date and time when the data retrieval has been finalized. |
 | &nbsp;&nbsp;`continuationToken` | String | *(only returned if the processing finished successfully)* The token that should be used to complete the retrieval of the non-fungible token. |
 
 <aside class="notice">
