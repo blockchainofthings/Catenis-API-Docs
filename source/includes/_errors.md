@@ -86,7 +86,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_140">Invalid target device</span> | The ID (either the device ID or the product unique ID) of the virtual device to receive the message is not valid or there is no virtual device with that ID. |
 | <span id="error_msg_144">Message already complete</span> | Catenis has already received the full message's contents, and an additional message chunk cannot be accepted. |
 | <span id="error_msg_142">Message already read</span> | The message, which has been requested to be read asynchronously or in chunks, has already been fully read. |
-| <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed and Catenis cannot fulfill the request. |
+| <span id="error_msg_146">Message expired</span> | The maximum time expected for the next message chunk to be passed/retrieved has elapsed, and Catenis cannot fulfill the request. |
 | <span id="error_msg_148">Message not available</span> | The message, which has been requested to be read asynchronously, is not yet ready to be read. |
 | <span id="error_msg_151">Message origin cannot be disclosed</span> | The message's origin device does not allow the disclosure of information about it. |
 | <span id="error_msg_149">Message too large for reading at once</span> | The contents of the message being read is too large for Catenis to returned it in a single call. |
@@ -133,7 +133,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_207">Progress not available</span> | Asynchronous processing status not yet available for the given ephemeral message. |
 | <span id="error_msg_215">Request data too large to be processed</span> | Catenis refuses to process the request because the data sent with the request (typically a message's contents) is too large. |
 | <span id="error_msg_335">Retrieved non-fungible token data already delivered</span> | The non-fungible token data that have been retrieved have already been delivered to the end user. |
-| <span id="error_msg_345">Retrieved non-fungible token data expired</span> | The maximum time expected for the retrieved non-fungible token data to be received by the end user has elapsed and Catenis cannot fulfill the request. |
+| <span id="error_msg_345">Retrieved non-fungible token data expired</span> | The maximum time expected for the retrieved non-fungible token data to be received by the end user has elapsed, and Catenis cannot fulfill the request. |
 | <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis is not currently ready to process requests. |
 | <span id="error_msg_325">Unavailable or inconsistent non-fungible token</span> | The underlying Colored Coins non-fungible token is malformed or could not be found. |
 | <span id="error_msg_230">Unexpected error calling foreign token smart contract</span> | An unexpected error prevented the foreign blockchain transaction to be executed. |
