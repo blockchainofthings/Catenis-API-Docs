@@ -129,7 +129,7 @@ A JSON containing the following properties:
 | &nbsp;&nbsp;&nbsp;&nbsp;`metadata` | Object | *(not returned for a continuation call or when retrieving only the contents)* The non-fungible token metadata. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`name` | String | The name of the non-fungible token. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`description` | String | *(only returned if present)* A description of the non-fungible token. |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`contentsEncrypted` | String | Indicates whether the stored contents is encrypted. |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`contentsEncrypted` | Boolean | Indicates whether the stored contents is encrypted. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`contentsURL` | String | URL pointing to the non-fungible token's contents stored on IPFS. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`custom` | Object | *(only returned if present)* User defined, custom properties of the non-fungible token. |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`sensitiveProps` | Object | *(only returned if present)* User defined, sensitive properties of the non-fungible token. Sensitive properties are stored in an encrypted form. |
