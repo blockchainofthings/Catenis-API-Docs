@@ -20,7 +20,7 @@ Connection: close
 User-Agent: Paw/3.3.6 (Macintosh; OS X/12.5.0) GCDHTTPRequest
 Content-Length: 481
 
-{"encryptNFTContents":true,"nonFungibleTokens":[{"metadata":{"name":"NFA9 NFT 3","description":"Third token of Catenis non-fungible asset #9"},"contents":{"data":"This is the contents of token #3 of Catenis non-fungible asset #9 (part #1).","encoding":"utf8"}},{"metadata":{"name":"NFA9 NFT 4","description":"Forth token of Catenis non-fungible asset #9"},"contents":{"data":"This is the contents of token #4 of Catenis non-fungible asset #9.","encoding":"utf8"}}],"isFinal":false}
+{"encryptNFTContents":true,"nonFungibleTokens":[{"metadata":{"name":"NFA9 NFT 3","description":"Third token of Catenis non-fungible asset #9"},"contents":{"data":"This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)","encoding":"utf8"}},{"metadata":{"name":"NFA9 NFT 4","description":"Forth token of Catenis non-fungible asset #9"},"contents":{"data":"This is the contents of token #4 of Catenis non-fungible asset #9.","encoding":"utf8"}}],"isFinal":false}
 ```
 
 ```shell
@@ -37,7 +37,7 @@ curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/ahfTzqgWAXnMR
         "description": "Third token of Catenis non-fungible asset #9"
       },
       "contents": {
-        "data": "This is the contents of token #3 of Catenis non-fungible asset #9 (part #1).",
+        "data": "This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)",
         "encoding": "utf8"
       }
     },
@@ -57,15 +57,204 @@ curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/ahfTzqgWAXnMR
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'ahfTzqgWAXnMR6Z57mcp';
+
+ctnApiClient.reissueNonFungibleAsset(assetId, {
+        encryptNFTContents: true
+    }, [{
+        metadata: {
+            name: 'NFA9 NFT 3',
+            description: 'Third token of Catenis non-fungible asset #9'
+        },
+        contents: {
+            data: 'This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)',
+            encoding: 'utf8'
+        }
+    }, {
+        metadata: {
+            name: 'NFA9 NFT 4',
+            description: 'Forth token of Catenis non-fungible asset #9'
+        },
+        contents: {
+            data: 'This is the contents of token #4 of Catenis non-fungible asset #9.',
+            encoding: 'utf8'
+        }
+    }],
+    false,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Continuation token:', data.continuationToken);
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'ahfTzqgWAXnMR6Z57mcp';
+
+ctnApiClient.reissueNonFungibleAsset(assetId, {
+        encryptNFTContents: true
+    }, [{
+        metadata: {
+            name: 'NFA9 NFT 3',
+            description: 'Third token of Catenis non-fungible asset #9'
+        },
+        contents: {
+            data: 'This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)',
+            encoding: 'utf8'
+        }
+    }, {
+        metadata: {
+            name: 'NFA9 NFT 4',
+            description: 'Forth token of Catenis non-fungible asset #9'
+        },
+        contents: {
+            data: 'This is the contents of token #4 of Catenis non-fungible asset #9.',
+            encoding: 'utf8'
+        }
+    }],
+    false,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Continuation token:', data.continuationToken);
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'ahfTzqgWAXnMR6Z57mcp';
+
+try {
+    $data = $ctnApiClient->reissueNonFungibleAsset($assetId, [
+        'encryptNFTContents' => true
+    ], [
+        [
+            'metadata' => [
+                'name' => 'NFA9 NFT 3',
+                'description' => 'Third token of Catenis non-fungible asset #9'
+            ],
+            'contents' => [
+                'data' => 'This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)',
+                'encoding' => 'utf8'
+            ]
+        ],
+        [
+            'metadata' => [
+                'name' => 'NFA9 NFT 4',
+                'description' => 'Forth token of Catenis non-fungible asset #9'
+            ],
+            'contents' => [
+                'data' => 'This is the contents of token #4 of Catenis non-fungible asset #9.',
+                'encoding' => 'utf8'
+            ]
+        ]
+    ], false);
+
+    // Process returned data
+    echo 'Continuation token: ' . $data->continuationToken . PHP_EOL;
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let asset_id = "ahfTzqgWAXnMR6Z57mcp";
+  
+    let result = ctn_client.reissue_non_fungible_asset(
+        asset_id,
+        NFAssetReissuanceInfoOrContToken::ReissuanceInfo(NonFungibleAssetReissuanceInfo {
+            encrypt_nft_contents: Some(true),
+            holding_devices: None,
+            async_: None,
+        }),
+        Some(vec![
+            Some(NewNonFungibleTokenInfo {
+                metadata: Some(NewNonFungibleTokenMetadata {
+                    name: String::from("NFA9 NFT 3"),
+                    description: Some(String::from("Third token of non-fungible asset #9")),
+                    custom: None,
+                }),
+                contents: Some(NewNonFungibleTokenContents {
+                    data: String::from("This is the contents of token #3 of Catenis non-fungible asset #9 (part #1)"),
+                    encoding: Encoding::UTF8
+                }),
+            }),
+            Some(NewNonFungibleTokenInfo {
+                metadata: Some(NewNonFungibleTokenMetadata {
+                    name: String::from("NFA9 NFT 4"),
+                    description: Some(String::from("Forth token of non-fungible asset #9")),
+                    custom: None,
+                }),
+                contents: Some(NewNonFungibleTokenContents {
+                    data: String::from("This is the contents of token #4 of Catenis non-fungible asset #9."),
+                    encoding: Encoding::UTF8
+                }),
+            }),
+        ]),
+        Some(false)
+    )?;
+  
+    println!("Continuation token: {}", result.continuation_token.unwrap());
+   
+    Ok(())
+}
 ```
 
 > Sample request (final continuation call):
@@ -103,15 +292,143 @@ curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/ahfTzqgWAXnMR
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'ahfTzqgWAXnMR6Z57mcp';
+var continuationToken = 'bNg8PeRoTvzbqYyLmCg6';
+
+ctnApiClient.reissueNonFungibleAsset(assetId, continuationToken, [{
+        contents: {
+            data: '; last part of the contents of the third token of Catenis non-fungible asset #9.',
+            encoding: 'utf8'
+        }
+    }],
+    true,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('IDs of newly issued non-fungible tokens:', data.nfTokenIds);
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'ahfTzqgWAXnMR6Z57mcp';
+var continuationToken = 'bNg8PeRoTvzbqYyLmCg6';
+
+ctnApiClient.reissueNonFungibleAsset(assetId, continuationToken, [{
+        contents: {
+            data: '; last part of the contents of the third token of Catenis non-fungible asset #9.',
+            encoding: 'utf8'
+        }
+    }],
+    true,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('IDs of newly issued non-fungible tokens:', data.nfTokenIds);
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetId = 'ahfTzqgWAXnMR6Z57mcp';
+$continuationToken = 'bNg8PeRoTvzbqYyLmCg6';
+
+try {
+    $data = $ctnApiClient->reissueNonFungibleAsset($assetId, $continuationToken, [
+        [
+            'contents' => [
+                'data' => '; last part of the contents of the third token of Catenis non-fungible asset #9.',
+                'encoding' => 'utf8'
+            ]
+        ]
+    ], true);
+
+    // Process returned data
+    echo 'IDs of newly issued non-fungible tokens: ' . $data->nfTokenIds . PHP_EOL;
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let asset_id = "ahfTzqgWAXnMR6Z57mcp";
+    let continuation_token = "bNg8PeRoTvzbqYyLmCg6";
+  
+    let result = ctn_client.reissue_non_fungible_asset(
+        asset_id,
+        NFAssetReissuanceInfoOrContToken::ContinuationToken(String::from(continuation_token)),
+        Some(vec![
+            Some(NewNonFungibleTokenInfo {
+                metadata: None,
+                contents: Some(NewNonFungibleTokenContents {
+                    data: String::from("; last part of the contents of the third token of Catenis non-fungible asset #9."),
+                    encoding: Encoding::UTF8
+                }),
+            }),
+        ]),
+        Some(true)
+    )?;
+  
+    println!("IDs of newly issued non-fungible tokens: {:?}", result.nf_token_ids.unwrap());
+   
+    Ok(())
+}
 ```
 
 ### Accessibility

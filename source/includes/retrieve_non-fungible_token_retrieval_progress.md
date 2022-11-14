@@ -24,15 +24,174 @@ curl "http://localhost:3000/api/0.12/assets/non-fungible/tokens/t76Yzrbqcjbtehk6
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 't76Yzrbqcjbtehk6Wecf';
+var retrievalId = 'ret28tCLCFaWipyCCEEL';
+
+ctnApiClient.retrieveNonFungibleTokenRetrievalProgress(tokenId, retrievalId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Bytes already retrieved:', data.progress.bytesRetrieved);
+
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result...
+                    console.log('Continuation token:', data.continuationToken);
+                    
+                    // and finish retrieving the non-fungible token data
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 't76Yzrbqcjbtehk6Wecf';
+var retrievalId = 'ret28tCLCFaWipyCCEEL';
+
+ctnApiClient.retrieveNonFungibleTokenRetrievalProgress(tokenId, retrievalId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Bytes already retrieved:', data.progress.bytesRetrieved);
+
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result...
+                    console.log('Continuation token:', data.continuationToken);
+                    
+                    // and finish retrieving the non-fungible token data
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$tokenId = 't76Yzrbqcjbtehk6Wecf';
+$retrievalId = 'ret28tCLCFaWipyCCEEL';
+
+try {
+    $data = $ctnApiClient->retrieveNonFungibleTokenRetrievalProgress($tokenId, $retrievalId);
+
+    // Process returned data
+    echo 'Bytes already retrieved: ', $data->progress->bytesRetrieved . PHP_EOL;
+        
+    if ($data->progress->done) {
+        if ($data->progress->success) {
+            // Display result...
+            echo 'Continuation token: ' . $data->continuationToken . PHP_EOL;
+            
+            // and finish retrieving the non-fungible token data
+        } else {
+            // Process error
+            echo 'Asynchronous processing error: [' . $data->progress->error->code . '] - '
+                . $data->progress->error->message . PHP_EOL;
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let token_id = "t76Yzrbqcjbtehk6Wecf";
+    let retrieval_id = "ret28tCLCFaWipyCCEEL";
+  
+    let result = ctn_client.retrieve_non_fungible_token_retrieval_progress(token_id, retrieval_id)?;
+  
+    println!("Bytes already retrieved: {}", result.progress.bytes_retrieved.to_string());
+  
+    if result.progress.done {
+        if let Some(true) = result.progress.success {
+            // Display result...
+            println!("Continuation token: {}", result.continuation_token.unwrap());
+            
+            // and finish retrieving the non-fungible token data
+        } else {
+            // Process error
+            let error = result.progress.error.unwrap();
+      
+            println!("Asynchronous processing error: [{}] - {}", error.code, error.message);
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+  
+    Ok(())
+}
 ```
 
 ### Accessibility

@@ -27,15 +27,142 @@ curl "http://localhost:3000/api/0.12/assets/non-fungible/tokens/t76Yzrbqcjbtehk6
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 't76Yzrbqcjbtehk6Wecf';
+
+ctnApiClient.retrieveNonFungibleToken(tokenId, {
+        retrieveContents: true,
+        contentsEncoding: 'utf8',
+        dataChunkSize: 1024
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Non-fungible token data:', data);
+            
+            if (data.continuationToken) {
+                // Continue retrieving token's contents
+            }
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 't76Yzrbqcjbtehk6Wecf';
+
+ctnApiClient.retrieveNonFungibleToken(tokenId, {
+        retrieveContents: true,
+        contentsEncoding: 'utf8',
+        dataChunkSize: 1024
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Non-fungible token data:', data);
+            
+            if (data.continuationToken) {
+                // Continue retrieving token's contents
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$tokenId = 't76Yzrbqcjbtehk6Wecf';
+
+try {
+    $data = $ctnApiClient->retrieveNonFungibleToken($tokenId, [
+        'retrieveContents' => true,
+        'contentsEncoding' => 'utf8',
+        'dataChunkSize' => 1024
+    ]);
+
+    // Process returned data
+    echo 'Non-fungible token data: ' . print_r($data, true);
+
+    if (isset($data->continuationToken)) {
+        // Continue retrieving token's contents
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let token_id = "tDGQpGy627J6uAw4grYq";
+
+    let result = ctn_client.retrieve_non_fungible_token(token_id, Some(RetrieveNonFungibleTokenOptions {
+        retrieve_contents: Some(true),
+        contents_only: None,
+        contents_encoding: Some(Encoding::UTF8),
+        data_chunk_size: Some(1024),
+        async_: None,
+        continuation_token: None,
+    }))?;
+
+    println!("Non-fungible token data: {:?}", result);
+  
+    if result.continuation_token.is_some() {
+        // Continue retrieving token's contents
+    }
+
+    Ok(())
+}
 ```
 
 ### Accessibility

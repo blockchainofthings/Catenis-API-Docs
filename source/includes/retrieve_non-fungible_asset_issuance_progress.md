@@ -9,7 +9,7 @@ Alternatively, instead of calling this API method, one may choose to receive a <
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn?retrieveContents HTTP/1.1
+GET /api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn HTTP/1.1
 X-BCoT-Timestamp: 20220817T143811Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=de6a572fa907c591a581c30049c30ec24508a07f17510695b014f060d1adc60c
 Host: localhost:3000
@@ -18,21 +18,205 @@ User-Agent: Paw/3.3.6 (Macintosh; OS X/12.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn?retrieveContents" \
+curl "http://localhost:3000/api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn" \
      -H 'X-BCoT-Timestamp: 20220817T143811Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=de6a572fa907c591a581c30049c30ec24508a07f17510695b014f060d1adc60c'
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetIssuanceId = 'iwoTJPbnogCktrYpzwQn';
+
+ctnApiClient.retrieveNonFungibleAssetIssuanceProgress(assetIssuanceId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            if (data.assetId) {
+                console.log('Reissuance for non-fungible asset:', data.assetId);
+            }
+            
+            console.log('Percent processed:', data.progress.percentProcessed);
+                
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result
+                    if (data.result.assetId) {
+                        console.log('ID of newly created non-fungible asset:', data.result.assetId);
+                    }
+                    
+                    console.log('IDs of newly issued non-fungible tokens:', data.result.nfTokenIds);
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+    }
+);
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetIssuanceId = 'iwoTJPbnogCktrYpzwQn';
+
+ctnApiClient.retrieveNonFungibleAssetIssuanceProgress(assetIssuanceId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            if (data.assetId) {
+                console.log('Reissuance for non-fungible asset:', data.assetId);
+            }
+            
+            console.log('Percent processed:', data.progress.percentProcessed);
+                
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result
+                    if (data.result.assetId) {
+                        console.log('ID of newly created non-fungible asset:', data.result.assetId);
+                    }
+                    
+                    console.log('IDs of newly issued non-fungible tokens:', data.result.nfTokenIds);
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$assetIssuanceId = 'iwoTJPbnogCktrYpzwQn';
+
+try {
+    $data = $ctnApiClient->retrieveNonFungibleAssetIssuanceProgress($assetIssuanceId);
+
+    // Process returned data
+    if (isset($data->assetId)) {
+        echo 'Reissuance for non-fungible asset:: ', $data->assetId . PHP_EOL;
+    }
+    
+    echo 'Percent processed: ', $data->progress->percentProcessed . PHP_EOL;
+        
+    if ($data->progress->done) {
+        if ($data->progress->success) {
+            // Display result
+            if (isset($data->result->assetId)) {
+                echo 'ID of newly created non-fungible asset: ' . $data->result->assetId . PHP_EOL;
+            }
+            
+            echo 'IDs of newly issued non-fungible tokens: ' . implode(', ', $data->result->nfTokenIds) . PHP_EOL;
+        } else {
+            // Process error
+            echo 'Asynchronous processing error: [' . $data->progress->error->code . '] - '
+                . $data->progress->error->message . PHP_EOL;
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let issuance_id = "iwoTJPbnogCktrYpzwQn";
+  
+    let result = ctn_client.retrieve_non_fungible_asset_issuance_progress(
+        issuance_id,
+    )?;
+  
+    if let Some(asset_id) = result.asset_id {
+        println!("Reissuance for non-fungible asset: {}", asset_id);
+    }
+  
+    println!("Percent processed: {}", result.progress.percent_processed.to_string());
+  
+    if result.progress.done {
+        if let Some(true) = result.progress.success {
+            // Get result
+            let issuance_result = result.result.unwrap();
+      
+            if let Some(asset_id) = issuance_result.asset_id {
+                println!("ID of newly created non-fungible asset: {}", asset_id);
+            }
+      
+            println!("IDs of newly issued non-fungible tokens:: {:?}", issuance_result.nf_token_ids);
+        } else {
+            // Process error
+            let error = result.progress.error.unwrap();
+      
+            println!("Asynchronous processing error: [{}] - {}", error.code, error.message);
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+   
+    Ok(())
+}
 ```
 
 ### Accessibility

@@ -24,15 +24,166 @@ curl "http://localhost:3000/api/0.12/assets/non-fungible/tokens/ttbG9ia4AjdP5Pm7
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+var transferId = 'xBvAEtQmnMH3eQTAbeHx';
+
+ctnApiClient.retrieveNonFungibleTokenTransferProgress(tokenId, tokenTransferId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Current data manipulation:', data.progress.dataManipulation);
+
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result
+                    console.log('Non-fungible token successfully transferred');
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+var transferId = 'xBvAEtQmnMH3eQTAbeHx';
+
+ctnApiClient.retrieveNonFungibleTokenTransferProgress(tokenId, tokenTransferId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Current data manipulation:', data.progress.dataManipulation);
+
+            if (data.progress.done) {
+                if (data.progress.success) {
+                    // Display result
+                    console.log('Non-fungible token successfully transferred');
+                }
+                else {
+                    // Process error
+                    console.error('Asynchronous processing error: [', data.progress.error.code, ' ] -', data.progress.error.message);
+                }
+            }
+            else {
+                // Asynchronous processing not done yet. Continue pooling
+            }
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+$transferId = 'xBvAEtQmnMH3eQTAbeHx';
+
+try {
+    $data = $ctnApiClient->retrieveNonFungibleTokenTransferProgress($tokenId, $transferId);
+
+    // Process returned data
+    echo 'Current data manipulation: ', print_r($data->progress->dataManipulation, true);
+        
+    if ($data->progress->done) {
+        if ($data->progress->success) {
+            // Display result
+            echo 'Non-fungible token successfully transferred' . PHP_EOL;
+        } else {
+            // Process error
+            echo 'Asynchronous processing error: [' . $data->progress->error->code . '] - '
+                . $data->progress->error->message . PHP_EOL;
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let token_id = "ttbG9ia4AjdP5Pm7WaLG";
+    let transfer_id = "xBvAEtQmnMH3eQTAbeHx";
+  
+    let result = ctn_client.retrieve_non_fungible_token_transfer_progress(token_id, transfer_id)?;
+  
+    println!("Current data manipulation: {:?}", result.progress.data_manipulation);
+  
+    if result.progress.done {
+        if let Some(true) = result.progress.success {
+            // Display result
+            println!("Non-fungible token successfully transferred");
+        } else {
+            // Process error
+            let error = result.progress.error.unwrap();
+      
+            println!("Asynchronous processing error: [{}] - {}", error.code, error.message);
+        }
+    } else {
+        // Asynchronous processing not done yet. Continue pooling
+    }
+
+    Ok(())
+}
 ```
 
 ### Accessibility

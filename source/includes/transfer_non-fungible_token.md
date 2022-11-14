@@ -30,15 +30,120 @@ curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/tokens/ttbG9i
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+var receivingDevice = {
+    id: 'd8YpQ7jgPBJEkBrnvp58'
+};
+
+ctnApiClient.transferNonFungibleToken(tokenId, receivingDevice,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Display result
+            console.log('Non-fungible token successfully transferred');
+        }
+});
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+var receivingDevice = {
+    id: 'd8YpQ7jgPBJEkBrnvp58'
+};
+
+ctnApiClient.transferNonFungibleToken(tokenId, receivingDevice,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Display result
+            console.log('Non-fungible token successfully transferred');
+        }
+});
 ```
 
 ```php
+<?php
+require __DIR__ . '/vendor/autoload.php';
+
+use Catenis\ApiClient;
+use Catenis\Exception\CatenisException;
+
+$deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+$ctnApiClient = new ApiClient($deviceId, $apiAccessSecret, [
+    'environment' => 'sandbox'
+]);
+
+$tokenId = 'ttbG9ia4AjdP5Pm7WaLG';
+$receivingDevice = [
+    'id' => 'd8YpQ7jgPBJEkBrnvp58'
+];
+
+try {
+    $ctnApiClient->transferNonFungibleToken($tokenId, $receivingDevice);
+
+    // Display result
+    echo 'Non-fungible token successfully transferred' . PHP_EOL;
+} catch (\Catenis\Exception\CatenisException $ex) {
+    // Process exception
+}
 ```
 
 ```rust
+use catenis_api_client::{
+    CatenisClient, ClientOptions, Environment, Result,
+    api::*,
+};
+
+fn main() -> Result<()> {
+    let device_credentials = (
+        "dnN3Ea43bhMTHtTvpytS",
+        concat!(
+        "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+        ),
+    ).into();
+
+    let mut ctn_client = CatenisClient::new_with_options(
+        Some(device_credentials),
+        &[
+            ClientOptions::Environment(Environment::Sandbox),
+        ],
+    )?;
+
+    let token_id = "ttbG9ia4AjdP5Pm7WaLG";
+    let receiving_device = DeviceId {
+        id: String::from("d8YpQ7jgPBJEkBrnvp58"),
+        is_prod_unique_id: None,
+    };
+  
+    ctn_client.transfer_non_fungible_token(token_id, receiving_device, None)?;
+  
+    println!("Non-fungible token successfully transferred");
+  
+    Ok(())
+}
 ```
 
 ### Accessibility
