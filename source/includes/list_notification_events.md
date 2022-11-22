@@ -141,7 +141,17 @@ This request does not take any parameters.
   "status": "success",
   "data": {
     "new-msg-received": "A new message has been received",
-    "sent-msg-read": "Previously sent message has been read by intended receiver (target device)"
+    "sent-msg-read": "Previously sent message has been read by intended receiver (target device)",
+    "asset-received": "An amount of an asset has been received",
+    "asset-confirmed": "An amount of an asset that was pending due to an asset transfer has been confirmed",
+    "final-msg-progress": "Progress of asynchronous message processing has come to an end",
+    "asset-export-outcome": "Asset export has been finalized",
+    "asset-migration-outcome": "Asset migration has been finalized",
+    "nf-token-received": "One or more non-fungible tokens have been received",
+    "nf-token-confirmed": "One or more non-fungible tokens that were pending due to a non-fungible token issuance/transfer has been confirmed",
+    "nf-asset-issuance-outcome": "Non-fungible asset issuance has been finalized",
+    "nf-token-retrieval-outcome": "Non-fungible token retrieval has been finalized",
+    "nf-token-transfer-outcome": "Non-fungible token transfer has been finalized"
   }
 }
 ```
