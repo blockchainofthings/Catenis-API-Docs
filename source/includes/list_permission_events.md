@@ -142,10 +142,22 @@ This request does not take any parameters.
   "data": {
     "receive-notify-new-msg": "Receive notification of new message from a device",
     "receive-notify-msg-read": "Receive notification of message read by a device",
+    "receive-notify-asset-of": "Receive notification of asset received for assets issued by a device",
+    "receive-notify-asset-from": "Receive notification of asset received from a device",
+    "receive-notify-confirm-asset-of": "Receive notification of confirmation of pending asset issued by a device",
+    "receive-notify-confirm-asset-from": "Receive notification of confirmation of pending asset transferred by a device",
+    "receive-notify-nf-token-of": "Receive notification of non-fungible token received for non-fungible tokens issued by a device",
+    "receive-notify-nf-token-from": "Receive notification of non-fungible token received from a device",
+    "receive-notify-confirm-nf-token-of": "Receive notification of confirmation of pending non-fungible token issued by a device",
+    "receive-notify-confirm-nf-token-from": "Receive notification of confirmation of pending non-fungible token transferred by a device",
     "send-read-msg-confirm": "Send read message confirmation to a device",
     "receive-msg": "Receive message from a device",
     "disclose-main-props": "Disclose device's main properties (name, product unique ID) to a device",
-    "disclose-identity-info": "Disclose device's basic identification information to a device"
+    "disclose-identity-info": "Disclose device's basic identification information to a device",
+    "receive-asset-of": "Receive an amount of an asset issued by a device",
+    "receive-asset-from": "Receive an amount of an asset from a device",
+    "receive-nf-token-of": "Receive a non-fungible token issued by a device",
+    "receive-nf-token-from": "Receive a non-fungible token from a device"
   }
 }
 ```
