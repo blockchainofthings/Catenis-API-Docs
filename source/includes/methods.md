@@ -28,6 +28,9 @@ The following is a comprehensive list of the methods that comprise the Catenis A
   - [Retrieve Non-Fungible Token Retrieval Progress](#retrieve-non-fungible-token-retrieval-progress)
   - [Transfer Non-Fungible Token](#transfer-non-fungible-token)
   - [Retrieve Non-Fungible Token Transfer Progress](#retrieve-non-fungible-token-transfer-progress)
+  - [List Owned Non-Fungible Tokens](#list-owned-non-fungible-tokens)
+  - [Get Non-Fungible Token Owner](#get-non-fungible-token-owner)
+  - [Check Non-Fungible Token Ownership](#check-non-fungible-token-ownership)
 - Asset export methods
   - [Export Asset](#export-asset)
   - [Migrate Asset](#migrate-asset)

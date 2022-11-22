@@ -98,6 +98,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_285">Missing non-fungible token metadata</span> | The required metadata is missing from the non-fungible token data passed for the non-fungible asset issuance. |
 | <span id="error_msg_175">No permission to assign issued asset to holding device</span> | The virtual device has no permission to assign the amount of the asset to be issued to the specified holding device. |
 | <span id="error_msg_245">No permission to assign issued non-fungible tokens to holding device</span> | The virtual device has no permission to assign the non-fungible tokens to be issued to the specified holding device(s). |
+| <span id="error_msg_400">No permission to check non-fungible token ownership</span> | The virtual device has no permission to check the non-fungible token ownership of the device, and it is not the issuer of the non-fungible token. |
 | <span id="error_msg_176">No permission to export asset</span> | The virtual device attempting to export the asset is not the device that issued that asset. |
 | <span id="error_msg_177">No permission to list asset holders</span> | The virtual device has no permission to list holders of the requested asset. |
 | <span id="error_msg_178">No permission to migrate asset</span> | The virtual device attempting to migrate the asset amount is not the device that exported that asset. |
@@ -113,6 +114,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_350">No permission to retrieve non-fungible token</span> | The virtual device trying to retrieve the non-fungible token data is neither the issuer nor the current holder of the non-fungible token. |
 | <span id="error_msg_360">No permission to retrieve non-fungible token retrieval progress</span> | The virtual device trying to retrieve the progress of the non-fungible token retrieval is not the device that initiated that retrieval. |
 | <span id="error_msg_385">No permission to retrieve non-fungible token transfer progress</span> | The virtual device trying to retrieve the progress of the non-fungible token transfer is not the device that initiated that transfer. |
+| <span id="error_msg_395">No permission to retrieve the identity of the non-fungible token owner</span> | The virtual device trying to query for the current owner of a non-fungible token is not the issuer of the non-fungible token. |
 | <span id="error_msg_205">No permission to transfer asset to receiving device</span> | The virtual device has no permission to transfer an amount of the asset to the specified receiving device. |
 | <span id="error_msg_365">No permission to transfer non-fungible token to receiving device</span> | The virtual device has no permission to transfer the non-fungible token to the specified receiving device. |
 | <span id="error_msg_375">No possession to transfer non-fungible token</span> | The virtual device trying to transfer the non-fungible token does not currently hold it. |
@@ -136,6 +138,7 @@ The following is a comprehensive list of the error messages returned by the Cate
 | <span id="error_msg_335">Retrieved non-fungible token data already delivered</span> | The non-fungible token data that have been retrieved have already been delivered to the end user. |
 | <span id="error_msg_345">Retrieved non-fungible token data expired</span> | The maximum time expected for the retrieved non-fungible token data to be received by the end user has elapsed, and Catenis cannot fulfill the request. |
 | <span id="error_msg_220">System currently not available; please try again at a later time</span> | Catenis is not currently ready to process requests. |
+| <span id="error_msg_405">Unavailable or inconsistent non-fungible asset</span> | The underlying Colored Coins non-fungible asset is malformed or could not be found. |
 | <span id="error_msg_325">Unavailable or inconsistent non-fungible token</span> | The underlying Colored Coins non-fungible token is malformed or could not be found. |
 | <span id="error_msg_230">Unexpected error calling foreign token smart contract</span> | An unexpected error prevented the foreign blockchain transaction to be executed. |
 

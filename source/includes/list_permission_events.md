@@ -157,7 +157,8 @@ This request does not take any parameters.
     "receive-asset-of": "Receive an amount of an asset issued by a device",
     "receive-asset-from": "Receive an amount of an asset from a device",
     "receive-nf-token-of": "Receive a non-fungible token issued by a device",
-    "receive-nf-token-from": "Receive a non-fungible token from a device"
+    "receive-nf-token-from": "Receive a non-fungible token from a device",
+    "disclose-nf-token-ownership": "Disclose device's non-fungible token ownership status to a device"
   }
 }
 ```

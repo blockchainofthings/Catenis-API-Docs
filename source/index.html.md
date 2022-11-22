@@ -23,8 +23,10 @@ includes:
 - asset_export_outcome
 - asset_migration_outcome
 - check_effective_permission_right
+- check_non-fungible_token_ownership
 - export_asset
 - get_asset_balance
+- get_non-fungible_token_owner
 - issue_asset
 - issue_non-fungible_asset  
 - list_asset_holders
@@ -34,6 +36,7 @@ includes:
 - list_messages
 - list_notification_events
 - list_owned_assets
+- list_owned_non-fungible_tokens
 - list_permission_events
 - log_message
 - migrate_asset
