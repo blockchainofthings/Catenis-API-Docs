@@ -9,7 +9,7 @@ Only the virtual device that issued the asset migration can retrieve information
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/migrations/gq8x3efLpEXTkGQchHTb HTTP/1.1
+GET /api/0.13/assets/migrations/gq8x3efLpEXTkGQchHTb HTTP/1.1
 X-BCoT-Timestamp: 20210810T211045Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=60c4f0069c227fca8780ecb263cac1b98f40d15416a21c54cd6c1498644a7915
 Host: localhost:3000
@@ -18,7 +18,7 @@ User-Agent: Paw/3.2.3 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/migrations/gq8x3efLpEXTkGQchHTb" \
+curl "http://localhost:3000/api/0.13/assets/migrations/gq8x3efLpEXTkGQchHTb" \
      -H 'X-BCoT-Timestamp: 20210810T211101Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=97a742d0245a5b078bccaed62724d725826ba87d92ae0a6d160abe26ab0958af'
 ```

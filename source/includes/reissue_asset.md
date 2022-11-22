@@ -10,7 +10,7 @@ the asset had been created with the <code>canReissue</code> property set.
 > Sample request:
 
 ```http--raw
-POST /api/0.12/assets/aQjlzShmrnEZeeYBZihc/issue/ HTTP/1.1
+POST /api/0.13/assets/aQjlzShmrnEZeeYBZihc/issue/ HTTP/1.1
 X-BCoT-Timestamp: 20180417T004201Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=71d61d674882e0bcfadcda962cf3393b300af6f0cbbc5fb211f1f33d5bbd8b3a
 Content-Type: application/json; charset=utf-8
@@ -23,7 +23,7 @@ Content-Length: 60
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.12/assets/aQjlzShmrnEZeeYBZihc/issue/" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.13/assets/aQjlzShmrnEZeeYBZihc/issue/" \
      -H 'X-BCoT-Timestamp: 20180417T004241Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=bfed2a3062c5ee48623ff863d5bc5bedee85189303617be7b01b080c8d9ca950' \
      -H 'Content-Type: application/json; charset=utf-8' \

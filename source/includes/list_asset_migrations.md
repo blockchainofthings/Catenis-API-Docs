@@ -5,7 +5,7 @@ Retrieves a list of issued asset migrations that satisfy a given search criteria
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/migrations?foreignBlockchain=ethereum&direction=outward&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0 HTTP/1.1
+GET /api/0.13/assets/migrations?foreignBlockchain=ethereum&direction=outward&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0 HTTP/1.1
 X-BCoT-Timestamp: 20210811T142016Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=100242f637f3230f54e94dfcc30f25af4abbdf5c34add071130da94d37574379
 Host: localhost:3000
@@ -14,7 +14,7 @@ User-Agent: Paw/3.2.4 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/migrations?foreignBlockchain=ethereum&direction=outward&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0" \
+curl "http://localhost:3000/api/0.13/assets/migrations?foreignBlockchain=ethereum&direction=outward&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0" \
      -H 'X-BCoT-Timestamp: 20210811T142047Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=418fa567d70d0d8ae0ea38a1bdf068362a8cbfe8ce4c3ecb15f028ea5506169e'
 ```

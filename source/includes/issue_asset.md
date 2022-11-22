@@ -5,7 +5,7 @@ Issues an amount of a new asset.
 > Sample request:
 
 ```http--raw
-POST /api/0.12/assets/issue/ HTTP/1.1
+POST /api/0.13/assets/issue/ HTTP/1.1
 X-BCoT-Timestamp: 20180416T192026Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180416/ctn1_request, Signature=ca4df849242d5b66c45d24c3dd2f8810f7063f4bf1df1555aa95d18405b7b5dd
 Content-Type: application/json; charset=utf-8
@@ -18,7 +18,7 @@ Content-Length: 114
 ```
 
 ```shell
-curl -X "POST" "https://sandbox.catenis.io/api/0.12/assets/issue/" \
+curl -X "POST" "https://sandbox.catenis.io/api/0.13/assets/issue/" \
      -H 'X-BCoT-Timestamp: 20180416T191501Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180416/ctn1_request, Signature=fd75cb18eb60c6afa8c5be53dadf1937b08c131d39b20fce19badb285bdb79cc' \
      -H 'Content-Type: application/json; charset=utf-8' \

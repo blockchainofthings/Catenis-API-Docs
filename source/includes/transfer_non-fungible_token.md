@@ -5,7 +5,7 @@ Transfers a non-fungible token to a virtual device.
 > Sample request:
 
 ```http--raw
-POST /api/0.12/assets/non-fungible/tokens/ttbG9ia4AjdP5Pm7WaLG/transfer HTTP/1.1
+POST /api/0.13/assets/non-fungible/tokens/ttbG9ia4AjdP5Pm7WaLG/transfer HTTP/1.1
 X-BCoT-Timestamp: 20220818T143907Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220818/ctn1_request, Signature=025ddf3aa2246de4e67f61635e68b52fb7f042ad8be780866690f4760430124e
 Content-Type: application/json; charset=utf-8
@@ -18,7 +18,7 @@ Content-Length: 49
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/tokens/ttbG9ia4AjdP5Pm7WaLG/transfer" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/tokens/ttbG9ia4AjdP5Pm7WaLG/transfer" \
      -H 'X-BCoT-Timestamp: 20220818T143907Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220818/ctn1_request, Signature=025ddf3aa2246de4e67f61635e68b52fb7f042ad8be780866690f4760430124e' \
      -H 'Content-Type: application/json; charset=utf-8' \

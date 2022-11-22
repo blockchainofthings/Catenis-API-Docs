@@ -1,6 +1,6 @@
 # API methods
 
-The following is a comprehensive list of the methods that comprise the Catenis API ver. 0.12.
+The following is a comprehensive list of the methods that comprise the Catenis API ver. 0.13.
 
 - Message methods
   - [Log Message](#log-message)

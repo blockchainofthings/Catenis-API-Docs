@@ -5,7 +5,7 @@ Creates a new non-fungible asset, and issues its initial non-fungible tokens.
 > Sample request (initial call):
 
 ```http--raw
-POST /api/0.12/assets/non-fungible/issue HTTP/1.1
+POST /api/0.13/assets/non-fungible/issue HTTP/1.1
 X-BCoT-Timestamp: 20220816T184259Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220816/ctn1_request, Signature=bbbde6e3ece3d8df044ecf68a291c26868e50faff512dce5f6de2d67da39451f
 Content-Type: application/json; charset=utf-8
@@ -18,7 +18,7 @@ Content-Length: 584
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/issue" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/issue" \
      -H 'X-BCoT-Timestamp: 20220816T184259Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220816/ctn1_request, Signature=bbbde6e3ece3d8df044ecf68a291c26868e50faff512dce5f6de2d67da39451f' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -271,7 +271,7 @@ fn main() -> Result<()> {
 > Sample request (final continuation call):
 
 ```http--raw
-POST /api/0.12/assets/non-fungible/issue HTTP/1.1
+POST /api/0.13/assets/non-fungible/issue HTTP/1.1
 X-BCoT-Timestamp: 20220816T184627Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220816/ctn1_request, Signature=d320bfba65c206022138f9d3ac2d63fd6058c44b3a01e5462b93522fe3337e19
 Content-Type: application/json; charset=utf-8
@@ -284,7 +284,7 @@ Content-Length: 226
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/issue" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/issue" \
      -H 'X-BCoT-Timestamp: 20220816T184627Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220816/ctn1_request, Signature=d320bfba65c206022138f9d3ac2d63fd6058c44b3a01e5462b93522fe3337e19' \
      -H 'Content-Type: application/json; charset=utf-8' \

@@ -12,7 +12,7 @@ The non-fungible token data comprises the non-fungible token's metadata and its 
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/non-fungible/tokens/t76Yzrbqcjbtehk6Wecf?retrieveContents=true&contentsEncoding=utf8&dataChunkSize=1024 HTTP/1.1
+GET /api/0.13/assets/non-fungible/tokens/t76Yzrbqcjbtehk6Wecf?retrieveContents=true&contentsEncoding=utf8&dataChunkSize=1024 HTTP/1.1
 X-BCoT-Timestamp: 20220818T125045Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220818/ctn1_request, Signature=dfc497904304fa61e360940464b4d5a00006297578c1b40abffaf2393fd2fae0
 Host: localhost:3000
@@ -21,7 +21,7 @@ User-Agent: Paw/3.3.6 (Macintosh; OS X/12.5.1) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/non-fungible/tokens/t76Yzrbqcjbtehk6Wecf?retrieveContents=true&contentsEncoding=utf8&dataChunkSize=1024" \
+curl "http://localhost:3000/api/0.13/assets/non-fungible/tokens/t76Yzrbqcjbtehk6Wecf?retrieveContents=true&contentsEncoding=utf8&dataChunkSize=1024" \
      -H 'X-BCoT-Timestamp: 20220818T125045Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220818/ctn1_request, Signature=dfc497904304fa61e360940464b4d5a00006297578c1b40abffaf2393fd2fae0'
 ```

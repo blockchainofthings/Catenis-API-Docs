@@ -9,7 +9,7 @@ Only the virtual device that issued the asset export can retrieve information ab
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
+GET /api/0.13/assets/aH2AkrrL55GcThhPNa3J/export/ethereum HTTP/1.1
 X-BCoT-Timestamp: 20210810T195125Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=2d30b89906b459b0ebc5c5df6bf12b862b59851530a636c11320d2fd89c5614e
 Host: localhost:3000
@@ -18,7 +18,7 @@ User-Agent: Paw/3.2.3 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
+curl "http://localhost:3000/api/0.13/assets/aH2AkrrL55GcThhPNa3J/export/ethereum" \
      -H 'X-BCoT-Timestamp: 20210810T195231Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=3fc5a2654f845c15b0fa731094e9ac8b7f0aa1b2f657580c162985e31d3b5438'
 ```

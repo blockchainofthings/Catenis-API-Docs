@@ -5,7 +5,7 @@ Retrieves a list of issued asset exports that satisfy a given search criteria.
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0 HTTP/1.1
+GET /api/0.13/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0 HTTP/1.1
 X-BCoT-Timestamp: 20210811T115512Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=34abef10e2e75e8a3c2f66f1b40d50a2cb2e6f88ff7baff8e8fbd983a29d1c4b
 Host: localhost:3000
@@ -14,7 +14,7 @@ User-Agent: Paw/3.2.3 (Macintosh; OS X/11.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0" \
+curl "http://localhost:3000/api/0.13/assets/exported?foreignBlockchain=ethereum&status=success&startDate=2021-08-01T00:00:00Z&limit=200&skip=0" \
      -H 'X-BCoT-Timestamp: 20210811T115534Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210811/ctn1_request, Signature=258e511f7272407ba344922c0d68a63388018e70bcc2885acf343c415f0caf36'
 ```

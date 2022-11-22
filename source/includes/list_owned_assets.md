@@ -5,7 +5,7 @@ Retrieves a list of assets that are currently held by the device.
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/owned?limit=200 HTTP/1.1
+GET /api/0.13/assets/owned?limit=200 HTTP/1.1
 X-BCoT-Timestamp: 20180417T193253Z
 Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=e1986d68550fe45536e407ec0eba3d0104579106f3486b9aec652ac0f78add43
 Host: sandbox.catenis.io
@@ -14,7 +14,7 @@ User-Agent: Paw/3.1.5 (Macintosh; OS X/10.13.4) GCDHTTPRequest
 ```
 
 ```shell
-curl "https://sandbox.catenis.io/api/0.12/assets/owned?limit=200" \
+curl "https://sandbox.catenis.io/api/0.13/assets/owned?limit=200" \
      -H 'X-BCoT-Timestamp: 20180417T193325Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=dnN3Ea43bhMTHtTvpytS/20180417/ctn1_request, Signature=2c6c8a066e7e983ad059854a3209ae7cfd024f1be504d51b5939fc3780dce8ae'
 ```

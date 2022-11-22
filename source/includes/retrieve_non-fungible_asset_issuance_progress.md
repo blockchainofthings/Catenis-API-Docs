@@ -9,7 +9,7 @@ Alternatively, instead of calling this API method, one may choose to receive a <
 > Sample request:
 
 ```http--raw
-GET /api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn HTTP/1.1
+GET /api/0.13/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn HTTP/1.1
 X-BCoT-Timestamp: 20220817T143811Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=de6a572fa907c591a581c30049c30ec24508a07f17510695b014f060d1adc60c
 Host: localhost:3000
@@ -18,7 +18,7 @@ User-Agent: Paw/3.3.6 (Macintosh; OS X/12.5.0) GCDHTTPRequest
 ```
 
 ```shell
-curl "http://localhost:3000/api/0.12/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn" \
+curl "http://localhost:3000/api/0.13/assets/non-fungible/issuance/iwoTJPbnogCktrYpzwQn" \
      -H 'X-BCoT-Timestamp: 20220817T143811Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=de6a572fa907c591a581c30049c30ec24508a07f17510695b014f060d1adc60c'
 ```

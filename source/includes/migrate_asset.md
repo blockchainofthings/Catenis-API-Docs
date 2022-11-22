@@ -25,7 +25,7 @@ This method requires that an amount of the foreign blockchain's native coin be s
 > Sample request:
 
 ```http--raw
-POST /api/0.12/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum HTTP/1.1
+POST /api/0.13/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum HTTP/1.1
 X-BCoT-Timestamp: 20210810T121125Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210810/ctn1_request, Signature=e0493fed7f758c444bc29be683723165e255df40549ecc60d292d5745e1dcb68
 Content-Type: application/json; charset=utf-8
@@ -38,7 +38,7 @@ Content-Length: 108
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/aH2AkrrL55GcThhPNa3J/migrate/ethereum" \
      -H 'X-BCoT-Timestamp: 20210809T203625Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20210809/ctn1_request, Signature=a94d8ed1df52dfd21959f3a04436bdc68f47ea41685cd7f20fbf126f6fec63df' \
      -H 'Content-Type: application/json; charset=utf-8' \

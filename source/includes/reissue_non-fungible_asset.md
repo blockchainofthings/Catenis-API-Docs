@@ -11,7 +11,7 @@ property set.
 > Sample request (initial call):
 
 ```http--raw
-POST /api/0.12/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue HTTP/1.1
+POST /api/0.13/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue HTTP/1.1
 X-BCoT-Timestamp: 20220817T134801Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=a9b862ea223e8f0bb67b1cf50bd36fb94ebeaef55a94ebc6ae31048cc668ac49
 Content-Type: application/json; charset=utf-8
@@ -24,7 +24,7 @@ Content-Length: 481
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue" \
      -H 'X-BCoT-Timestamp: 20220817T134801Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=a9b862ea223e8f0bb67b1cf50bd36fb94ebeaef55a94ebc6ae31048cc668ac49' \
      -H 'Content-Type: application/json; charset=utf-8' \
@@ -260,7 +260,7 @@ fn main() -> Result<()> {
 > Sample request (final continuation call):
 
 ```http--raw
-POST /api/0.12/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue HTTP/1.1
+POST /api/0.13/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue HTTP/1.1
 X-BCoT-Timestamp: 20220817T135103Z
 Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=8083c6b45899fc6d77aa36978ece9c6aea02862b0cc68a4d16355ba50e090f37
 Content-Type: application/json; charset=utf-8
@@ -273,7 +273,7 @@ Content-Length: 204
 ```
 
 ```shell
-curl -X "POST" "http://localhost:3000/api/0.12/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue" \
+curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/ahfTzqgWAXnMR6Z57mcp/issue" \
      -H 'X-BCoT-Timestamp: 20220817T135103Z' \
      -H 'Authorization: CTN1-HMAC-SHA256 Credential=drc3XdxNtzoucpw9xiRp/20220817/ctn1_request, Signature=8083c6b45899fc6d77aa36978ece9c6aea02862b0cc68a4d16355ba50e090f37' \
      -H 'Content-Type: application/json; charset=utf-8' \
