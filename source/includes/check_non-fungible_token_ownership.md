@@ -78,7 +78,8 @@ A JSON containing the following properties:
 {
   "status": "success",
   "data": {
-    "tokensOwned": 4
+    "tokensOwned": 4,
+    "tokensUnconfirmed": 0
   }
 }
 ```
@@ -92,6 +93,7 @@ A JSON containing the following properties:
 | `status` | String | The value **`success`**, indicating that the request was successful. |
 | `data` | Object | The actual data returned in response to the API request. |
 | &nbsp;&nbsp;`tokensOwned` | Number | Number of non-fungible tokens, out of those that have been verified, that are owned by the specified virtual device. |
+| &nbsp;&nbsp;`tokensUnconfirmed` | Number | Number of non-fungible tokens, out of the owned ones, that are not yet confirmed. |
 
 ### Possible errors
 
