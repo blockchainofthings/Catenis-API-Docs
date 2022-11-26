@@ -62,6 +62,7 @@ ctnApiClient.retrieveNonFungibleTokenRetrievalProgress(tokenId, retrievalId,
             }
         }
 });
+</script>
 ```
 
 ```javascript--node

@@ -320,6 +320,7 @@ ctnApiClient.reissueNonFungibleAsset(assetId, continuationToken, [{
             console.log('IDs of newly issued non-fungible tokens:', data.nfTokenIds);
         }
 });
+</script>
 ```
 
 ```javascript--node

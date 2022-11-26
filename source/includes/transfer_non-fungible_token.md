@@ -54,6 +54,7 @@ ctnApiClient.transferNonFungibleToken(tokenId, receivingDevice,
             console.log('Non-fungible token successfully transferred');
         }
 });
+</script>
 ```
 
 ```javascript--node

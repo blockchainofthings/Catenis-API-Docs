@@ -66,8 +66,8 @@ ctnApiClient.retrieveNonFungibleAssetIssuanceProgress(assetIssuanceId,
                 // Asynchronous processing not done yet. Continue pooling
             }
         }
-    }
-);
+});
+</script>
 ```
 
 ```javascript--node

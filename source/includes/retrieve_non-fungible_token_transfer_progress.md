@@ -60,6 +60,7 @@ ctnApiClient.retrieveNonFungibleTokenTransferProgress(tokenId, tokenTransferId,
             }
         }
 });
+</script>
 ```
 
 ```javascript--node

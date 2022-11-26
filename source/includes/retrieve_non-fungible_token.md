@@ -56,6 +56,7 @@ ctnApiClient.retrieveNonFungibleToken(tokenId, {
             }
         }
 });
+</script>
 ```
 
 ```javascript--node
