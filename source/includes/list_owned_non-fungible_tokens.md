@@ -21,9 +21,59 @@ curl "http://localhost:3000/api/0.13/assets/non-fungible/aiqXDyh7hhukwxFhR69x/to
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'aiqXDyh7hhukwxFhR69x';
+
+ctnApiClient.listOwnedNonFungibleTokens(assetId, 200, 0,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Owned non-fungible tokens:', data.ownedNFTokens);
+    
+            if (data.hasMore) {
+                console.log('Not all owned non-fungible tokens have been returned');
+            }
+        }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var assetId = 'ahfTzqgWAXnMR6Z57mcp';
+
+ctnApiClient.listOwnedNonFungibleTokens(assetId, 200, 0,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Owned non-fungible tokens:', data.ownedNFTokens);
+    
+            if (data.hasMore) {
+                console.log('Not all owned non-fungible tokens have been returned');
+            }
+        }
+});
 ```
 
 ```php

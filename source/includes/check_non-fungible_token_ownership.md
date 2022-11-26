@@ -38,9 +38,67 @@ curl -X "POST" "http://localhost:3000/api/0.13/assets/non-fungible/tokens/owners
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var checkDeviceId = 'drc3XdxNtzoucpw9xiRp';
+var assetId = 'aiqXDyh7hhukwxFhR69x';
+
+ctnApiClient.checkNonFungibleTokenOwnership({
+        id: checkDeviceId,
+        isProdUniqueId: false
+    }, {
+        id: assetId,
+        isAssetId: true
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Non-fungible tokens owned:', data.tokensOwned);
+            console.log('Non-fungible tokens not yet confirmed:', data.tokensUnconfirmed);
+        }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var checkDeviceId = 'drc3XdxNtzoucpw9xiRp';
+var assetId = 'aiqXDyh7hhukwxFhR69x';
+
+ctnApiClient.checkNonFungibleTokenOwnership({
+        id: checkDeviceId,
+        isProdUniqueId: false
+    }, {
+        id: assetId,
+        isAssetId: true
+    },
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Non-fungible tokens owned:', data.tokensOwned);
+            console.log('Non-fungible tokens not yet confirmed:', data.tokensUnconfirmed);
+        }
+});
 ```
 
 ```php

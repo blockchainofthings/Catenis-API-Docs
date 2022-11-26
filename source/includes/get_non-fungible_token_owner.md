@@ -24,9 +24,53 @@ curl "http://localhost:3000/api/0.13/assets/non-fungible/tokens/twy3fNwmZjkRaawc
 ```
 
 ```html--javascript
+<script src="CatenisAPIClientJS.min.js"></script>
+
+<script language="JavaScript">
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'twy3fNwmZjkRaawcMpmP';
+
+ctnApiClient.getNonFungibleTokenOwner(tokenId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Owning device:', data.owner);
+            console.log('Is confirmed:', data.isConfirmed);
+        }
+});
+</script>
 ```
 
 ```javascript--node
+var CtnApiClient = require('catenis-api-client');
+
+var deviceId = 'dnN3Ea43bhMTHtTvpytS';
+
+var ctnApiClient = new CtnApiClient(deviceId, apiAccessSecret, {
+    environment: 'sandbox'
+});
+
+var tokenId = 'twy3fNwmZjkRaawcMpmP';
+
+ctnApiClient.getNonFungibleTokenOwner(tokenId,
+    function (err, data) {
+        if (err) {
+            // Process error
+        }
+        else {
+            // Process returned data
+            console.log('Owning device:', data.owner);
+            console.log('Is confirmed:', data.isConfirmed);
+        }
+});
 ```
 
 ```php
